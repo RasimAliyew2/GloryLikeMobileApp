@@ -1,0 +1,1776 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GloryLikeMobileApp</name>
+    </assembly>
+    <members>
+        <member name="T:MetanetA_MobileApp.Model.CartLineItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.CartLineItem.Quantity">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.CartLineItem.quantity"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.Model.CartLineItem.OnQuantityChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.Model.CartLineItem.Quantity"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.Model.CartLineItem.Quantity"/> is changed.</remarks>
+        </member>
+        <member name="T:MetanetA_MobileApp.Model.FaqItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.FaqItem.Question">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.FaqItem.question"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.FaqItem.Answer">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.FaqItem.answer"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.FaqItem.IsExpanded">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.FaqItem.isExpanded"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.Model.FaqItem.OnIsExpandedChanged(System.Boolean)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.Model.FaqItem.IsExpanded"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.Model.FaqItem.IsExpanded"/> is changed.</remarks>
+        </member>
+        <member name="T:MetanetA_MobileApp.Model.ProductItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.Name">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.name"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.Description">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.description"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.Title">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.title"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.ImageUrl">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.imageUrl"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.Price">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.price"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProductItem.AboutTheProduct">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProductItem.aboutTheProduct"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Model.ProfileBonus">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProfileBonus.UsedBonus">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProfileBonus.usedBonus"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProfileBonus.CurrentBonus">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProfileBonus.currentBonus"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.ProfileBonus.CollectedBonus">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.ProfileBonus.collectedBonus"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Model.SubCategoryItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.SubCategoryItem.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.SubCategoryItem.isSelected"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Model.UserInfo">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Name">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.name"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Surname">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.surname"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.City">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.city"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.FatherName">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.fatherName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Job">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.job"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.BirthDate">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.birthDate"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Village">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.village"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Bonus">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.bonus"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Password">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.password"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.BonusOfProfile">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.bonusOfProfile"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductRootCategorySection">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductRootCategorySection.IsExpanded">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductRootCategorySection.isExpanded"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.ProductItem">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.productItem"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.IsVisible">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.isVisible"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.OnProductItemChanged(MetanetA_MobileApp.Model.ProductItem)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.ProductItem"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.ProductItem"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.Back"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.buyCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.BuyCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.BuyCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.Buy"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.declineCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.DeclineCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.DeclineCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductDetailViewModel.Decline"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductPreSelectedViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductPreSelectedViewModel.selectRootCategoryCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductPreSelectedViewModel.SelectRootCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductPreSelectedViewModel.SelectRootCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductPreSelectedViewModel.SelectRootCategoryAsync(System.String)"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductSubCategorySection">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductSubCategorySection.IsExpanded">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductSubCategorySection.isExpanded"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.CategoryKey">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.categoryKey"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SearchText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.searchText"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.OnCategoryKeyChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.CategoryKey"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.CategoryKey"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.OnSearchTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SearchText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.toggleRootCategoryCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleRootCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleRootCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleRootCategory(MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductRootCategorySection)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.toggleSubCategoryCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleSubCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleSubCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ToggleSubCategory(MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductSubCategorySection)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.clearSearchCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ClearSearchCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ClearSearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.ClearSearch"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.selectProductCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SelectProductCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SelectProductCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProductsViewModels.ProductViewModel.SelectProductAsync(MetanetA_MobileApp.Model.ProductItem)"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.BaseViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.MenuState">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.BaseViewModel.menuState"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.qrCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.QrCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.QrCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Qr"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.applicationsCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ApplicationsCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ApplicationsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Applications"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.homeCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.HomeCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.HomeCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Home"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.profileCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ProfileCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ProfileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Profile"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.skillsCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.SkillsCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.SkillsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Skills"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.productsCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ProductsCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.ProductsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Products"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.otherCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.OtherCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.OtherCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Other"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.BaseViewModel.campaignsCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.BaseViewModel.CampaignsCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.BaseViewModel.CampaignsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.BaseViewModel.Campaigns"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.FaqPageViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.FaqPageViewModel.toggleCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.FaqPageViewModel.ToggleCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.FaqPageViewModel.ToggleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.FaqPageViewModel.Toggle(MetanetA_MobileApp.Model.FaqItem)"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.PhoneNotNumberNotFound">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.phoneNotNumberNotFound"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.approveTheNumberCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.ApproveTheNumberCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.ApproveTheNumberCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ForgetPasswordViewModel.ApproveTheNumber"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.SearchText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.searchText"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.toggleOpportunityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleOpportunityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleOpportunityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleOpportunity(MetanetA_MobileApp.Model.OpportunityItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.toggleSaveCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleSaveCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleSaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ToggleSave(MetanetA_MobileApp.Model.OpportunityItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.applyCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ApplyCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.ApplyCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Job.OpportunitiesViewModel.Apply(MetanetA_MobileApp.Model.OpportunityItem)"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.MainViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.Cart">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.cart"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.CartService">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.cartService"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.SearchText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.searchText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.IsSearchResultsVisible">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.isSearchResultsVisible"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.MainViewModel.OnSearchTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.SearchText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.clearMainSearchCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.ClearMainSearchCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.ClearMainSearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.ClearMainSearch"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.openSuggestedProductCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.OpenSuggestedProductCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.OpenSuggestedProductCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.OpenSuggestedProductAsync(MetanetA_MobileApp.Model.SalesItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.trainingCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.TrainingCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.TrainingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.Training"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.LocationMapViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.CenterLatitude">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.LocationMapViewModel.centerLatitude"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.CenterLongitude">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.LocationMapViewModel.centerLongitude"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.StartRadiusKm">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.LocationMapViewModel.startRadiusKm"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.LocationMapViewModel.goBackCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.GoBackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.GoBackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.LocationMapViewModel.GoBack"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProfileUserViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.Draft">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.draft"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.HasChanges">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.hasChanges"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.IsBusy">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.isBusy"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.SaveAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileUserViewModel.CancelAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ProfileViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.UserSession">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.userSession"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.ProfileImage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.profileImage"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.IsPersonalInfoExpanded">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.isPersonalInfoExpanded"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.togglePersonalInfoCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.TogglePersonalInfoCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.TogglePersonalInfoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.TogglePersonalInfo"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.personalInfoCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.PersonalInfoCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.PersonalInfoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.PersonalInfo"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.changePhotoCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.ChangePhotoCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.ChangePhotoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.ChangePhoto"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.cardsCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.CardsCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.CardsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.Cards"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.Save"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ProfileViewModel.resetCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.ResetCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ProfileViewModel.ResetCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ProfileViewModel.Reset"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.editProfileCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.EditProfileCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.EditProfileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.EditProfile"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.addSkillCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddSkillCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddSkillCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddSkill"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.addExperienceCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperienceCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperienceCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperience"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.Bonus">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.bonus"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.OnBonusChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.Bonus"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.Bonus"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.goToMainPageCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.GoToMainPageCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.GoToMainPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.QRCode.QRCodeAcceptedViewModel.GoToMainPage"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.QRCodeNotAcceptedViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.QRCodeNotAcceptedViewModel.goToMainCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.QRCodeNotAcceptedViewModel.GoToMainCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.QRCodeNotAcceptedViewModel.GoToMainCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.QRCodeNotAcceptedViewModel.GoToMain"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.QrScannerViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.QrScannerViewModel.qrDetectedCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.QrScannerViewModel.QrDetectedCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.QrScannerViewModel.QrDetectedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.QrScannerViewModel.QrDetected(System.String)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.QrScannerViewModel.goToMainCommandCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.QrScannerViewModel.GoToMainCommandCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.QrScannerViewModel.GoToMainCommandCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.QrScannerViewModel.GoToMainCommand"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.RequestAcceptedViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.RequestAcceptedViewModel.goToSignInPageCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.RequestAcceptedViewModel.GoToSignInPageCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.RequestAcceptedViewModel.GoToSignInPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.RequestAcceptedViewModel.GoToSignInPage"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.Code">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.code"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.TimerText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.timerText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.IsVisibleErrorLabel">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.isVisibleErrorLabel"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.OperationType">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.operationType"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.completedEditingCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditingCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditing(System.String)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.startCountdownCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdownCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdownCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdown(System.Int32)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.returnPreviousPageCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.ReturnPreviousPageCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.ReturnPreviousPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.ReturnPreviousPage"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.aprroveTheSMSCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.AprroveTheSMSCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.AprroveTheSMSCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.AprroveTheSMS"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.stopTimerCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimerCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimerCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimer"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.Password">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.password"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmPassword">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.confirmPassword"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.IsMismatch">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.isMismatch"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.MismatchText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.mismatchText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.OperationType">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.operationType"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.IsPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.isPasswordHidden"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.IsConfirmPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.isConfirmPasswordHidden"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.IsPasswordRuleInvalid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.isPasswordRuleInvalid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.PasswordRuleText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.passwordRuleText"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.OnPasswordChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.Password"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.Password"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.OnConfirmPasswordChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmPassword"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmPassword"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.togglePasswordVisibilityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.TogglePasswordVisibilityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.TogglePasswordVisibilityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.TogglePasswordVisibility"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.toggleConfirmPasswordVisibilityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ToggleConfirmPasswordVisibilityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ToggleConfirmPasswordVisibilityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ToggleConfirmPasswordVisibility"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.confirmCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SetPasswordViewModel.ConfirmAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.Back"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.skipForNowCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.SkipForNowCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.SkipForNowCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.SkipForNow"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.importFromEmasCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmasCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmasCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmas"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.uploadFileCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFileCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFile"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem.isSelected"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.skipForNowCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.SkipForNowCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.SkipForNowCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.SkipForNow"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.verifyWithSimaCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.VerifyWithSimaCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.VerifyWithSimaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.VerifyWithSima"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifyIdentityViewModel.Back"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.addNewSkillCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkillCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkillCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkill(System.String)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.attachCertificateFileCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFileCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFile(MetanetA_MobileApp.Model.SkillVerifyItemModel)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.submitCertificateCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificateCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificateCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificate(MetanetA_MobileApp.Model.SkillVerifyItemModel)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.Back"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.skipForNowCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNowCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNowCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNow"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.SignUpViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.LineNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.lineNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.UserInfo">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.userInfo"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsNameValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isNameValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsSurnameValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isSurnameValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsSFathernameValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isSFathernameValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsPhoneValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isPhoneValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsCityValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isCityValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsJobValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isJobValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsTermsValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isTermsValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.HasSubmitted">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.hasSubmitted"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsValidationVisible">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isValidationVisible"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.ValidationMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.validationMessage"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedPrefix">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.selectedPrefix"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsTermsAccepted">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isTermsAccepted"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isPasswordHidden"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsConfirmPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isConfirmPasswordHidden"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsOtherJobSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isOtherJobSelected"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.OtherJobText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.otherJobText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.NameBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.nameBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SurnameBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.surnameBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.FatherBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.fatherBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.PhoneBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.phoneBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.CityBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.cityBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.JobBorderColor">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.jobBorderColor"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedJob">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.selectedJob"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OnLineNumberChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.LineNumber"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.LineNumber"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OnSelectedPrefixChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedPrefix"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedPrefix"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OnIsTermsAcceptedChanged(System.Boolean)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsTermsAccepted"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsTermsAccepted"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OnOtherJobTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.OtherJobText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.OtherJobText"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OnSelectedJobChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedJob"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SelectedJob"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.openUrlCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.OpenUrlCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.OpenUrlCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.OpenUrl"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.signUpCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUpCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUp"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.SelectableItem`1">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SelectableItem`1.Title">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SelectableItem`1.title"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SelectableItem`1.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SelectableItem`1.isSelected"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.currentStep"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedJobFamily">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectedJobFamily"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedSeniority">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectedSeniority"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedPosition">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectedPosition"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.IsBusy">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.isBusy"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ErrorMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.errorMessage"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.OnCurrentStepChanged(MetanetA_MobileApp.ViewModels.Sign.SingUp.SelectionStep)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.OnSelectedJobFamilyChanged(MetanetA_MobileApp.Model.JobFamily)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedJobFamily"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedJobFamily"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.OnSelectedSeniorityChanged(MetanetA_MobileApp.Model.Seniority)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedSeniority"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedSeniority"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.OnSelectedPositionChanged(MetanetA_MobileApp.Model.Position)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedPosition"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectedPosition"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.OnErrorMessageChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ErrorMessage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ErrorMessage"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.loadCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.LoadCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.LoadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.LoadAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectJobFamilyCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectJobFamilyCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectJobFamilyCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectJobFamily(MetanetA_MobileApp.ViewModels.SelectableItem{MetanetA_MobileApp.Model.JobFamily})"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectSeniorityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectSeniorityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectSeniorityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectSeniority(MetanetA_MobileApp.ViewModels.SelectableItem{MetanetA_MobileApp.Model.Seniority})"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.selectPositionCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectPositionCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectPositionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SelectPosition(MetanetA_MobileApp.ViewModels.SelectableItem{MetanetA_MobileApp.Model.Position})"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.toggleSkillCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ToggleSkillCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ToggleSkillCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ToggleSkill(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.BackAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.skipCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SkipCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SkipCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SkipAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.VideosViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.selectedVideo"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.PlayerSource">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.playerSource"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.ShowSelectHint">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.showSelectHint"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.searchText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.ShowNoResults">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.showNoResults"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OnSelectedVideoChanged(MetanetA_MobileApp.Model.VideoItem)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OnSearchTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.VideosViewModel.openInYouTubeCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.Services.UIState.CartLine">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UIState.CartLine.Quantity">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UIState.CartLine.quantity"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Services.UIState.CartState">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UIState.CartState.ItemCount">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UIState.CartState.itemCount"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UIState.CartState.TotalPrice">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UIState.CartState.totalPrice"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Services.UIState.BottomMenuState">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UIState.BottomMenuState.SelectedTab">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UIState.BottomMenuState.selectedTab"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UIState.BottomMenuState.CartCount">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UIState.BottomMenuState.cartCount"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.Services.UIState.BottomMenuState.OnSelectedTabChanged(MetanetA_MobileApp.Services.UIState.BottomTab)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.Services.UIState.BottomMenuState.SelectedTab"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.Services.UIState.BottomMenuState.SelectedTab"/> is changed.</remarks>
+        </member>
+        <member name="T:MetanetA_MobileApp.Services.UserSession">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UserSession.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UserSession.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UserSession.OtpCode">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UserSession.otpCode"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModel.SignInViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.Password">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.password"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.FillTheArea">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.fillTheArea"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.InvalidCredentials">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.invalidCredentials"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.IsPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.isPasswordHidden"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.IsConfirmPasswordHidden">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModel.SignInViewModel.isConfirmPasswordHidden"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModel.SignInViewModel.signInCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModel.SignInViewModel.SignInCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.SignInCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModel.SignInViewModel.SignIn"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModel.SignInViewModel.togglePasswordVisibilityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModel.SignInViewModel.TogglePasswordVisibilityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.TogglePasswordVisibilityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModel.SignInViewModel.TogglePasswordVisibility"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModel.SignInViewModel.signUpCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModel.SignInViewModel.SignUpCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModel.SignInViewModel.SignUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModel.SignInViewModel.SignUp"/>.</summary>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_InputView.TextColorTo(Microsoft.Maui.Controls.InputView,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Quantity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Quantity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Question">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Question" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Answer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Answer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsExpanded">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsExpanded" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImageUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImageUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Price">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Price" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AboutTheProduct">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AboutTheProduct" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UsedBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UsedBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CollectedBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CollectedBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Surname">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Surname" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FatherName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FatherName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Job">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Job" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BirthDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BirthDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Village">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Village" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Bonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Bonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BonusOfProfile">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BonusOfProfile" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalPrice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalPrice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTab">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTab" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CartCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CartCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OtpCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OtpCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MenuState">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MenuState" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNotNumberNotFound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNotNumberNotFound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cart">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cart" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CartService">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CartService" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSearchResultsVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSearchResultsVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CenterLatitude">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CenterLatitude" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CenterLongitude">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CenterLongitude" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StartRadiusKm">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StartRadiusKm" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProductItem">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProductItem" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoryKey">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoryKey" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Draft">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Draft" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasChanges">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasChanges" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UserSession">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UserSession" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProfileImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProfileImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPersonalInfoExpanded">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPersonalInfoExpanded" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BonusText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BonusText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Code">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Code" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TimerText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TimerText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsVisibleErrorLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsVisibleErrorLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OperationType">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OperationType" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ConfirmPassword">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsMismatch">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsMismatch" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MismatchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MismatchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPasswordHidden">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPasswordHidden" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsConfirmPasswordHidden">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsConfirmPasswordHidden" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPasswordRuleInvalid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPasswordRuleInvalid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PasswordRuleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PasswordRuleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FillTheArea">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FillTheArea" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.InvalidCredentials">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "InvalidCredentials" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LineNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LineNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UserInfo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UserInfo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsNameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsNameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSurnameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSurnameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSFathernameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSFathernameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsPhoneValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsPhoneValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsCityValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsCityValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsJobValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsJobValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsTermsValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsTermsValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasSubmitted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasSubmitted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsValidationVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsValidationVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ValidationMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ValidationMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedPrefix">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedPrefix" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsTermsAccepted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsTermsAccepted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsOtherJobSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsOtherJobSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OtherJobText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OtherJobText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NameBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NameBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SurnameBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SurnameBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FatherBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FatherBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CityBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CityBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.JobBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "JobBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedJob">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedJob" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentStep">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentStep" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedJobFamily">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedJobFamily" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedSeniority">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedSeniority" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedPosition">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedPosition" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedVideo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedVideo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PlayerSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PlayerSource" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowSelectHint">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowSelectHint" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowNoResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowNoResults" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Quantity">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Quantity" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Question">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Question" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Answer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Answer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsExpanded">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsExpanded" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImageUrl">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImageUrl" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Price">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Price" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AboutTheProduct">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AboutTheProduct" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UsedBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UsedBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CollectedBonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CollectedBonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Surname">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Surname" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FatherName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FatherName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Job">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Job" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BirthDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BirthDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Village">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Village" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Bonus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Bonus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Password">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Password" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BonusOfProfile">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BonusOfProfile" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ItemCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ItemCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalPrice">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalPrice" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTab">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTab" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CartCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CartCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OtpCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OtpCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MenuState">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MenuState" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNotNumberNotFound">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNotNumberNotFound" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cart">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cart" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CartService">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CartService" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSearchResultsVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSearchResultsVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CenterLatitude">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CenterLatitude" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CenterLongitude">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CenterLongitude" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StartRadiusKm">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StartRadiusKm" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProductItem">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProductItem" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoryKey">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoryKey" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Draft">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Draft" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasChanges">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasChanges" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UserSession">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UserSession" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProfileImage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProfileImage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPersonalInfoExpanded">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPersonalInfoExpanded" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BonusText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BonusText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Code">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Code" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TimerText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TimerText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsVisibleErrorLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsVisibleErrorLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OperationType">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OperationType" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ConfirmPassword">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ConfirmPassword" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsMismatch">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsMismatch" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MismatchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MismatchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPasswordHidden">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPasswordHidden" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsConfirmPasswordHidden">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsConfirmPasswordHidden" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPasswordRuleInvalid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPasswordRuleInvalid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PasswordRuleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PasswordRuleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FillTheArea">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FillTheArea" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.InvalidCredentials">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "InvalidCredentials" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LineNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LineNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UserInfo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UserInfo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSurnameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSurnameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSFathernameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSFathernameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsPhoneValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsPhoneValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsCityValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsCityValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsJobValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsJobValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsTermsValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsTermsValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasSubmitted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasSubmitted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsValidationVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsValidationVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ValidationMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ValidationMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedPrefix">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedPrefix" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsTermsAccepted">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsTermsAccepted" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsOtherJobSelected">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsOtherJobSelected" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OtherJobText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OtherJobText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NameBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NameBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SurnameBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SurnameBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FatherBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FatherBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CityBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CityBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.JobBorderColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "JobBorderColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedJob">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedJob" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentStep">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentStep" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedJobFamily">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedJobFamily" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedSeniority">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedSeniority" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedPosition">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedPosition" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedVideo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedVideo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PlayerSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PlayerSource" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowSelectHint">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowSelectHint" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowNoResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowNoResults" generated properties.</summary>
+        </member>
+    </members>
+</doc>

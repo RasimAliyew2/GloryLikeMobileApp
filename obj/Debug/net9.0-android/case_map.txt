@@ -1,0 +1,5 @@
+images\dotnet_bot;images\dotnet_bot
+images\house_button;images\house_button
+images\matanat_logo;images\matanat_logo
+images\noticifation_button;images\noticifation_button
+raw\aboutassets;raw\AboutAssets

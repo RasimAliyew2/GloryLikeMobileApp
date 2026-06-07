@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetanetA_MobileApp.View.SignUp.VerifyIdentityPage"
+             xmlns:model="clr-namespace:MetanetA_MobileApp.Model"
+             xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.Sign.SingUp"
+    x:DataType="vm:VerifyIdentityViewModel"
+    BackgroundColor="#F6F8FC"
+    Shell.NavBarIsVisible="False">
+
+    <Grid Padding="10,10,10,10">
+
+        <Border BackgroundColor="#F8FAFD"
+                Stroke="#DCE2EC"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 48"
+                Padding="24,20">
+
+            <VerticalStackLayout Spacing="24">
+
+                <!-- Steps -->
+                <VerticalStackLayout Spacing="12">
+
+                    <CollectionView ItemsSource="{Binding Steps}"
+                                    SelectionMode="None"
+                                    HeightRequest="68">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="22"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:IdentityStepModel">
+                                <VerticalStackLayout WidthRequest="58"
+                                                     Spacing="6"
+                                                     HorizontalOptions="Center">
+
+                                    <Grid WidthRequest="26"
+                                          HeightRequest="26"
+                                          HorizontalOptions="Center">
+
+                                        <Ellipse Fill="#EEF2F8"/>
+
+                                        <Ellipse WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Fill="#3347B8"
+                                                 IsVisible="{Binding IsActive}"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"/>
+
+                                        <Ellipse WidthRequest="7"
+                                                 HeightRequest="7"
+                                                 Fill="White"
+                                                 IsVisible="{Binding IsActive}"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"/>
+                                    </Grid>
+
+                                    <Label Text="{Binding Title}"
+                                           FontSize="12"
+                                           TextColor="#071331"
+                                           HorizontalTextAlignment="Center"/>
+
+                                    <Label Text="{Binding SubTitle}"
+                                           FontSize="10"
+                                           TextColor="#3347B8"
+                                           HorizontalTextAlignment="Center"/>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <BoxView HeightRequest="4"
+                             Margin="0,0"
+                             BackgroundColor="#EEF2F8"
+                             CornerRadius="2"/>
+                </VerticalStackLayout>
+
+                <!-- Top actions -->
+                <Grid ColumnDefinitions="*,Auto"
+                      Margin="0,0,0,0">
+
+                    <HorizontalStackLayout Spacing="8"
+                                           VerticalOptions="Center">
+
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+
+                        <Label Text="‹"
+                               FontSize="26"
+                               TextColor="#475166"
+                               VerticalOptions="Center"/>
+
+                        <Label Text="Back"
+                               FontSize="14"
+                               TextColor="#475166"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Label Grid.Column="1"
+                           Text="Skip for now"
+                           FontSize="14"
+                           TextDecorations="Underline"
+                           TextColor="#475166"
+                           VerticalOptions="Center">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SkipForNowCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <!-- Text -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Verify your identity"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#071331"/>
+
+                    <Label Text="Verified identity increases employer trust and profile visibility."
+                           FontSize="16"
+                           TextColor="#475166"
+                           LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+
+                <!-- Main button -->
+                <Border HeightRequest="60"
+                        BackgroundColor="#3347B8"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VerifyWithSimaCommand}"/>
+                    </Border.GestureRecognizers>
+
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Spacing="12">
+
+                        <Label Text="♙"
+                               FontSize="20"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+
+                        <Label Text="Verify with SIMA"
+                               FontSize="19"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Warning -->
+                <Border BackgroundColor="#FFF1DC"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22"
+                        Padding="16,10">
+
+                    <Label Text="Skipping identity verification reduces your trust score by 20 points."
+                           FontSize="14"
+                           TextColor="#071331"
+                           HorizontalTextAlignment="Center"/>
+                </Border>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

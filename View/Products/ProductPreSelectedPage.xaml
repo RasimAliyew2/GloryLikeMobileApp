@@ -1,0 +1,136 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.ProductsViewModels"
+             xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+             x:Class="MetanetA_MobileApp.View.Products.ProductPreSelectedPage"
+             x:DataType="vm:ProductPreSelectedViewModel"
+             BackgroundColor="#F2F6F3"
+             Title="Məhsullar">
+
+    <ContentPage.Resources>
+        <Color x:Key="Primary">#00CE46</Color>
+        <Color x:Key="TextDark">#0B1220</Color>
+        <Color x:Key="TextGray">#64748B</Color>
+        <Color x:Key="CardStroke">#E5E7EB</Color>
+
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="Stroke" Value="{StaticResource CardStroke}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 20"/>
+            <Setter Property="Padding" Value="14"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Opacity="0.10" Radius="14" Offset="0,6"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Tile" TargetType="Border" BasedOn="{StaticResource Card}">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+        </Style>
+
+        <Style x:Key="TileTitle" TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="12,0,12,12"/>
+            <Setter Property="LineBreakMode" Value="TailTruncation"/>
+        </Style>
+
+        <Style x:Key="TileSubTitle" TargetType="Label">
+            <Setter Property="TextColor" Value="#E8FFF1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="12,0,12,0"/>
+            <Setter Property="LineBreakMode" Value="TailTruncation"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,Auto"
+          Padding="18"
+          RowSpacing="12">
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+            <VerticalStackLayout Spacing="12">
+
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Məhsul kateqoriyası seçin"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}"/>
+                        <Label Text="Seçdiyiniz kateqoriyaya uyğun alt kateqoriyalar açılacaq."
+                               FontSize="13"
+                               TextColor="{StaticResource TextGray}"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- 2x2 tiles -->
+                <Grid ColumnDefinitions="*,*"
+                      RowDefinitions="Auto,Auto"
+                      ColumnSpacing="12"
+                      RowSpacing="12">
+
+                    <!-- 1 -->
+                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource Tile}">
+                        <Grid>
+                            <Image Source="product_type3" Aspect="AspectFill" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectRootCategoryCommand}"
+                                                      CommandParameter="INSAAT"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+
+                    <!-- 2 -->
+                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource Tile}">
+                        <Grid>
+                            <Image Source="product_type2" Aspect="AspectFill" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectRootCategoryCommand}"
+                                                      CommandParameter="FASAD"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+
+                    <!-- 3 -->
+                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource Tile}">
+                        <Grid>
+                            <Image Source="product_type1" Aspect="AspectFill" />
+
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectRootCategoryCommand}"
+                                                      CommandParameter="YER"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+
+                    <!-- 4 -->
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource Tile}">
+                        <Grid>
+                            <Image Source="product_type4" Aspect="AspectFill" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectRootCategoryCommand}"
+                                                      CommandParameter="QATQI"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+
+                <BoxView HeightRequest="10" Opacity="0"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom menu -->
+        <controls:BottomMenu Grid.Row="1"
+                             VerticalOptions="End"
+                             Margin="0,0,0,6"/>
+    </Grid>
+
+</ContentPage>

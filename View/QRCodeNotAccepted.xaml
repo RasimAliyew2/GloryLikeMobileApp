@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetanetA_MobileApp.View.QRCodeNotAccepted">
+
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Spacing="20">
+
+        <Label
+            Text="X"
+            FontSize="96"
+            TextColor="Red"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+        <Label
+            Text="Not Found"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+        <Button Text="Go to Main Menu"
+                Command="{Binding GoToMainCommand}"/>
+    </VerticalStackLayout>
+
+</ContentPage>

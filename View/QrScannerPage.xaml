@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetanetA_MobileApp.View.QrScannerPage"
+             Title=""
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:zm="clr-namespace:ZXing.Net.Maui;assembly=ZXing.Net.MAUI"
+             xmlns:conv="clr-namespace:MetanetA_MobileApp.Converters">
+
+    <ContentPage.Resources>
+        <conv:FirstBarcodeValueConverter x:Key="FirstBarcodeValueConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="12" Padding="16">
+
+        <!-- SCANNER SAHƏSİ -->
+        <Grid Grid.Row="0">
+
+            <!-- KAMERA + QR -->
+            <zxing:CameraBarcodeReaderView x:Name="Scanner">
+
+                <zxing:CameraBarcodeReaderView.Options>
+                    <zm:BarcodeReaderOptions
+                        Formats="QrCode"
+                        AutoRotate="True"
+                        Multiple="False" />
+                </zxing:CameraBarcodeReaderView.Options>
+
+                <zxing:CameraBarcodeReaderView.Behaviors>
+                    <toolkit:EventToCommandBehavior
+                        EventName="BarcodesDetected"
+                        Command="{Binding QrDetectedCommand}"
+                        EventArgsConverter="{StaticResource FirstBarcodeValueConverter}" />
+                </zxing:CameraBarcodeReaderView.Behaviors>
+
+            </zxing:CameraBarcodeReaderView>
+
+            <!-- OVERLAY: mask + kvadrat border -->
+            <Grid InputTransparent="True">
+
+                <!-- 3x3 Grid: ortada kvadrat boşluq, qalan hissələr qara mask -->
+                <!-- ScanArea ölçüsünü istəyə görə 240/260/280 dəyiş -->
+                <Grid RowDefinitions="*,260,*"
+                      ColumnDefinitions="*,260,*">
+
+                    <!-- Mask (yarı şəffaf) -->
+                    <BoxView Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="#80000000" />
+                    <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="#80000000" />
+                    <BoxView Grid.Row="1" Grid.Column="2" BackgroundColor="#80000000" />
+                    <BoxView Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#80000000" />
+
+                    <!-- Mərkəzi kvadrat (border + corner-lar) -->
+                    <Grid Grid.Row="1" Grid.Column="1">
+
+                        <!-- Nazik kvadrat çərçivə -->
+                        <Border Stroke="White"
+                                StrokeThickness="1.5"
+                                BackgroundColor="Transparent"
+                                StrokeShape="RoundRectangle 10" />
+
+                        <!-- Corner-lar (L şəkilli) -->
+                        <AbsoluteLayout>
+
+                            <!-- TOP-LEFT -->
+                            <BoxView Color="White"
+                                     WidthRequest="46" HeightRequest="4"
+                                     AbsoluteLayout.LayoutBounds="0,0,46,4"
+                                     AbsoluteLayout.LayoutFlags="None" />
+                            <BoxView Color="White"
+                                     WidthRequest="4" HeightRequest="46"
+                                     AbsoluteLayout.LayoutBounds="0,0,4,46"
+                                     AbsoluteLayout.LayoutFlags="None" />
+
+                            <!-- TOP-RIGHT -->
+                            <BoxView Color="White"
+                                     WidthRequest="46" HeightRequest="4"
+                                     AbsoluteLayout.LayoutBounds="1,0,46,4"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            <BoxView Color="White"
+                                     WidthRequest="4" HeightRequest="46"
+                                     AbsoluteLayout.LayoutBounds="1,0,4,46"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <!-- BOTTOM-LEFT -->
+                            <BoxView Color="White"
+                                     WidthRequest="46" HeightRequest="4"
+                                     AbsoluteLayout.LayoutBounds="0,1,46,4"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            <BoxView Color="White"
+                                     WidthRequest="4" HeightRequest="46"
+                                     AbsoluteLayout.LayoutBounds="0,1,4,46"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <!-- BOTTOM-RIGHT -->
+                            <BoxView Color="White"
+                                     WidthRequest="46" HeightRequest="4"
+                                     AbsoluteLayout.LayoutBounds="1,1,46,4"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            <BoxView Color="White"
+                                     WidthRequest="4" HeightRequest="46"
+                                     AbsoluteLayout.LayoutBounds="1,1,4,46"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                        </AbsoluteLayout>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+        <!-- (İsteğe bağlı) Son okunan dəyəri göstər -->
+        <Label Grid.Row="1"
+               Text="{Binding ScannedValue, StringFormat='QR: {0}'}"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+    </Grid>
+</ContentPage>

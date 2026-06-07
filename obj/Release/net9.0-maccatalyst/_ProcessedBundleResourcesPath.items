@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <BundleResource Include="C:\Users\Rasim\source\repos\MetanetA_MobileApp\MetanetA_MobileApp\obj\Release\net9.0-maccatalyst\resizetizer\r\Resources\matanat_logo.png" />
+    <BundleResource Include="C:\Users\Rasim\source\repos\MetanetA_MobileApp\MetanetA_MobileApp\obj\Release\net9.0-maccatalyst\resizetizer\r\Resources\house_button.png" />
+    <BundleResource Include="C:\Users\Rasim\source\repos\MetanetA_MobileApp\MetanetA_MobileApp\obj\Release\net9.0-maccatalyst\resizetizer\r\Resources\noticifation_button.png" />
+  </ItemGroup>
+</Project>

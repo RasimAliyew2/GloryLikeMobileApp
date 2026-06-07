@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels"
+    xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+    xmlns:conv="clr-namespace:MetanetA_MobileApp.Converters"
+    x:Class="MetanetA_MobileApp.View.ProfileUserPage"
+    x:DataType="vm:ProfileUserViewModel"
+    Title="">
+
+    <ContentPage.Resources>
+
+        <!-- ✅ Converter (Release-də trim problemindən qaçmaq üçün səhifənin içində yaradılır) -->
+        <conv:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+        <!--Palette (00CE46 bazalı)-->
+        <Color x:Key="Primary">#00CE46</Color>
+        <Color x:Key="PrimaryDark">#00A837</Color>
+        <Color x:Key="TextDark">#111827</Color>
+        <Color x:Key="TextGray">#6B7280</Color>
+        <Color x:Key="BorderGray">#E5E7EB</Color>
+        <Color x:Key="BgSoft">#F3F4F6</Color>
+
+        <!--Card-->
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 18"/>
+            <Setter Property="Padding" Value="14"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Opacity="0.10" Radius="14" Offset="0,6"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Field label-->
+        <Style x:Key="FieldLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextColor" Value="{StaticResource TextGray}"/>
+            <Setter Property="Margin" Value="2,0,0,6"/>
+        </Style>
+
+        <!--Field border-->
+        <Style x:Key="FieldBorder" TargetType="Border">
+            <Setter Property="Stroke" Value="{StaticResource BorderGray}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="BackgroundColor" Value="#F9FAFB"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+            <Setter Property="Padding" Value="12,8"/>
+        </Style>
+
+        <!--Entry-->
+        <Style x:Key="FieldEntry" TargetType="Entry">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="{StaticResource TextDark}"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+        </Style>
+
+        <!--Primary button-->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="48"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextTransform" Value="None"/>
+        </Style>
+
+        <!--Secondary button-->
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#E5E7EB"/>
+            <Setter Property="TextColor" Value="{StaticResource TextDark}"/>
+            <Setter Property="HeightRequest" Value="48"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextTransform" Value="None"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto"
+          Padding="18"
+          RowSpacing="12">
+
+        <!--Header-->
+        <Border Grid.Row="0" Style="{StaticResource Card}">
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Şəxsi məlumatlarım"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextDark}"/>
+                <Label Text="Dəyişikliklər yalnız “Yadda saxla” basanda tətbiq olunur."
+                       FontSize="12"
+                       TextColor="{StaticResource TextGray}"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <!--Form-->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="12">
+
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="12">
+
+                        <!--Name-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Ad" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Ad"
+                                       Text="{Binding Draft.Name, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Surname-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Soyad" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Soyad"
+                                       Text="{Binding Draft.Surname, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--FatherName-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Ata adı" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Ata adı"
+                                       Text="{Binding Draft.FatherName, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--City-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Şəhər" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Şəhər"
+                                       Text="{Binding Draft.City, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Village-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Kənd / Qəsəbə" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Kənd / Qəsəbə"
+                                       Text="{Binding Draft.Village, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Job-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="İş / Vəzifə" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="İş / Vəzifə"
+                                       Text="{Binding Draft.Job, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Phone-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Telefon" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="+994..."
+                                       Keyboard="Telephone"
+                                       Text="{Binding Draft.PhoneNumber, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--BirthDate-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Doğum tarixi" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <DatePicker Date="{Binding Draft.BirthDate, Mode=TwoWay}"
+                                            TextColor="{StaticResource TextDark}"
+                                            BackgroundColor="Transparent"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Password-->
+                        <VerticalStackLayout Spacing="0">
+                            <Label Text="Şifrə" Style="{StaticResource FieldLabel}"/>
+                            <Border Style="{StaticResource FieldBorder}">
+                                <Entry Style="{StaticResource FieldEntry}"
+                                       Placeholder="Şifrə"
+                                       IsPassword="True"
+                                       Text="{Binding Draft.Password, Mode=TwoWay}" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!--Bonus (read-only)-->
+                        <Border BackgroundColor="#ECFDF5"
+                                Stroke="#BBF7D0"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <Label Text="Bonus"
+                                       FontAttributes="Bold"
+                                       TextColor="#065F46"
+                                       VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Draft.Bonus, StringFormat='{0:0.##}'}"
+                                       FontAttributes="Bold"
+                                       TextColor="#065F46"
+                                       VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView HeightRequest="10" Opacity="0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!--Action bar-->
+        <Border Grid.Row="2"
+                BackgroundColor="White"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 18"
+                Padding="12">
+            <Border.Shadow>
+                <Shadow Opacity="0.08" Radius="12" Offset="0,4"/>
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="10">
+
+                <Button Text="Ləğv et"
+                        Style="{StaticResource SecondaryButton}"
+                        Command="{Binding CancelCommand}"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}, FallbackValue=True}" />
+
+                <Button Grid.Column="1"
+                        Text="Yadda saxla"
+                        Style="{StaticResource PrimaryButton}"
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding HasChanges}" />
+            </Grid>
+        </Border>
+
+        <!--Bottom menu-->
+        <controls:BottomMenu Grid.Row="3"
+                             VerticalOptions="End"
+                             Margin="0,0,0,6"/>
+    </Grid>
+</ContentPage>

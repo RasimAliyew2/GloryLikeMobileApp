@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+             xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.Job"
+              xmlns:model="clr-namespace:MetanetA_MobileApp.Model"
+             x:Class="MetanetA_MobileApp.View.Job.ApplicationsPage"
+      
+             x:DataType="vm:ApplicationsViewModel"
+             BackgroundColor="#F6F8FC"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto"> 
+    <ScrollView>
+        <VerticalStackLayout Padding="24,18,24,30" Spacing="16">
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Applications"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#071331"/>
+
+                <HorizontalStackLayout Spacing="4">
+                    <Label Text="{Binding TotalText}"
+                           FontSize="14"
+                           TextColor="#475166"/>
+                    <Label Text="·"
+                           FontSize="14"
+                           TextColor="#475166"/>
+                    <Label Text="{Binding AttentionText}"
+                           FontSize="14"
+                           TextColor="#FF4F62"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Tabs -->
+            <Border BackgroundColor="#EEF2F8"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 28"
+                    HeightRequest="56"
+                    Padding="4">
+
+                <Grid ColumnDefinitions="*,*,*">
+                    <Border Grid.Column="0"
+                            BackgroundColor="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 24">
+                        <Label Text="All"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#071331"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <Label Grid.Column="1"
+                           Text="Active"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="#475166"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+
+                    <Label Grid.Column="2"
+                           Text="Archive"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="#475166"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Applications -->
+            <CollectionView ItemsSource="{Binding Applications}"
+                            SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ApplicationModel">
+
+                        <Border Margin="0,6,0,10"
+                                Padding="20"
+                                BackgroundColor="White"
+                                Stroke="{Binding CardStrokeColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 28">
+
+                            <Border.Shadow>
+                                <Shadow Brush="#CBD0DD"
+                                        Offset="0,2"
+                                        Radius="8"
+                                        Opacity="0.30"/>
+                            </Border.Shadow>
+
+                            <Grid RowDefinitions="Auto,Auto"
+                                  RowSpacing="16">
+
+                                <Grid ColumnDefinitions="60,*,Auto,Auto"
+                                      ColumnSpacing="14">
+
+                                    <Border WidthRequest="60"
+                                            HeightRequest="60"
+                                            BackgroundColor="#EEF2FA"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 30"
+                                            VerticalOptions="Start">
+
+                                        <Label Text="{Binding LogoLetter}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="#071331"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         Spacing="3"
+                                                         VerticalOptions="Center">
+
+                                        <Label Text="{Binding Company}"
+                                               FontSize="14"
+                                               TextColor="#475166"/>
+
+                                        <Label Text="{Binding Title}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="#071331"
+                                               LineBreakMode="TailTruncation"/>
+
+                                        <Label Text="{Binding AppliedText}"
+                                               FontSize="14"
+                                               TextColor="#475166"/>
+                                    </VerticalStackLayout>
+
+                                    <Border Grid.Column="2"
+                                            BackgroundColor="{Binding StatusBackgroundColor}"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 16"
+                                            Padding="12,7"
+                                            VerticalOptions="Start">
+
+                                        <Label Text="{Binding Status}"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="{Binding StatusTextColor}"/>
+                                    </Border>
+
+                                    <Label Grid.Column="3"
+                                           Text="›"
+                                           FontSize="28"
+                                           TextColor="#8A94A6"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <Border Grid.Row="1"
+                                        IsVisible="{Binding HasNote}"
+                                        BackgroundColor="#EEF0FA"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,11">
+
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="▣"
+                                               FontSize="16"
+                                               TextColor="#2D3FC0"
+                                               VerticalOptions="Center"/>
+
+                                        <Label Text="{Binding Note}"
+                                               FontSize="14"
+                                               TextColor="#071331"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+        <!-- Bottom menu -->
+        <controls:BottomMenu Grid.Row="1"
+                         VerticalOptions="End"
+                         Margin="0,0,0,6"/>
+    </Grid>
+</ContentPage>

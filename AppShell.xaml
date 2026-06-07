@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MetanetA_MobileApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MetanetA_MobileApp.View"
+    xmlns:localProfile="clr-namespace:MetanetA_MobileApp.View.Profile"
+    xmlns:localJob="clr-namespace:MetanetA_MobileApp.View.Job"
+    xmlns:localSing="clr-namespace:MetanetA_MobileApp.View.Sign"
+    xmlns:localMap="clr-namespace:MetanetA_MobileApp.View.Map"
+    xmlns:singUp="clr-namespace:MetanetA_MobileApp.View.SignUp"
+    
+    Shell.FlyoutBehavior="Disabled"
+    Title="MetanetA_MobileApp">
+
+
+
+
+
+    <ShellContent Route="SignInPage"
+                  ContentTemplate="{DataTemplate local:SignInPage}" />
+
+    <ShellContent Route="VerifyIdentityPage"
+                  ContentTemplate="{DataTemplate singUp:VerifyIdentityPage}" />
+
+    <ShellContent Route="CareerExperiencePage"
+                  ContentTemplate="{DataTemplate singUp:CareerExperiencePage}" />
+
+    <ShellContent Route="SkillsSelectionPage"
+                  ContentTemplate="{DataTemplate singUp:SkillsSelectionPage}" />
+
+    <ShellContent Route="VerifySkillsPage"
+                  ContentTemplate="{DataTemplate singUp:VerifySkillsPage}" />
+    
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+      Title=""
+      ContentTemplate="{DataTemplate localProfile:SkillsPage}"
+      Route="SkillsPage" />
+
+
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:SignUpPage}"
+        Route="SignUpPage"/>
+
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate local:ConfrimTheSMS}"
+        Route="ConfrimTheSMS"/>
+
+    <ShellContent
+       Title=""
+       ContentTemplate="{DataTemplate local:FaqPage}"
+       Route="FaqPage"/>
+    
+    <ShellContent
+       Title=""
+       ContentTemplate="{DataTemplate local:QrScannerPage}"
+       Route="QrScannerPage"/>
+
+    <ShellContent
+       Title=""
+       ContentTemplate="{DataTemplate local:ProfileUserPage}"
+       Route="ProfileUserPage"/>
+
+    <ShellContent
+       Title=""
+       ContentTemplate="{DataTemplate local:ProfilePage}"
+       Route="ProfilePage"/>
+
+    <ShellContent
+       Title=""
+       ContentTemplate="{DataTemplate local:QRCodeNotAccepted}"
+       Route="QRCodeNotAccepted"/>
+
+
+    <ShellContent
+    Title=""
+    ContentTemplate="{DataTemplate local:QrCodeAccepted}"
+    Route="QrCodeAccepted"/>
+
+
+   
+
+    <ShellContent
+    Title=""
+    ContentTemplate="{DataTemplate localMap:LocationMapPage}"
+    Route="LocationMapPage"/>
+    
+
+    <ShellContent
+   Title=""
+   ContentTemplate="{DataTemplate localSing:SetPasswordPage}"
+   Route="SetPasswordPage"/>
+
+
+    <ShellContent
+    Title=""
+    ContentTemplate="{DataTemplate local:RequestAcceptedPage}"
+    Route="RequestAcceptedPage"/>
+
+    <ShellContent
+    Title=""
+    ContentTemplate="{DataTemplate local:ForgetPasswordPage}"
+    Route="ForgetPasswordPage"/>
+
+    <ShellContent
+    Title=""
+    ContentTemplate="{DataTemplate local:OthersPage}"
+    Route="OthersPage"/>
+
+    <ShellContent
+             Title=""
+             ContentTemplate="{DataTemplate local:VideosPage}"
+             Route="VideosPage"/>
+
+
+    <ShellContent Route="OpportunitiesPage"
+                ContentTemplate="{DataTemplate localJob:OpportunitiesPage}" />
+
+    <ShellContent Route="ApplicationsPage"
+              ContentTemplate="{DataTemplate localJob:ApplicationsPage}" />
+    
+
+</Shell> 

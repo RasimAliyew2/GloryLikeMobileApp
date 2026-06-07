@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             x:Class="MetanetA_MobileApp.View.Map.LocationMapPage"
+             Title=""
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="Black">
+ 
+    
+      <Grid>
+        <!-- Tam ekran xəritə -->
+        <maps:Map x:Name="MainMap"
+                  IsScrollEnabled="True"
+                  IsZoomEnabled="True"
+                  IsTrafficEnabled="False" />
+
+        <!-- Sol yuxarı geri düyməsi -->
+        <Border
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="16,24,0,0"
+            Padding="0"
+            Stroke="#D1D5DB"
+            StrokeThickness="1"
+            BackgroundColor="White"
+            ZIndex="10">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16" />
+            </Border.StrokeShape>
+
+            <Button Text="←"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="52"
+                    HeightRequest="52"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="#111827"
+                    BackgroundColor="Transparent" />
+        </Border>
+    </Grid>
+</ContentPage>

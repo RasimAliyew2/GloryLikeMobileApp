@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.ProductsViewModels"
+             x:Class="MetanetA_MobileApp.View.Products.ProductDetailPage"
+             x:DataType="vm:ProductDetailViewModel"
+             Title=""
+             BackgroundColor="#F8FAFC">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto"
+          Padding="16"
+          RowSpacing="12">
+
+        <!-- Top -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="Auto,*"
+              VerticalOptions="Center">
+
+            <Border BackgroundColor="White"
+                    Stroke="#E5E7EB"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="10"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DeclineCommand}" />
+                </Border.GestureRecognizers>
+
+                <Label Text="←"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />
+            </Border>
+
+            <Label Grid.Column="1"
+                   Text="Məhsul detalları"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#111827"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Margin="0,0,36,0" />
+        </Grid>
+
+        <!-- Product card -->
+        <Border Grid.Row="1"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 20"
+                Padding="18">
+
+            <VerticalStackLayout Spacing="10">
+
+                <Image Source="{Binding ImageUrl}"
+                       HeightRequest="180"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center" />
+
+                <Label Text="{Binding Name}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
+                       HorizontalTextAlignment="Center" />
+
+                <!--<Label Text="{Binding Price, StringFormat='{0} ₼'}"
+                       FontSize="18"
+                       TextColor="#6B7280"
+                       HorizontalTextAlignment="Center" />-->
+
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- HTML -->
+        <Border Grid.Row="2"
+                BackgroundColor="White"
+                Stroke="#E5E7EB"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 0"
+                Padding="0">
+
+            <Grid RowDefinitions="*">
+                <!--<Label Grid.Row="0"
+                       Text="Məhsul haqqında məlumat"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
+                       Padding="0" />-->
+
+                <WebView Grid.Row="0"
+                         x:Name="AboutWebView" 
+                         Source="{Binding AboutTheProductHtml}"/>
+            </Grid>
+        </Border>
+
+        <!-- Buttons -->
+        <Grid Grid.Row="3"
+              ColumnDefinitions="*,*"
+              RowDefinitions="Auto,Auto"
+              ColumnSpacing="10"
+              RowSpacing="6">
+
+
+                  
+
+            <Label Text="Hesabınızda yetərincə bonus yoxdur"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="{Binding IsVisible}" />
+        </Grid>
+    </Grid>
+</ContentPage>

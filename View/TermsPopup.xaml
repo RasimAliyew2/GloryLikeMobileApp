@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="MetanetA_MobileApp.View.TermsPopup"
+    CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <Grid Padding="18">
+        <Border BackgroundColor="White"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 18"
+                Padding="16"
+                WidthRequest="340">
+            <Border.Shadow>
+                <Shadow Opacity="0.2" Radius="18" Offset="0,8"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="Şərtlər və Məxfilik Siyasəti"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="#111827"
+                       HorizontalTextAlignment="Center"/>
+
+                <ScrollView HeightRequest="420">
+                    <Label FontSize="13" TextColor="#111827">
+                        <Label.Text>
+                            1. İSTİFADƏÇİ RAZILIĞI
+
+Bu platformadan (veb sayt / mobil tətbiq) istifadə etməklə Siz aşağıdakı şərtlərlə razılaşmış olursunuz:
+	• Şəxsi məlumatlarınızın Məxfilik Siyasətinə uyğun şəkildə toplanmasına və emal edilməsinə razılıq verirsiniz
+	• Platformadan yalnız qanuni məqsədlər üçün istifadə edəcəyinizi qəbul edirsiniz
+	• Təqdim olunan xidmətlərdən istifadə zamanı İstifadə Şərtlərinə əməl edəcəyinizi təsdiqləyirsiniz
+	• Elektron bildirişlərin (email, SMS, push bildiriş) göndərilməsinə razılıq verirsiniz
+
+“Qəbul edirəm” düyməsini seçməklə bu razılığı təsdiqləmiş olursunuz.
+
+2. MƏXFİLİK SİYASƏTİ
+
+2.1. Toplanan məlumatlar
+
+Biz aşağıdakı məlumatları toplaya bilərik:
+
+•	Ad, Soyad, Ata adı
+•	Rayon/şəhər
+•	Təvəllüd
+•	Peşə
+•	Mobil nömrə
+	
+	
+2.2. Məlumatların istifadə məqsədi
+
+Toplanan məlumatlar aşağıdakı məqsədlərlə istifadə olunur:
+	• Xidmətlərin göstərilməsi və təkmilləşdirilməsi
+	• İstifadəçi dəstəyi
+	• Təhlükəsizliyin təmin edilməsi
+	• Hüquqi öhdəliklərin yerinə yetirilməsi
+
+2.3. Məlumatların qorunması
+
+Şəxsi məlumatlarınız müasir texniki və inzibati təhlükəsizlik tədbirləri ilə qorunur və üçüncü şəxslərə icazəsiz ötürülmür.
+
+2.4. Üçüncü tərəflər
+
+Məlumatlar yalnız:
+	• Qanunvericilik tələb etdikdə
+	• Texniki xidmət təminatçıları ilə (məxfilik öhdəliyi əsasında) paylaşılır
+
+
+2.5. İstifadəçi hüquqları
+
+Siz:
+	• Məlumatlarınıza baxmaq
+	• Dəyişiklik tələb etmək
+	• Silinməsini istəmək hüququna maliksiniz
+
+Əlaqə: info@matanata.com
+
+
+
+3. İSTİFADƏ ŞƏRTLƏRİ
+
+3.1. Ümumi müddəalar
+
+Bu platformadan istifadə edən hər bir şəxs bu şərtləri qəbul etmiş sayılır.
+
+3.2. İstifadə qaydaları
+
+İstifadəçi:
+	• Platformadan qanunsuz məqsədlərlə istifadə etməməlidir
+	• Digər istifadəçilərin hüquqlarını pozmamalıdır
+	• Sistemə zərər verə biləcək hərəkətlərdən çəkinməlidir
+
+3.3. Məsuliyyətin məhdudlaşdırılması
+
+Platforma:
+	• Texniki nasazlıqlara görə yaranan itkilərə görə məsuliyyət daşımır
+	• Üçüncü tərəf linklərinin məzmununa cavabdeh deyil
+
+3.4. Dəyişikliklər
+
+İstifadə şərtləri istənilən vaxt dəyişdirilə bilər. Yenilənmiş versiya platformada dərc edildiyi andan qüvvəyə minir.
+
+
+4. ƏLAQƏ MƏLUMATLARI
+
+Şirkət adı: MATANAT A 
+Ünvan: Bakı, Azərbaycan AZ0123
+Email: info@matanata.com
+Telefon: *3030 
+(+994 12) 404 14 34
+
+                        </Label.Text>
+                    </Label>
+                </ScrollView>
+
+                <Button Text="Bağla"
+                        HeightRequest="46"
+                        CornerRadius="14"
+                        FontAttributes="Bold"
+                        BackgroundColor="#16A34A"
+                        TextColor="White"
+                        Clicked="Close_Clicked"/>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</toolkit:Popup>

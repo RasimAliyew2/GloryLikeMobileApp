@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MetanetA_MobileApp.View.QrCodeAccepted"
+    x:Name="ThisPage"
+    Title=""
+    BackgroundColor="#F3FDF6">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#F0FDF4" Offset="0.0" />
+            <GradientStop Color="#DCFCE7" Offset="0.5" />
+            <GradientStop Color="#ECFDF5" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#14532D" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="SubtitleLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="#4B5563" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#16A34A" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="HeightRequest" Value="54" />
+            <Setter Property="Padding" Value="22,0" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <ScrollView>
+            <Grid
+                Padding="24"
+                MinimumHeightRequest="{Binding Source={x:Reference ThisPage}, Path=Height}">
+
+                <Border
+                    StrokeThickness="1"
+                    Stroke="#D1FAE5"
+                    BackgroundColor="White"
+                    Padding="80"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    MaximumWidthRequest="500">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="28" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#000000"
+                            Opacity="0.10"
+                            Radius="18"
+                            Offset="0,8" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="22">
+
+                        <Border
+                            BackgroundColor="#DCFCE7"
+                            StrokeThickness="0"
+                            Padding="12,6"
+                            HorizontalOptions="Center">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="999" />
+                            </Border.StrokeShape>
+
+                            <Label
+                                Text="Uğurlu əməliyyat"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                TextColor="#166534"
+                                HorizontalTextAlignment="Center" />
+                        </Border>
+
+                        <Label
+                            Text="Təbrik edirik"
+                            Style="{StaticResource TitleLabelStyle}" />
+
+                        <Border
+                            BackgroundColor="#F9FAFB"
+                            Stroke="#E5E7EB"
+                            StrokeThickness="1"
+                            Padding="18">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout Spacing="8">
+                                <Label
+                                    Text="Qazandığınız bonus"
+                                    FontSize="14"
+                                    TextColor="#6B7280"
+                                    HorizontalTextAlignment="Center" />
+
+                                <HorizontalStackLayout
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Spacing="8">
+
+                                    <Label
+                                        Text="{Binding BonusCount}"
+                                        FontSize="34"
+                                        FontAttributes="Bold"
+                                        TextColor="#15803D"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Text="{Binding BonusText}"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="#111827"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Button
+                            Text="Əsas səhifəyə keç"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Command="{Binding GoToMainPageCommand}" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

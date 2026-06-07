@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.Sign.SingUp"
+             xmlns:model="clr-namespace:MetanetA_MobileApp.Model"
+             x:Class="MetanetA_MobileApp.View.SignUp.CareerExperiencePage"
+             x:DataType="vm:CareerExperienceViewModel"
+             BackgroundColor="#F6F8FC"
+             Shell.NavBarIsVisible="False">
+
+    <Grid Padding="10">
+
+        <Border BackgroundColor="#F8FAFD"
+                Stroke="#DCE2EC"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 48"
+                Padding="24,20">
+
+            <VerticalStackLayout Spacing="24">
+
+                <!-- Steps -->
+                <VerticalStackLayout Spacing="12">
+
+                    <CollectionView ItemsSource="{Binding Steps}"
+                                    SelectionMode="None"
+                                    HeightRequest="68">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                                               ItemSpacing="22"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:IdentityStepModel">
+
+                                <VerticalStackLayout WidthRequest="58"
+                                                     Spacing="6"
+                                                     HorizontalOptions="Center">
+
+                                    <Grid WidthRequest="26"
+                                          HeightRequest="26"
+                                          HorizontalOptions="Center">
+
+                                        <!-- Passive circle -->
+                                        <Ellipse Fill="#EEF2F8"/>
+
+                                        <!-- Completed circle -->
+                                        <Ellipse WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Fill="#5261C7"
+                                                 IsVisible="{Binding IsCompleted}"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"/>
+
+                                        <Label Text="✓"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               IsVisible="{Binding IsCompleted}"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"/>
+
+                                        <!-- Active circle -->
+                                        <Ellipse WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Fill="#3347B8"
+                                                 IsVisible="{Binding IsActive}"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"/>
+
+                                        <Ellipse WidthRequest="7"
+                                                 HeightRequest="7"
+                                                 Fill="White"
+                                                 IsVisible="{Binding IsActive}"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"/>
+
+                                    </Grid>
+
+                                    <Label Text="{Binding Title}"
+                                           FontSize="12"
+                                           TextColor="#071331"
+                                           HorizontalTextAlignment="Center"/>
+
+                                    <Label Text="{Binding SubTitle}"
+                                           FontSize="10"
+                                           TextColor="#3347B8"
+                                           HorizontalTextAlignment="Center"/>
+
+                                </VerticalStackLayout>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <BoxView HeightRequest="4"
+                             BackgroundColor="#EEF2F8"
+                             CornerRadius="2"/>
+                </VerticalStackLayout>
+
+                <!-- Top actions -->
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <HorizontalStackLayout Spacing="8"
+                                           VerticalOptions="Center">
+
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+
+                        <Label Text="‹"
+                               FontSize="26"
+                               TextColor="#475166"
+                               VerticalOptions="Center"/>
+
+                        <Label Text="Back"
+                               FontSize="14"
+                               TextColor="#475166"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Label Grid.Column="1"
+                           Text="Skip for now"
+                           FontSize="14"
+                           TextDecorations="Underline"
+                           TextColor="#475166"
+                           VerticalOptions="Center">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SkipForNowCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+
+                <!-- Text -->
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Import your work experience"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#071331"/>
+
+                    <Label Text="We'll pull your verified employment from ƏMAS."
+                           FontSize="16"
+                           TextColor="#475166"
+                           LineBreakMode="WordWrap"/>
+
+                </VerticalStackLayout>
+
+                <!-- Main button -->
+                <Border HeightRequest="60"
+                        BackgroundColor="#3347B8"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22">
+
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ImportFromEmasCommand}"/>
+                    </Border.GestureRecognizers>
+
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Spacing="12">
+
+                        <Label Text="⇧"
+                               FontSize="22"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+
+                        <Label Text="Import from ƏMAS"
+                               FontSize="19"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Upload file -->
+                <Label Text="or upload a file (PDF / XML / JSON)"
+                       FontSize="14"
+                       TextColor="#475166"
+                       TextDecorations="Underline"
+                       HorizontalTextAlignment="Center">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding UploadFileCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+    </Grid>
+</ContentPage>

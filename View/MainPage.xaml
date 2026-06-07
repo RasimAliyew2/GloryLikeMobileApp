@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MetanetA_MobileApp.View.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+    xmlns:ViewModel="clr-namespace:MetanetA_MobileApp.ViewModels"
+    x:DataType="ViewModel:MainViewModel"
+    BackgroundColor="#F6F8FC"
+    Shell.NavBarIsVisible="False">
+
+    
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0">
+        <VerticalStackLayout Spacing="22" Padding="0,16,0,24">
+
+            <!-- Header -->
+            <Grid Padding="18,0" ColumnDefinitions="*,52">
+                <VerticalStackLayout Spacing="0">
+                    <Label Text="Good morning"
+                           FontSize="14"
+                           TextColor="#2F3446" />
+
+                    <HorizontalStackLayout Spacing="6">
+                        <Label Text="Aigerim"
+                               FontSize="30"
+                               FontAttributes="Bold"
+                               TextColor="#06133A" />
+                        <Label Text="👋"
+                               FontSize="24"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="1"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        BackgroundColor="#EEF1F9"
+                        StrokeShape="RoundRectangle 24"
+                        StrokeThickness="0"
+                        VerticalOptions="Center">
+                    <Grid>
+                        <Label Text="🔔"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                        <Ellipse Fill="#FF6B6B"
+                                 WidthRequest="10"
+                                 HeightRequest="10"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 Margin="0,7,8,0" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Match Strength Card -->
+            <Border Margin="10"
+                    Padding="22,26"
+                    BackgroundColor="#6046D6"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 34"
+                    HeightRequest="170">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4A47C7" Offset="0.0" />
+                        <GradientStop Color="#8B58E6" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid ColumnDefinitions="*,132">
+                    <VerticalStackLayout Spacing="18">
+                        <Border BackgroundColor="#6F61D8"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 16"
+                                Padding="12,7"
+                                HorizontalOptions="Start">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="✧"
+                                       TextColor="White"
+                                       FontSize="15" />
+                                <Label Text="MATCH STRENGTH"
+                                       TextColor="White"
+                                       FontSize="13"
+                                       FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        <HorizontalStackLayout Spacing="0">
+                            <Label Text="88"
+                                   TextColor="White"
+                                   FontSize="54"
+                                   FontAttributes="Bold" />
+                            <Label Text="/100"
+                                   TextColor="#D9D5FF"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="End"
+                                   Margin="0,0,0,8" />
+                        </HorizontalStackLayout>
+
+                        <Label Text="Top 12% of designers in your region"
+                               TextColor="White"
+                               FontSize="15" />
+                    </VerticalStackLayout>
+
+                    <!-- Circle -->
+                    <Grid Grid.Column="1"
+                          WidthRequest="116"
+                          HeightRequest="116"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center">
+
+                        <Ellipse Stroke="#12B889"
+                                 StrokeThickness="8"
+                                 Fill="Transparent" />
+
+                        <Ellipse Stroke="#7752D8"
+                                 StrokeThickness="9"
+                                 Fill="Transparent"
+                                 WidthRequest="88"
+                                 HeightRequest="88"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+
+                        <VerticalStackLayout HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Spacing="0">
+                            <Label Text="88"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="match"
+                                   FontSize="12"
+                                   TextColor="White"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Profile Completion -->
+            <Border Margin="0,0,0,0"
+                    Padding="18,18"
+                    BackgroundColor="White"
+                    Stroke="#E3E6EF"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 0,28,28,0"
+                    HeightRequest="118">
+                <Border.Shadow>
+                    <Shadow Brush="#CBD0DD" Offset="0,2" Radius="7" Opacity="0.45" />
+                </Border.Shadow>
+
+                <Grid ColumnDefinitions="*,48" RowDefinitions="Auto,Auto,*">
+                    <Label Text="Profile 76% complete"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+                    <Label Grid.Row="1"
+                           Text="Add certifications to unlock 4 more roles"
+                           FontSize="14"
+                           TextColor="#52586B"
+                           Margin="0,4,0,0" />
+
+                    <Border Grid.Column="1"
+                            Grid.RowSpan="2"
+                            WidthRequest="46"
+                            HeightRequest="46"
+                            BackgroundColor="#EEF0FA"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 23"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
+                        <Label Text="➜"
+                               TextColor="#263DB7"
+                               FontSize="25"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Border>
+
+                    <Grid Grid.Row="2"
+                          Grid.ColumnSpan="2"
+                          HeightRequest="10"
+                          Margin="0,16,0,0"
+                          VerticalOptions="End">
+                        <RoundRectangle Fill="#EEF1F6"
+                                        CornerRadius="6"
+                                        HeightRequest="10" />
+
+                        <RoundRectangle Fill="#5747D8"
+                                        CornerRadius="6"
+                                        HeightRequest="10"
+                                        WidthRequest="328"
+                                        HorizontalOptions="Start">
+                            <RoundRectangle.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#263BB7" Offset="0.0" />
+                                    <GradientStop Color="#8F4DE5" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </RoundRectangle.Fill>
+                        </RoundRectangle>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Actions -->
+            <Grid Padding="0,0"
+                  ColumnDefinitions="*,*,*"
+                  ColumnSpacing="14"
+                  HeightRequest="106">
+                    <Border Grid.Column="0"
+        BackgroundColor="White"
+        Stroke="#E4E7EF"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 0,24,24,0"
+        Padding="10">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SkillsCommand}" />
+                        </Border.GestureRecognizers>
+
+                        <Border.Shadow>
+                            <Shadow Brush="#CDD3DF" Offset="0,2" Radius="7" Opacity="0.4" />
+                        </Border.Shadow>
+
+                        <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="10">
+                            <Border WidthRequest="42"
+                HeightRequest="42"
+                BackgroundColor="#EEF1FB"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 21">
+                                <Label Text="✣"
+                   TextColor="#3546BD"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+                            </Border>
+
+                            <Label Text="Skills"
+               FontSize="14"
+               FontAttributes="Bold"
+               TextColor="Black" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                        BackgroundColor="White"
+                        Stroke="#E4E7EF"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 24"
+                        Padding="10">
+                    <Border.Shadow>
+                        <Shadow Brush="#CDD3DF" Offset="0,2" Radius="7" Opacity="0.4" />
+                    </Border.Shadow>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                        <Border WidthRequest="42" HeightRequest="42" BackgroundColor="#FFE7E7" StrokeThickness="0" StrokeShape="RoundRectangle 21">
+                            <Label Text="⇧" TextColor="#FF6B6B" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="Upload CV" FontSize="14" FontAttributes="Bold" TextColor="Black" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="2"
+                        BackgroundColor="White"
+                        Stroke="#E4E7EF"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 24"
+                        Padding="10">
+                    <Border.Shadow>
+                        <Shadow Brush="#CDD3DF" Offset="0,2" Radius="7" Opacity="0.4" />
+                    </Border.Shadow>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                        <Border WidthRequest="42" HeightRequest="42" BackgroundColor="#DEF7EA" StrokeThickness="0" StrokeShape="RoundRectangle 21">
+                            <Label Text="♙" TextColor="#13A86F" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="Certify" FontSize="14" FontAttributes="Bold" TextColor="Black" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- Active Applications Header -->
+            <Grid Padding="0,0" ColumnDefinitions="*,Auto" Margin="0,18,0,0">
+                <VerticalStackLayout>
+                    <Label Text="Active applications"
+                           FontSize="21"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+                    <Label Text="0 in progress"
+                           FontSize="14"
+                           TextColor="#52586B" />
+                </VerticalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center" Padding="0,0,12,0">
+                    <Label Text="All"
+                           FontSize="16"
+                           TextColor="#263DB7" />
+                    <Label Text="›"
+                           FontSize="26"
+                           TextColor="#263DB7"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!-- Cards -->
+            <HorizontalStackLayout Spacing="14" Padding="0,0,0,0">
+
+              
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+      <!-- Bottom menu -->
+      <controls:BottomMenu Grid.Row="1"
+                          VerticalOptions="End"
+                          Margin="0,0,0,6"/>
+      </Grid>
+</ContentPage>

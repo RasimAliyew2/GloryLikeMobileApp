@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetanetA_MobileApp.View.Profile.SkillsPage"
+             xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+             xmlns:ViewModel="clr-namespace:MetanetA_MobileApp.ViewModels.Profile"
+             x:DataType="ViewModel:SkillsViewModel"
+             BackgroundColor="#F6F8FC"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto">
+        
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,20,24,30" Spacing="24">
+
+            <!-- Settings -->
+            <Grid ColumnDefinitions="*,50">
+                <BoxView Grid.Column="0" Color="Transparent" />
+
+                <Border Grid.Column="1"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        BackgroundColor="#EDEFF8"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 24">
+                    <Label Text="⚙"
+                           FontSize="26"
+                           TextColor="#071331"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <!-- Profile header -->
+            <Grid ColumnDefinitions="100,*" ColumnSpacing="18">
+                <Border WidthRequest="100"
+                        HeightRequest="100"
+                        BackgroundColor="#FF6F55"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 32">
+                    <Label Text="AS"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1"
+                                     VerticalOptions="Center"
+                                     Spacing="4">
+                    <Label Text="Aigerim Suleimenova"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#071331" />
+
+                    <Label Text="Senior Product Designer · 6y experience"
+                           FontSize="16"
+                           TextColor="#3D455C" />
+
+                    <Label Text="Almaty, KZ"
+                           FontSize="14"
+                           TextColor="#3D455C" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Edit profile button -->
+            <Border HeightRequest="56"
+                    BackgroundColor="#EDEFF6"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 28">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EditProfileCommand}" />
+                </Border.GestureRecognizers>
+
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Spacing="12">
+                    <Label Text="✎"
+                           FontSize="26"
+                           TextColor="#071331" />
+
+                    <Label Text="Edit profile"
+                           FontSize="17"
+                           FontAttributes="Bold"
+                           TextColor="#071331"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Scores -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+
+                <Border Grid.Column="0"
+                        HeightRequest="138"
+                        Padding="20"
+                        Stroke="#E3D5EF"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 26">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#F4E7FF" Offset="0.0" />
+                            <GradientStop Color="#EBCDF4" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="✣  MATCH SCORE"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#263DB7" />
+
+                        <Label Text="88"
+                               FontSize="42"
+                               FontAttributes="Bold"
+                               TextColor="#071331" />
+
+                        <Label Text="Top 12%"
+                               FontSize="14"
+                               TextColor="#3D455C" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="1"
+                        HeightRequest="138"
+                        Padding="20"
+                        Stroke="#D3E7E2"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 26">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#DAFAED" Offset="0.0" />
+                            <GradientStop Color="#CDEEEA" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="♙  TRUST SCORE"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#10A96D" />
+
+                        <Label Text="92"
+                               FontSize="42"
+                               FontAttributes="Bold"
+                               TextColor="#071331" />
+
+                        <Label Text="Verified"
+                               FontSize="14"
+                               TextColor="#3D455C" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+
+            <!-- Skills title -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Skills"
+                       FontSize="21"
+                       FontAttributes="Bold"
+                       TextColor="#071331" />
+
+                <HorizontalStackLayout Grid.Column="1"
+                                       Spacing="6"
+                                       VerticalOptions="Center">
+                    <Label Text="+"
+                           FontSize="25"
+                           TextColor="#263DB7"
+                           VerticalOptions="Center" />
+
+                    <Label Text="Add"
+                           FontSize="17"
+                           TextColor="#263DB7"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddSkillCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <!-- Skills container - hələlik boş -->
+            <Border Padding="20"
+                    MinimumHeightRequest="190"
+                    BackgroundColor="White"
+                    Stroke="#DDE2EC"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 28">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="No skills added yet"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#071331"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Tap Add to create your first skill."
+                           FontSize="14"
+                           TextColor="#697083"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Experience title -->
+            <Grid ColumnDefinitions="*,Auto" Margin="0,8,0,0">
+                <Label Text="Experience"
+                       FontSize="21"
+                       FontAttributes="Bold"
+                       TextColor="#071331" />
+
+                <HorizontalStackLayout Grid.Column="1"
+                                       Spacing="6"
+                                       VerticalOptions="Center">
+                    <Label Text="+"
+                           FontSize="25"
+                           TextColor="#263DB7"
+                           VerticalOptions="Center" />
+
+                    <Label Text="Add"
+                           FontSize="17"
+                           TextColor="#263DB7"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddExperienceCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <!-- Experience container - hələlik boş -->
+            <Border Padding="20"
+                    MinimumHeightRequest="170"
+                    BackgroundColor="White"
+                    Stroke="#DDE2EC"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 28">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="No experience added yet"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#071331"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Tap Add to create your first experience."
+                           FontSize="14"
+                           TextColor="#697083"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+        <!-- Bottom menu -->
+        <controls:BottomMenu Grid.Row="1"
+                      VerticalOptions="End"
+                      Margin="0,0,0,6"/>
+    </Grid>
+</ContentPage>

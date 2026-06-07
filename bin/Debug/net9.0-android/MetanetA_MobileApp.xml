@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MetanetA_MobileApp</name>
+    </assembly>
+    <members>
+        <member name="T:MetanetA_MobileApp.Model.UserInfo">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Name">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.name"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Surname">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.surname"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.City">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.city"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.FatherName">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.fatherName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.Job">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.job"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.BirthDate">
+            <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.birthDate"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.Services.UserSession">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UserSession.PhoneNumber">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UserSession.phoneNumber"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.Services.UserSession.OtpCode">
+            <inheritdoc cref="F:MetanetA_MobileApp.Services.UserSession.otpCode"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.TimerText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.timerText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.IsVisibleErrorLabel">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.isVisibleErrorLabel"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.completedEditingCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditingCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.CompletedEditing(System.String)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.startCountdownCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdownCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdownCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StartCountdown(System.Int32)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.stopTimerCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimerCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimerCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.ConfrimSMSViewModel.StopTimer"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.SignInViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignInViewModel.Username">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignInViewModel.username"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SignInViewModel.signInCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SignInViewModel.SignInCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignInViewModel.SignInCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SignInViewModel.SignIn"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SignInViewModel.signUpCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SignInViewModel.SignUpCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignInViewModel.SignUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SignInViewModel.SignUp"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.SignUpViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.UserInfo">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.userInfo"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.IsNameValid">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.isNameValid"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.ThicknessBorder">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.thicknessBorder"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SignUpViewModel.signUpCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUpCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SignUpViewModel.SignUp"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Surname">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Surname" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FatherName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FatherName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Job">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Job" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BirthDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BirthDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OtpCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OtpCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TimerText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TimerText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsVisibleErrorLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsVisibleErrorLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UserInfo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UserInfo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsNameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsNameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ThicknessBorder">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ThicknessBorder" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Surname">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Surname" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FatherName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FatherName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Job">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Job" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneNumber">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneNumber" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BirthDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BirthDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OtpCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OtpCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TimerText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TimerText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsVisibleErrorLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsVisibleErrorLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Username">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Username" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UserInfo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UserInfo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsNameValid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsNameValid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ThicknessBorder">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ThicknessBorder" generated properties.</summary>
+        </member>
+    </members>
+</doc>

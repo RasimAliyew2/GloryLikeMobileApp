@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:MetanetA_MobileApp.ViewModels"
+             x:Class="MetanetA_MobileApp.View.ConfrimTheSMS"
+             BackgroundColor="#F3F4F6"
+             Title="">
+
+    <ContentPage.Resources>
+
+        <!-- Card -->
+        <Style x:Key="CardContainer" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 18"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Opacity="0.15" Radius="18" Offset="0,8" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Input border -->
+        <Style x:Key="InputBorder" TargetType="Border">
+            <Setter Property="Stroke" Value="#E5E7EB"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+            <Setter Property="BackgroundColor" Value="#F9FAFB"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+        </Style>
+
+        <!-- Primary button -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#16A34A"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <!-- Secondary button -->
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#E5E7EB"/>
+            <Setter Property="TextColor" Value="#111827"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid Padding="18">
+
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <Grid VerticalOptions="Center"
+                  MinimumHeightRequest="{Binding Source={RelativeSource AncestorType={x:Type ScrollView}}, Path=Height}">
+
+                <Border Style="{StaticResource CardContainer}">
+                    <VerticalStackLayout Spacing="12">
+
+                        <!-- Title -->
+                        <Label Text="Kodu daxil edin"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#111827"
+                               HorizontalTextAlignment="Center"/>
+
+                        <Label Text="SMS ilə göndərilən təsdiq kodunu yazın."
+                               FontSize="13"
+                               TextColor="#6B7280"
+                               HorizontalTextAlignment="Center"/>
+
+                        <!-- Code Input -->
+                        <Border x:Name="CodeBorder"
+                                Style="{StaticResource InputBorder}">
+
+                            <Entry x:Name="CodeEntry"
+                                   Text="{Binding Code, Mode=TwoWay}"
+                                   Keyboard="Numeric"
+                                   MaxLength="6"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#111827"
+                                   Placeholder="------"
+                                   PlaceholderColor="#9CA3AF"
+                                   HorizontalTextAlignment="Center"
+                                   BackgroundColor="Transparent"
+                                   ReturnType="Done"
+                                   ReturnCommand="{Binding CompletedEditingCommand}"
+                                   ReturnCommandParameter="{Binding Text, Source={x:Reference CodeEntry}}" />
+                        </Border>
+
+                        <!-- Timer -->
+                        <Label Text="{Binding TimerText}"
+                               FontSize="13"
+                               TextColor="#DC2626"
+                               HorizontalTextAlignment="Center"/>
+
+                        <!-- Error -->
+                        <Border IsVisible="{Binding IsVisibleErrorLabel}"
+                                BackgroundColor="#FEF2F2"
+                                Stroke="#FCA5A5"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12,10">
+
+                            <Label Text="Kod səhv daxil edilib"
+                                   TextColor="#B91C1C"
+                                   FontSize="13"
+                                   HorizontalTextAlignment="Center"/>
+                        </Border>
+
+                        <!-- Buttons -->
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="12"
+                              Margin="0,6,0,0">
+
+                            <Button Text="Geri qayıt"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Command="{Binding ReturnPreviousPageCommand}" />
+
+                            <Button Grid.Column="1"
+                                    Text="Təsdiq et"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding AprroveTheSMSCommand}" />
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

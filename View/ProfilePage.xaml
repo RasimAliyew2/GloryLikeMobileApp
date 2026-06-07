@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:MetanetA_MobileApp.Model"
+    xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels"
+    xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+    x:Class="MetanetA_MobileApp.View.ProfilePage"
+    x:DataType="vm:ProfileViewModel"
+    Title="">
+
+    <ContentPage.Resources>
+
+        <!-- ✅ BRAND THEME -->
+        <Color x:Key="PrimaryGreen">#00CE46</Color>
+        <Color x:Key="PrimaryGreenDark">#009F38</Color>
+        <Color x:Key="PrimaryGreenSoft">#E9FFF1</Color>
+
+        <Color x:Key="BgSoft">#F0FFF6</Color>
+        <Color x:Key="TextDark">#0B1220</Color>
+        <Color x:Key="TextGray">#667085</Color>
+
+        <Color x:Key="BorderSoft">#D9F5E5</Color>
+        <Color x:Key="BorderGray">#E5E7EB</Color>
+
+        <!-- ✅ Card -->
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="Stroke" Value="{StaticResource BorderSoft}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 18"/>
+            <Setter Property="Padding" Value="14"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Opacity="0.10" Radius="18" Offset="0,8"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Field border -->
+        <Style x:Key="FieldBorder" TargetType="Border">
+            <Setter Property="Stroke" Value="{StaticResource BorderSoft}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+            <Setter Property="Padding" Value="12,10"/>
+        </Style>
+
+        <!-- ✅ Primary button -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="46"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- ✅ Secondary button -->
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreenSoft}"/>
+            <Setter Property="TextColor" Value="{StaticResource PrimaryGreenDark}"/>
+            <Setter Property="HeightRequest" Value="46"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- ✅ Clickable row -->
+        <Style x:Key="RowCard" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="Stroke" Value="{StaticResource BorderSoft}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 16"/>
+            <Setter Property="Padding" Value="14,12"/>
+            <Setter Property="Shadow">
+                <Setter.Value>
+                    <Shadow Opacity="0.06" Radius="12" Offset="0,5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <!-- Root -->
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="18"
+          RowSpacing="12">
+
+        <!-- Header -->
+        <Label Grid.Row="0"
+               Text="Profil"
+               FontSize="22"
+               FontAttributes="Bold"
+               TextColor="{StaticResource TextDark}" />
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Always">
+            <VerticalStackLayout Spacing="12">
+
+                <!-- Profile photo -->
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+
+                        <Border WidthRequest="110"
+                                HeightRequest="110"
+                                Stroke="{StaticResource BorderSoft}"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 999"
+                                Padding="0">
+
+                            <Grid>
+                                <Image Source="{Binding ProfileImage}"
+                                       Aspect="AspectFill" />
+
+                                <!-- əgər şəkil yoxdursa yumşaq fon -->
+                                <BoxView BackgroundColor="{StaticResource PrimaryGreenSoft}"
+                                         Opacity="0.2" />
+                            </Grid>
+
+                        </Border>
+
+                        <Button Text="Profil şəklini dəyiş"
+                                Style="{StaticResource SecondaryButton}"
+                                Command="{Binding ChangePhotoCommand}"
+                                HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+
+                <!-- My data -->
+                <Border Style="{StaticResource RowCard}">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                        <Label Text="Şəxsi məlumatlarım"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}"
+                               VerticalTextAlignment="Center"/>
+
+                        <Label Grid.Column="1"
+                               Text="›"
+                               FontSize="20"
+                               TextColor="{StaticResource PrimaryGreenDark}"
+                               VerticalTextAlignment="Center" />
+
+                        <Grid.GestureRecognizers>
+                            <!-- Qeyd: burda sən OrdersCommand yazmısan, istəyirsənsə PersonalInfoCommand elə -->
+                            <TapGestureRecognizer Command="{Binding PersonalInfoCommand}"/>
+                        </Grid.GestureRecognizers>
+
+                    </Grid>
+                </Border>
+
+                <!-- Orders -->
+                <Border Style="{StaticResource RowCard}">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Label Text="Sifarişlərim"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}"
+                               VerticalTextAlignment="Center"/>
+
+                        <Label Grid.Column="1"
+                               Text="›"
+                               FontSize="20"
+                               TextColor="{StaticResource PrimaryGreenDark}"
+                               VerticalTextAlignment="Center" />
+
+                    </Grid>
+                </Border>
+
+                <!-- Cards -->
+                <Border Style="{StaticResource RowCard}">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <Label Text="Kartlarım"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}"
+                               VerticalTextAlignment="Center"/>
+
+                        <Label Grid.Column="1"
+                               Text="›"
+                               FontSize="20"
+                               TextColor="{StaticResource PrimaryGreenDark}"
+                               VerticalTextAlignment="Center" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CardsCommand}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Border>
+
+                <!-- Purchase history -->
+                <Border Style="{StaticResource Card}">
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Son alışlar"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextDark}"/>
+
+                        <CollectionView ItemsSource="{Binding PurchaseHistory}"
+                                        SelectionMode="None">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:PurchaseHistoryItem">
+
+                                    <Border Stroke="{StaticResource BorderSoft}"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 14"
+                                            BackgroundColor="#FFFFFF"
+                                            Padding="12"
+                                            Margin="0,6,0,0">
+
+                                        <Grid RowDefinitions="Auto,Auto"
+                                              ColumnDefinitions="*,Auto"
+                                              ColumnSpacing="10"
+                                              RowSpacing="4">
+
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource TextDark}"
+                                                   LineBreakMode="TailTruncation"/>
+
+                                            <Label Grid.Column="1"
+                                                   Text="{Binding Price, StringFormat='{0:0.##} ₼'}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource PrimaryGreenDark}"
+                                                   VerticalTextAlignment="Center"/>
+
+                                            <Label Grid.Row="1"
+                                                   Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}"
+                                                   FontSize="12"
+                                                   TextColor="{StaticResource TextGray}"/>
+
+                                            <Label Grid.Row="1"
+                                                   Grid.Column="1"
+                                                   Text="{Binding Quantity, StringFormat='x{0}'}"
+                                                   FontSize="12"
+                                                   TextColor="{StaticResource TextGray}"
+                                                   HorizontalTextAlignment="End"/>
+
+                                        </Grid>
+                                    </Border>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <BoxView HeightRequest="10" Opacity="0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom menu -->
+        <controls:BottomMenu Grid.Row="2"
+                             VerticalOptions="End"
+                             Margin="0,0,0,6"/>
+    </Grid>
+
+</ContentPage>

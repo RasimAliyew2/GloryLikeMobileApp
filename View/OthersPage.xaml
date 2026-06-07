@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
+             x:Class="MetanetA_MobileApp.View.OthersPage"
+             Title="">
+
+    <Grid Padding="18" RowDefinitions="Auto,*,Auto">
+
+  
+
+        <VerticalStackLayout Grid.Row="1" Spacing="12" Margin="0,14,0,0">
+
+            <!-- WhatsApp -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="whatsapp.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="WhatsApp" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="WhatsApp_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- Instagram -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="instagram.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="Instagram" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Instagram_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- Facebook -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="facebook.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="Facebook" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Facebook_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- LinkedIn -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="linkedin.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="LinkedIn" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="LinkedIn_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+
+            <!-- Often given questions -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="questions.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="Tez-tez verilən suallar" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Faq_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- Locations -->
+            <Border Stroke="#E5E7EB"
+                    BackgroundColor="White"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                <Grid ColumnDefinitions="40,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                    <Image Source="location.png" WidthRequest="28" HeightRequest="28" />
+                    <Label Grid.Column="1" Text="Məkan" FontSize="16" TextColor="#111827" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="2" Text="›" FontSize="22" TextColor="#9CA3AF" VerticalTextAlignment="Center"/>
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Map_Tapped"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+        </VerticalStackLayout>
+
+        <!-- Aşağı hissə: sabit bottom menu -->
+        <controls:BottomMenu Grid.Row="2" />
+    </Grid>
+</ContentPage>
