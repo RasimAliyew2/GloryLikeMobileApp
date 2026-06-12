@@ -139,11 +139,5 @@ namespace MetanetA_MobileApp.ViewModels
         }
 
  
-
-        [RelayCommand]
-        public async Task Training()
-        {
-            await Shell.Current.GoToAsync($"//{nameof(VideosPage)}");
-        }
     }
 }

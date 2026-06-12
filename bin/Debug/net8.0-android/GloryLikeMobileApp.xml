@@ -328,7 +328,6 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
-            <inheritdoc/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.Cart">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.cart"/>
@@ -358,12 +357,6 @@
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.OpenSuggestedProductCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.OpenSuggestedProductAsync(MetanetA_MobileApp.Model.SalesItem)"/>.</summary>
-        </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.trainingCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.TrainingCommand"/>.</summary>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.TrainingCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.Training"/>.</summary>
         </member>
         <member name="T:MetanetA_MobileApp.ViewModels.LocationMapViewModel">
             <inheritdoc/>
@@ -967,41 +960,6 @@
         <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SkipCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.SkipAsync"/>.</summary>
         </member>
-        <member name="T:MetanetA_MobileApp.ViewModels.VideosViewModel">
-            <inheritdoc/>
-            <inheritdoc/>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.selectedVideo"/>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.PlayerSource">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.playerSource"/>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.ShowSelectHint">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.showSelectHint"/>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.searchText"/>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.ShowNoResults">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.VideosViewModel.showNoResults"/>
-        </member>
-        <member name="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OnSelectedVideoChanged(MetanetA_MobileApp.Model.VideoItem)">
-            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo"/> just changed.</summary>
-            <param name="value">The new property value that was set.</param>
-            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SelectedVideo"/> is changed.</remarks>
-        </member>
-        <member name="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OnSearchTextChanged(System.String)">
-            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText"/> just changed.</summary>
-            <param name="value">The new property value that was set.</param>
-            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.SearchText"/> is changed.</remarks>
-        </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.VideosViewModel.openInYouTubeCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeCommand"/>.</summary>
-        </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.VideosViewModel.OpenInYouTubeAsync"/>.</summary>
-        </member>
         <member name="T:MetanetA_MobileApp.Services.UIState.CartLine">
             <inheritdoc/>
         </member>
@@ -1475,18 +1433,6 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedVideo">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedVideo" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PlayerSource">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PlayerSource" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowSelectHint">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowSelectHint" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ShowNoResults">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ShowNoResults" generated properties.</summary>
-        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
@@ -1759,18 +1705,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedVideo">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedVideo" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PlayerSource">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PlayerSource" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowSelectHint">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowSelectHint" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShowNoResults">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShowNoResults" generated properties.</summary>
         </member>
     </members>
 </doc>

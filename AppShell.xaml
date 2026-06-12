@@ -116,11 +116,7 @@
     ContentTemplate="{DataTemplate local:OthersPage}"
     Route="OthersPage"/>
 
-    <ShellContent
-             Title=""
-             ContentTemplate="{DataTemplate local:VideosPage}"
-             Route="VideosPage"/>
-
+  
 
     <ShellContent Route="OpportunitiesPage"
                 ContentTemplate="{DataTemplate localJob:OpportunitiesPage}" />

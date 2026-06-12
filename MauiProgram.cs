@@ -125,7 +125,6 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<SkillsPage>();
             builder.Services.AddSingleton<SignInPage>(); 
             builder.Services.AddSingleton<SignUpPage>();
-            builder.Services.AddSingleton<VideosPage>(); 
             builder.Services.AddSingleton<OthersPage>();
             builder.Services.AddSingleton<ProductPage>();
             builder.Services.AddSingleton<ProfilePage>();
@@ -149,7 +148,6 @@ namespace MetanetA_MobileApp
 
             builder.Services.AddTransient<BaseViewModel>(); 
             builder.Services.AddTransient<MainViewModel>();
-            builder.Services.AddTransient<VideosViewModel>();
             builder.Services.AddTransient<LocationMapViewModel>();
             builder.Services.AddTransient<ProfileUserViewModel>();
             builder.Services.AddTransient<VerifySkillsViewModel>();

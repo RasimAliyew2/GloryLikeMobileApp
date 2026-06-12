@@ -218,9 +218,3 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.TermsPopup.xaml
 build_metadata.AdditionalFiles.TargetPath = View\TermsPopup.xaml
 build_metadata.AdditionalFiles.RelativePath = View\TermsPopup.xaml
-
-[C:/Users/Rasim/source/repos/GloryLikeMobileApp/GloryLikeMobileApp/View/VideosPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.VideosPage.xaml
-build_metadata.AdditionalFiles.TargetPath = View\VideosPage.xaml
-build_metadata.AdditionalFiles.RelativePath = View\VideosPage.xaml
