@@ -154,11 +154,12 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<ApplicationsViewModel>();
             builder.Services.AddTransient<CareerExperienceViewModel>();
             builder.Services.AddTransient<SkillsSelectionViewModel>();
-            
 
 
-
-
+            ////////////////
+            builder.Services.AddSingleton<SkillVerificationState>();
+            builder.Services.AddTransient<ISkillQuestionnaireApiService, SkillQuestionnaireApiService>();
+            ///////////////
 
             builder.Services.AddSingleton<CartState>();
             builder.Services.AddTransient<SkillsViewModel>();

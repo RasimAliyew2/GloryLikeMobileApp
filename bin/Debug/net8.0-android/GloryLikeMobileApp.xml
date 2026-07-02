@@ -708,36 +708,68 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.addNewSkillCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkillCommand"/>.</summary>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.IsBusy">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.isBusy"/>
         </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkillCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AddNewSkill(System.String)"/>.</summary>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ErrorMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.errorMessage"/>
         </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.attachCertificateFileCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFileCommand"/>.</summary>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.OnErrorMessageChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ErrorMessage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ErrorMessage"/> is changed.</remarks>
         </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFileCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.AttachCertificateFile(MetanetA_MobileApp.Model.SkillVerifyItemModel)"/>.</summary>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.loadCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.LoadCommand"/>.</summary>
         </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.submitCertificateCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificateCommand"/>.</summary>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.LoadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.LoadAsync"/>.</summary>
         </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificateCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitCertificate(MetanetA_MobileApp.Model.SkillVerifyItemModel)"/>.</summary>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.selectOptionCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SelectOptionCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SelectOptionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SelectOption(MetanetA_MobileApp.ViewModels.Sign.SingUp.QuestionnaireOptionItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.submitSkillCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillAsync(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem)"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.backCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackCommand"/>.</summary>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.Back"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackAsync"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.skipForNowCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNowCommand"/>.</summary>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNowCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNow"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SkipForNowAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.IsLoading">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.isLoading"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.ErrorMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.errorMessage"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.OnErrorMessageChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.ErrorMessage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem.ErrorMessage"/> is changed.</remarks>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.QuestionnaireOptionItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.QuestionnaireOptionItem.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.QuestionnaireOptionItem.isSelected"/>
         </member>
         <member name="T:MetanetA_MobileApp.ViewModels.SignUpViewModel">
             <inheritdoc/>
@@ -874,6 +906,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.currentStep"/>
@@ -947,6 +980,12 @@
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ToggleSkillCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ToggleSkill(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.continueCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ContinueCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ContinueCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.ContinueAsync"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.backCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.BackCommand"/>.</summary>
@@ -1433,6 +1472,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLoading" generated properties.</summary>
+        </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
             A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
@@ -1705,6 +1747,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLoading" generated properties.</summary>
         </member>
     </members>
 </doc>

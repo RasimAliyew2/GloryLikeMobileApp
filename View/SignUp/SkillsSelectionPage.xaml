@@ -405,6 +405,34 @@
                         </VerticalStackLayout>
                     </VerticalStackLayout>
 
+                    <Border
+    IsVisible="{Binding HasSelectedSkills}"
+    HeightRequest="52"
+    StrokeThickness="0"
+    StrokeShape="RoundRectangle 26"
+    BackgroundColor="#4453C7"
+    Margin="0,10,0,0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ContinueCommand}" />
+                        </Border.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="*,Auto" Padding="18,0">
+                            <Label
+            Text="{Binding SelectedSkillCount, StringFormat='Verify selected skills ({0})'}"
+            FontSize="16"
+            FontAttributes="Bold"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+
+                            <Label
+            Grid.Column="1"
+            Text="›"
+            FontSize="26"
+            TextColor="White"
+            VerticalTextAlignment="Center" />
+                        </Grid>
+                    </Border>
+
                 </VerticalStackLayout>
             </Border>
         </VerticalStackLayout>

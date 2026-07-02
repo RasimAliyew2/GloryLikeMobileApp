@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.UIState;
+using MetanetA_MobileApp.View.SignUp;
 using MetanetA_MobileApp.ViewModels.Sign.SingUp;
 
 namespace MetanetA_MobileApp.ViewModels;
@@ -10,16 +12,24 @@ namespace MetanetA_MobileApp.ViewModels;
 public partial class SkillsSelectionViewModel : ObservableObject
 {
     private readonly ISkillAndJobApiService _skillAndJobApiService;
+    private readonly SkillVerificationState _skillVerificationState;
+
     private bool _isLoaded;
 
-    public SkillsSelectionViewModel(ISkillAndJobApiService skillAndJobApiService)
+    public SkillsSelectionViewModel(
+        ISkillAndJobApiService skillAndJobApiService,
+        SkillVerificationState skillVerificationState)
     {
         _skillAndJobApiService = skillAndJobApiService;
+        _skillVerificationState = skillVerificationState;
     }
 
     public ObservableCollection<SelectableItem<JobFamily>> JobFamilyOptions { get; } = new();
+
     public ObservableCollection<SelectableItem<Seniority>> SeniorityOptions { get; } = new();
+
     public ObservableCollection<SelectableItem<Position>> PositionOptions { get; } = new();
+
     public ObservableCollection<SkillSelectionItem> SkillOptions { get; } = new();
 
     [ObservableProperty]
@@ -43,8 +53,11 @@ public partial class SkillsSelectionViewModel : ObservableObject
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
 
     public bool IsJobFamilyStep => CurrentStep == SelectionStep.JobFamily;
+
     public bool IsSeniorityStep => CurrentStep == SelectionStep.Seniority;
+
     public bool IsPositionStep => CurrentStep == SelectionStep.Position;
+
     public bool IsSkillStep => CurrentStep == SelectionStep.Skill;
 
     public bool ShowBreadcrumb => CurrentStep != SelectionStep.JobFamily;
@@ -72,11 +85,10 @@ public partial class SkillsSelectionViewModel : ObservableObject
 
     public bool HasSelectedSkills => SelectedSkillCount > 0;
 
-    public List<Skill> SelectedSkills =>
-        SkillOptions
-            .Where(x => x.IsSelected)
-            .Select(x => x.Skill)
-            .ToList();
+    public List<Skill> SelectedSkills => SkillOptions
+        .Where(x => x.IsSelected)
+        .Select(x => x.Skill)
+        .ToList();
 
     [RelayCommand]
     private async Task LoadAsync()
@@ -190,6 +202,20 @@ public partial class SkillsSelectionViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private async Task ContinueAsync()
+    {
+        if (!HasSelectedSkills)
+            return;
+
+        _skillVerificationState.SetSelectedSkills(
+            SelectedSkills,
+            SelectedSeniority?.Name,
+            language: "az");
+
+        await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
+    }
+
+    [RelayCommand]
     private async Task BackAsync()
     {
         switch (CurrentStep)
@@ -231,8 +257,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
                 break;
 
             case SelectionStep.JobFamily:
-                if (Shell.Current is not null)
-                    await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync("..");
                 break;
         }
 
@@ -242,8 +267,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
     [RelayCommand]
     private async Task SkipAsync()
     {
-        if (Shell.Current is not null)
-            await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
     }
 
     private static void MarkSingleSelected<T>(
@@ -270,9 +294,13 @@ public partial class SkillsSelectionViewModel : ObservableObject
     }
 
     partial void OnCurrentStepChanged(SelectionStep value) => RefreshComputedProperties();
+
     partial void OnSelectedJobFamilyChanged(JobFamily? value) => RefreshComputedProperties();
+
     partial void OnSelectedSeniorityChanged(Seniority? value) => RefreshComputedProperties();
+
     partial void OnSelectedPositionChanged(Position? value) => RefreshComputedProperties();
+
     partial void OnErrorMessageChanged(string? value) => OnPropertyChanged(nameof(HasError));
 
     private void RefreshComputedProperties()
