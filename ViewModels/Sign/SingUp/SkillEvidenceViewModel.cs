@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services.UIState;
+using MetanetA_MobileApp.View.SignUp;
 
 namespace MetanetA_MobileApp.ViewModels.Sign.SingUp;
 
@@ -183,11 +184,12 @@ public partial class SkillEvidenceViewModel : ObservableObject
     [RelayCommand]
     private async Task ContinueAsync()
     {
-        await Application.Current!.MainPage!.DisplayAlert(
-            "Continue",
-            "Növbəti onboarding page hələ qoşulmayıb. Preferences/Ready page hazır olanda bu command ora yönləndiriləcək.",
-            "OK");
-    }
+        await Shell.Current.GoToAsync(nameof(CareerPreferencesPage));
+      // await Application.Current!.MainPage!.DisplayAlert(
+      //     "Continue",
+      //     "Növbəti onboarding page hələ qoşulmayıb. Preferences/Ready page hazır olanda bu command ora yönləndiriləcək.",
+      //     "OK");
+    } //
 
     partial void OnErrorMessageChanged(string? value)
     {

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="MetanetA_MobileApp.View.SignUp.CareerPreferencesPage"
+    x:Name="Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MetanetA_MobileApp.ViewModels.Sign.SingUp"
+    BackgroundColor="#050816"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <Style x:Key="StepTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="TextColor" Value="#B8C0D9" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="SectionLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="CharacterSpacing" Value="1.2" />
+            <Setter Property="TextColor" Value="#6B7280" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style x:Key="ChipBorderStyle" TargetType="Border">
+            <Setter Property="StrokeThickness" Value="0" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 18" />
+            <Setter Property="BackgroundColor" Value="#EEF2F7" />
+            <Setter Property="Padding" Value="14,8" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+        </Style>
+
+        <Style x:Key="ChipTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#526071" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid>
+        <BoxView>
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#050816" Offset="0" />
+                    <GradientStop Color="#0D1326" Offset="0.55" />
+                    <GradientStop Color="#10233F" Offset="1" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20,34,20,28" Spacing="18">
+
+                <Grid HorizontalOptions="Center" WidthRequest="330" HeightRequest="66">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="8">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" StrokeShape="RoundRectangle 12" BackgroundColor="#4659C8">
+                                <Label Text="✓" FontSize="13" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Identity" Style="{StaticResource StepTextStyle}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" StrokeShape="RoundRectangle 12" BackgroundColor="#4659C8">
+                                <Label Text="✓" FontSize="13" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Career" Style="{StaticResource StepTextStyle}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" StrokeShape="RoundRectangle 12" BackgroundColor="#4659C8">
+                                <Label Text="✓" FontSize="13" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Skills" Style="{StaticResource StepTextStyle}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="3" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" StrokeShape="RoundRectangle 12" BackgroundColor="#4659C8">
+                                <Label Text="✓" FontSize="13" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Verify" Style="{StaticResource StepTextStyle}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="28" HeightRequest="28" StrokeThickness="0" StrokeShape="RoundRectangle 14" BackgroundColor="#3447B7">
+                                <Label Text="●" FontSize="11" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Prefs&#10;2 min" FontSize="11" TextColor="White" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="5" Spacing="4" HorizontalOptions="Center">
+                            <Border WidthRequest="24" HeightRequest="24" StrokeThickness="0" StrokeShape="RoundRectangle 12" BackgroundColor="#263047">
+                                <Label Text="●" FontSize="8" TextColor="#667085" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Border>
+                            <Label Text="Ready" Style="{StaticResource StepTextStyle}" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <BoxView VerticalOptions="End" HeightRequest="4" Margin="4,0,4,0" BackgroundColor="#1F2940" />
+                    <BoxView VerticalOptions="End" HorizontalOptions="Start" WidthRequest="235" HeightRequest="4" Margin="4,0,0,0" BackgroundColor="#4659C8" />
+                </Grid>
+
+                <Border
+                    Stroke="#1D2740"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 34"
+                    BackgroundColor="#F8FAFD"
+                    Padding="18,18,18,24"
+                    WidthRequest="330"
+                    HorizontalOptions="Center">
+
+                    <VerticalStackLayout Spacing="18">
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <HorizontalStackLayout Spacing="7">
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BackCommand}" />
+                                </HorizontalStackLayout.GestureRecognizers>
+                                <Label Text="‹" FontSize="24" TextColor="#475166" VerticalTextAlignment="Center" />
+                                <Label Text="Back" FontSize="14" TextColor="#475166" VerticalTextAlignment="Center" />
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Column="1" Text="Skip for now" FontSize="14" TextColor="#3447B7" TextDecorations="Underline">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SkipCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Career preferences" FontSize="23" FontAttributes="Bold" TextColor="#030712" />
+                            <Label Text="We'll use this to surface the right opportunities." FontSize="16" TextColor="#4B5563" LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="TARGET ROLES" Style="{StaticResource SectionLabelStyle}" />
+                            <Border Stroke="#151827" StrokeThickness="1.6" StrokeShape="RoundRectangle 24" BackgroundColor="#F8FAFD" Padding="14,0" HeightRequest="48">
+                                <Entry
+                                    Text="{Binding TargetRoleText}"
+                                    Placeholder="Add a role and press Enter"
+                                    PlaceholderColor="#7A8498"
+                                    TextColor="#111827"
+                                    FontSize="14"
+                                    BackgroundColor="Transparent"
+                                    ReturnType="Done"
+                                    ReturnCommand="{Binding AddTargetRoleCommand}" />
+                            </Border>
+
+                            <FlexLayout
+                                BindableLayout.ItemsSource="{Binding TargetRoles}"
+                                Direction="Row"
+                                Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}" BackgroundColor="#3447B7">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.RemoveTargetRoleCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" FontSize="13" TextColor="White" />
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="WORK MODE" Style="{StaticResource SectionLabelStyle}" />
+                            <FlexLayout BindableLayout.ItemsSource="{Binding WorkModes}" Direction="Row" Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3447B7" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.SelectWorkModeCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" Style="{StaticResource ChipTextStyle}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="SENIORITY" Style="{StaticResource SectionLabelStyle}" />
+                            <FlexLayout BindableLayout.ItemsSource="{Binding Seniorities}" Direction="Row" Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3447B7" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.SelectSeniorityCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" Style="{StaticResource ChipTextStyle}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="LANGUAGES" Style="{StaticResource SectionLabelStyle}" />
+                            <FlexLayout BindableLayout.ItemsSource="{Binding Languages}" Direction="Row" Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3447B7" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.ToggleLanguageCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" Style="{StaticResource ChipTextStyle}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="EMPLOYMENT TYPE" Style="{StaticResource SectionLabelStyle}" />
+                            <FlexLayout BindableLayout.ItemsSource="{Binding EmploymentTypes}" Direction="Row" Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3447B7" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.ToggleEmploymentTypeCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" Style="{StaticResource ChipTextStyle}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="RELOCATION" Style="{StaticResource SectionLabelStyle}" />
+                            <Border Style="{StaticResource ChipBorderStyle}" BackgroundColor="#3447B7" HorizontalOptions="Start">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ToggleOpenToRelocationCommand}" />
+                                </Border.GestureRecognizers>
+                                <Label Text="Open to relocation" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                            </Border>
+
+                            <FlexLayout BindableLayout.ItemsSource="{Binding RelocationCountries}" Direction="Row" Wrap="Wrap">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PreferenceChipItem">
+                                        <Border Style="{StaticResource ChipBorderStyle}">
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3447B7" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Page}, Path=BindingContext.ToggleRelocationCountryCommand}" CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Label Text="{Binding Text}" Style="{StaticResource ChipTextStyle}">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+
+                        <Border HeightRequest="54" StrokeThickness="0" StrokeShape="RoundRectangle 28" BackgroundColor="#3447B7" Margin="0,4,0,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ContinueCommand}" />
+                            </Border.GestureRecognizers>
+                            <Label Text="Continue" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        </Border>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

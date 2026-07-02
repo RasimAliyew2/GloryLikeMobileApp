@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GloryLikeMobileApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4a6a03da25c444b8057cfca7c760b30d7c4b1b29")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f235e0b73974c5699658fa2fa36fb5068dffa397")]
 [assembly: System.Reflection.AssemblyProductAttribute("GloryLikeMobileApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GloryLikeMobileApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

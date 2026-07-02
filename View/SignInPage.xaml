@@ -3,142 +3,289 @@
     x:Class="MetanetA_MobileApp.View.SignInPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Shell.NavBarIsVisible="False"
-    BackgroundColor="#050816">
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="#05051A">
 
-    <ContentPage.Resources>
-        <Style x:Key="AuthButtonStyle" TargetType="Button">
-            <Setter Property="HeightRequest" Value="56" />
-            <Setter Property="CornerRadius" Value="18" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontAttributes" Value="Bold" />
-            <Setter Property="TextColor" Value="#111827" />
-            <Setter Property="BackgroundColor" Value="#FFFFFF" />
-            <Setter Property="BorderColor" Value="#E5E7EB" />
-            <Setter Property="BorderWidth" Value="1" />
-        </Style>
-    </ContentPage.Resources>
-
-    <Grid Padding="22">
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#050816" Offset="0.00" />
-                <GradientStop Color="#0B1024" Offset="0.45" />
-                <GradientStop Color="#111827" Offset="1.00" />
+                <GradientStop Color="#05051A" Offset="0.0" />
+                <GradientStop Color="#080A24" Offset="0.45" />
+                <GradientStop Color="#04202C" Offset="0.75" />
+                <GradientStop Color="#140D28" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
 
-        <VerticalStackLayout Spacing="0">
-            <Label
-                Text="‹ Back to registration"
-                FontSize="14"
-                TextColor="#D1D5DB"
-                Margin="0,8,0,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="BackToRegistration_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-        </VerticalStackLayout>
+        <BoxView
+            WidthRequest="420"
+            HeightRequest="170"
+            Rotation="-28"
+            TranslationX="-60"
+            TranslationY="390"
+            Opacity="0.35"
+            Color="#0B6B67" />
 
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout
-                Spacing="28"
-                VerticalOptions="Center"
-                Padding="0,56,0,28">
+        <BoxView
+            WidthRequest="430"
+            HeightRequest="170"
+            Rotation="-28"
+            TranslationX="120"
+            TranslationY="675"
+            Opacity="0.22"
+            Color="#3B1B59" />
 
-                <VerticalStackLayout Spacing="18" HorizontalOptions="Center">
+        <ScrollView>
+            <Grid
+                MinimumHeightRequest="760"
+                Padding="20,28,20,28"
+                RowDefinitions="Auto,*,Auto">
+
+                <Label
+                    Grid.Row="0"
+                    Text="‹ Back to registration"
+                    FontSize="13"
+                    TextColor="#D8DCEB"
+                    Opacity="0.88">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BackToRegistration_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <VerticalStackLayout
+                    Grid.Row="1"
+                    Spacing="18"
+                    VerticalOptions="Center">
+
                     <Border
-                        WidthRequest="72"
-                        HeightRequest="72"
+                        WidthRequest="66"
+                        HeightRequest="66"
+                        BackgroundColor="White"
                         StrokeThickness="0"
-                        StrokeShape="RoundRectangle 22"
-                        BackgroundColor="#FFFFFF"
+                        StrokeShape="RoundRectangle 20"
                         HorizontalOptions="Center">
-                        <Border.Shadow>
-                            <Shadow Brush="#000000" Opacity="0.28" Radius="20" Offset="0,10" />
-                        </Border.Shadow>
                         <Label
                             Text="S"
-                            FontSize="34"
+                            FontSize="27"
                             FontAttributes="Bold"
-                            TextColor="#111827"
+                            TextColor="#141428"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center" />
                     </Border>
 
-                    <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="10">
                         <Label
                             Text="Build your verified professional identity"
-                            FontSize="34"
+                            FontSize="29"
                             FontAttributes="Bold"
-                            TextColor="#FFFFFF"
+                            TextColor="White"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap" />
 
                         <Label
                             Text="SkillMatch matches you to jobs by what you can actually do — not just your job titles."
-                            FontSize="16"
-                            TextColor="#CBD5E1"
+                            FontSize="15"
+                            TextColor="#D4D7E6"
                             HorizontalTextAlignment="Center"
-                            LineBreakMode="WordWrap"
-                            MaximumWidthRequest="360" />
+                            LineBreakMode="WordWrap" />
                     </VerticalStackLayout>
+
+                    <Border
+                        BackgroundColor="White"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 28"
+                        Padding="18,18,18,18">
+
+                        <VerticalStackLayout Spacing="12">
+
+                            <VerticalStackLayout x:Name="RegistrationPanel" Spacing="12">
+                                <Border
+                                    HeightRequest="50"
+                                    BackgroundColor="White"
+                                    Stroke="#E2E6EF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 15">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ContinueGoogle_Tapped" />
+                                    </Border.GestureRecognizers>
+                                    <Label
+                                        Text="Continue with Google"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="#1B2030"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+
+                                <Border
+                                    HeightRequest="50"
+                                    BackgroundColor="White"
+                                    Stroke="#E2E6EF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 15">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ContinueApple_Tapped" />
+                                    </Border.GestureRecognizers>
+                                    <Label
+                                        Text="Continue with Apple"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="#1B2030"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+
+                                <Border
+                                    HeightRequest="50"
+                                    BackgroundColor="#151426"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 15">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ContinueEmail_Tapped" />
+                                    </Border.GestureRecognizers>
+                                    <Label
+                                        Text="Continue with Email"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="White"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+
+                                <Grid ColumnDefinitions="*,Auto,*" Margin="0,6,0,0">
+                                    <BoxView HeightRequest="1" Color="#E7EAF1" VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="or"
+                                        Margin="12,0"
+                                        FontSize="12"
+                                        TextColor="#7C8494" />
+                                    <BoxView Grid.Column="2" HeightRequest="1" Color="#E7EAF1" VerticalOptions="Center" />
+                                </Grid>
+
+                                <HorizontalStackLayout
+                                    HorizontalOptions="Center"
+                                    Spacing="4">
+                                    <Label
+                                        Text="Already have an account?"
+                                        FontSize="13"
+                                        TextColor="#677083" />
+
+                                    <Label
+                                        Text="Sign in"
+                                        FontSize="13"
+                                        FontAttributes="Bold"
+                                        TextColor="#3442B8"
+                                        TextDecorations="Underline">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ShowSignIn_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout
+                                x:Name="SignInPanel"
+                                Spacing="12"
+                                IsVisible="False">
+
+                                <VerticalStackLayout Spacing="4">
+                                    <Label
+                                        Text="Sign in"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        TextColor="#121426" />
+
+                                    <Label
+                                        Text="Continue with your existing SkillMatch account."
+                                        FontSize="13"
+                                        TextColor="#677083" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    HeightRequest="52"
+                                    BackgroundColor="#F7F8FB"
+                                    Stroke="#E0E4EC"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 15"
+                                    Padding="14,0">
+                                    <Entry
+                                        x:Name="EmailEntry"
+                                        Placeholder="Email address"
+                                        Keyboard="Email"
+                                        FontSize="14"
+                                        TextColor="#121426"
+                                        PlaceholderColor="#8A92A3"
+                                        BackgroundColor="Transparent" />
+                                </Border>
+
+                                <Border
+                                    HeightRequest="52"
+                                    BackgroundColor="#F7F8FB"
+                                    Stroke="#E0E4EC"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 15"
+                                    Padding="14,0">
+                                    <Entry
+                                        x:Name="PasswordEntry"
+                                        Placeholder="Password"
+                                        IsPassword="True"
+                                        FontSize="14"
+                                        TextColor="#121426"
+                                        PlaceholderColor="#8A92A3"
+                                        BackgroundColor="Transparent" />
+                                </Border>
+
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label
+                                        Text="Create new account"
+                                        FontSize="13"
+                                        TextColor="#3442B8"
+                                        TextDecorations="Underline">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ShowRegistration_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="Forgot password?"
+                                        FontSize="13"
+                                        TextColor="#3442B8"
+                                        TextDecorations="Underline">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ForgotPassword_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <Border
+                                    HeightRequest="50"
+                                    BackgroundColor="#151426"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 15">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                                    </Border.GestureRecognizers>
+                                    <Label
+                                        Text="Sign in"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="White"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <Label
+                                Text="By continuing, you agree to our Terms and Privacy Policy."
+                                FontSize="11"
+                                TextColor="#1F2430"
+                                HorizontalTextAlignment="Center"
+                                Margin="0,8,0,0" />
+                        </VerticalStackLayout>
+                    </Border>
                 </VerticalStackLayout>
-
-                <Border
-                    BackgroundColor="#FFFFFF"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 30"
-                    Padding="18"
-                    MaximumWidthRequest="420"
-                    HorizontalOptions="Fill">
-                    <Border.Shadow>
-                        <Shadow Brush="#000000" Opacity="0.22" Radius="24" Offset="0,12" />
-                    </Border.Shadow>
-
-                    <VerticalStackLayout Spacing="12">
-                        <Button
-                            Text="Continue with Google"
-                            Style="{StaticResource AuthButtonStyle}"
-                            Clicked="ContinueWithGoogle_Clicked" />
-
-                        <Button
-                            Text="Continue with Apple"
-                            Style="{StaticResource AuthButtonStyle}"
-                            Clicked="ContinueWithApple_Clicked" />
-
-                        <Button
-                            Text="Continue with Email"
-                            HeightRequest="56"
-                            CornerRadius="18"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            TextColor="#FFFFFF"
-                            BackgroundColor="#111827"
-                            Clicked="ContinueWithEmail_Clicked" />
-
-                        <Label
-                            Margin="8,8,8,0"
-                            FontSize="12"
-                            TextColor="#6B7280"
-                            HorizontalTextAlignment="Center"
-                            LineBreakMode="WordWrap">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="By continuing, you agree to our " />
-                                    <Span Text="Terms" TextColor="#111827" FontAttributes="Bold" />
-                                    <Span Text=" and " />
-                                    <Span Text="Privacy Policy" TextColor="#111827" FontAttributes="Bold" />
-                                    <Span Text="." />
-                                </FormattedString>
-                            </Label.FormattedText>
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Terms_Tapped" />
-                            </Label.GestureRecognizers>
-                        </Label>
-                    </VerticalStackLayout>
-                </Border>
-            </VerticalStackLayout>
+            </Grid>
         </ScrollView>
     </Grid>
 </ContentPage>

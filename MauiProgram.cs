@@ -144,7 +144,19 @@ namespace MetanetA_MobileApp
             builder.Services.AddSingleton<CareerExperiencePage>();
 
             builder.Services.AddSingleton<SkillEvidencePage>();
-            
+
+
+
+
+            builder.Services.AddTransient<CareerPreferencesPage>();
+            builder.Services.AddTransient<CareerPreferencesViewModel>();
+
+            builder.Services.AddTransient<ProfileReviewPage>();
+            builder.Services.AddTransient<ProfileReviewViewModel>();
+
+
+
+
             //View Models
 
             builder.Services.AddTransient<BaseViewModel>(); 

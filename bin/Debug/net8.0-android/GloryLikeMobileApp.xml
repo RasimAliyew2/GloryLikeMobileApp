@@ -685,6 +685,128 @@
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFileCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFile"/>.</summary>
         </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.TargetRoleText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.targetRoleText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.OpenToRelocation">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.openToRelocation"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.addTargetRoleCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.AddTargetRoleCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.AddTargetRoleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.AddTargetRole"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.removeTargetRoleCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.RemoveTargetRoleCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.RemoveTargetRoleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.RemoveTargetRole(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.selectWorkModeCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectWorkModeCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectWorkModeCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectWorkMode(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.selectSeniorityCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectSeniorityCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectSeniorityCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SelectSeniority(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.toggleLanguageCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleLanguageCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleLanguageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleLanguage(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.toggleEmploymentTypeCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleEmploymentTypeCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleEmploymentTypeCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleEmploymentType(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.toggleOpenToRelocationCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleOpenToRelocationCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleOpenToRelocationCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleOpenToRelocation"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.toggleRelocationCountryCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleRelocationCountryCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleRelocationCountryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ToggleRelocationCountry(MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.continueCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ContinueCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ContinueCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.ContinueAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.skipCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SkipCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SkipCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.SkipAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerPreferencesViewModel.BackAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.PreferenceChipItem.isSelected"/>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.ProfileStrength">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.profileStrength"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.HiringReadiness">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.hiringReadiness"/>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.finishCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.FinishCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.FinishCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.FinishAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.skipCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.SkipCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.SkipCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.SkipAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.ProfileReviewViewModel.BackAsync"/>.</summary>
+        </member>
         <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -1602,6 +1724,18 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusMessage" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TargetRoleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TargetRoleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OpenToRelocation">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OpenToRelocation" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProfileStrength">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProfileStrength" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HiringReadiness">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HiringReadiness" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
         </member>
@@ -1907,6 +2041,18 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TargetRoleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TargetRoleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OpenToRelocation">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OpenToRelocation" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProfileStrength">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProfileStrength" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HiringReadiness">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HiringReadiness" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
