@@ -185,6 +185,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.Si
 build_metadata.AdditionalFiles.TargetPath = View\SignUp\CareerExperiencePage.xaml
 build_metadata.AdditionalFiles.RelativePath = View\SignUp\CareerExperiencePage.xaml
 
+[C:/Users/Rasim/source/repos/GloryLikeMobileApp/GloryLikeMobileApp/View/SignUp/SkillEvidencePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.SignUp.SkillEvidencePage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\SignUp\SkillEvidencePage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\SignUp\SkillEvidencePage.xaml
+
 [C:/Users/Rasim/source/repos/GloryLikeMobileApp/GloryLikeMobileApp/View/SignUp/SkillsSelectionPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.SignUp.SkillsSelectionPage.xaml

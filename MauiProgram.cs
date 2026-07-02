@@ -143,11 +143,14 @@ namespace MetanetA_MobileApp
             builder.Services.AddSingleton<RequestAcceptedPage>();
             builder.Services.AddSingleton<CareerExperiencePage>();
 
-
+            builder.Services.AddSingleton<SkillEvidencePage>();
+            
             //View Models
 
             builder.Services.AddTransient<BaseViewModel>(); 
             builder.Services.AddTransient<MainViewModel>();
+            builder.Services.AddTransient<SkillEvidenceViewModel>();
+            
             builder.Services.AddTransient<LocationMapViewModel>();
             builder.Services.AddTransient<ProfileUserViewModel>();
             builder.Services.AddTransient<VerifySkillsViewModel>();

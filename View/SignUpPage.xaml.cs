@@ -1,28 +1,38 @@
-﻿using CommunityToolkit.Maui.Views;
+using MetanetA_MobileApp.View.SignUp;
 using MetanetA_MobileApp.ViewModels;
 
 namespace MetanetA_MobileApp.View;
 
 public partial class SignUpPage : ContentPage
 {
-	public SignUpPage(SignUpViewModel vm)
-	{
-		InitializeComponent();
-		BindingContext = vm;
-	}
-    protected override bool OnBackButtonPressed()
+    public SignUpPage()
     {
-        MainThread.BeginInvokeOnMainThread(async () =>
+        InitializeComponent();
+    }
+
+    public SignUpPage(SignUpViewModel vm)
+    {
+        InitializeComponent();
+        BindingContext = vm;
+    }
+
+    private async void Continue_Clicked(object sender, EventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
+            string.IsNullOrWhiteSpace(LastNameEntry.Text) ||
+            string.IsNullOrWhiteSpace(EmailEntry.Text))
         {
-            await Shell.Current.GoToAsync($"//{nameof(SignInPage)}");
-        });
+            ValidationLabel.Text = "Please fill first name, last name, and email.";
+            ValidationPanel.IsVisible = true;
+            return;
+        }
 
-        return true; // default back işləməsin, app çıxmasın
+        ValidationPanel.IsVisible = false;
+        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
     }
-    private async void OpenTerms_Tapped(object sender, TappedEventArgs e)
+
+    private async void Back_Tapped(object sender, TappedEventArgs e)
     {
-        await this.ShowPopupAsync(new TermsPopup());
+        await Shell.Current.GoToAsync($"//{nameof(SignInPage)}");
     }
- 
-
 }

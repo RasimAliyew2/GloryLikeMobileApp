@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
@@ -45,6 +45,16 @@ public partial class VerifySkillsViewModel : ObservableObject
 
     public bool HasSkills => Skills.Count > 0;
 
+    public int CompletedSkillCount => Skills.Count(x => x.IsCompleted);
+
+    public int TotalSkillCount => Skills.Count;
+
+    public bool AllSkillsCompleted => TotalSkillCount > 0 && Skills.All(x => x.IsCompleted);
+
+    public string ContinueButtonText => AllSkillsCompleted
+        ? "Continue"
+        : $"Continue ({CompletedSkillCount}/{TotalSkillCount})";
+
     [RelayCommand]
     private async Task LoadAsync()
     {
@@ -72,7 +82,7 @@ public partial class VerifySkillsViewModel : ObservableObject
             }
 
             _isLoaded = true;
-            OnPropertyChanged(nameof(HasSkills));
+            RefreshPageState();
         }
         catch (Exception ex)
         {
@@ -135,30 +145,23 @@ public partial class VerifySkillsViewModel : ObservableObject
 
         question.RefreshState();
         RefreshVisibleQuestions(question.Session);
+        RefreshPageState();
     }
 
     [RelayCommand]
-    private async Task SubmitSkillAsync(SkillQuestionnaireSessionItem? session)
+    private async Task ContinueAsync()
     {
-        if (session is null)
-            return;
-
-        if (!session.IsCompleted)
+        if (!AllSkillsCompleted)
         {
             await Application.Current!.MainPage!.DisplayAlert(
                 "Incomplete",
-                "Bu skill üçün bütün görünən sualları cavablandır.",
+                "Davam etmək üçün bütün görünən sualları cavablandır.",
                 "OK");
 
             return;
         }
 
-        var score = CalculateScore(session);
-
-        await Application.Current!.MainPage!.DisplayAlert(
-            "Skill verified",
-            $"{session.SkillName}\nScore: {score.DepthScore}/100\nDepth: {score.DepthTier}\nOwnership: {score.OwnershipLevel}\nTask: {score.TaskComplexity}",
-            "OK");
+        await Shell.Current.GoToAsync(nameof(SkillEvidencePage));
     }
 
     [RelayCommand]
@@ -170,10 +173,7 @@ public partial class VerifySkillsViewModel : ObservableObject
     [RelayCommand]
     private async Task SkipForNowAsync()
     {
-        await Application.Current!.MainPage!.DisplayAlert(
-            "Skipped",
-            "Skill verification skipped for now.",
-            "OK");
+        await Shell.Current.GoToAsync(nameof(SkillEvidencePage));
     }
 
     private void RefreshVisibleQuestions(SkillQuestionnaireSessionItem session)
@@ -209,42 +209,13 @@ public partial class VerifySkillsViewModel : ObservableObject
         session.RefreshState();
     }
 
-    private static SkillDepthScoreResult CalculateScore(SkillQuestionnaireSessionItem session)
+    private void RefreshPageState()
     {
-        var selectedOptions = session.VisibleQuestions
-            .SelectMany(q => q.Options)
-            .Where(o => o.IsSelected)
-            .ToList();
-
-        var rawComplexity = selectedOptions.Sum(o => o.Weights.Complexity);
-        var rawOwnership = selectedOptions.Sum(o => o.Weights.Ownership);
-        var rawDepth = selectedOptions.Sum(o => o.Weights.Depth);
-
-        var maxComplexity = Math.Max(session.Scoring.MaxComplexity, 1);
-        var maxOwnership = Math.Max(session.Scoring.MaxOwnership, 1);
-        var maxDepth = Math.Max(session.Scoring.MaxDepth, 1);
-
-        var complexityRatio = rawComplexity / (double)maxComplexity;
-        var ownershipRatio = rawOwnership / (double)maxOwnership;
-        var depthRatio = rawDepth / (double)maxDepth;
-
-        var depthScore = (int)Math.Round(
-            ((complexityRatio * 0.35) +
-             (ownershipRatio * 0.30) +
-             (depthRatio * 0.35)) * 100);
-
-        depthScore = Math.Clamp(depthScore, 0, 100);
-
-        return new SkillDepthScoreResult
-        {
-            DepthScore = depthScore,
-            TaskComplexity = depthScore < 40 ? "routine" : depthScore < 75 ? "complex" : "strategic",
-            OwnershipLevel = ownershipRatio < 0.40 ? "contributor" : ownershipRatio < 0.75 ? "owner" : "leader",
-            DepthTier = depthScore < 35 ? "basic" :
-                        depthScore < 65 ? "proficient" :
-                        depthScore < 85 ? "advanced" :
-                        "expert"
-        };
+        OnPropertyChanged(nameof(HasSkills));
+        OnPropertyChanged(nameof(CompletedSkillCount));
+        OnPropertyChanged(nameof(TotalSkillCount));
+        OnPropertyChanged(nameof(AllSkillsCompleted));
+        OnPropertyChanged(nameof(ContinueButtonText));
     }
 
     partial void OnErrorMessageChanged(string? value)
@@ -385,15 +356,4 @@ public partial class QuestionnaireOptionItem : ObservableObject
 
     [ObservableProperty]
     private bool isSelected;
-}
-
-public class SkillDepthScoreResult
-{
-    public int DepthScore { get; set; }
-
-    public string TaskComplexity { get; set; } = string.Empty;
-
-    public string OwnershipLevel { get; set; } = string.Empty;
-
-    public string DepthTier { get; set; } = string.Empty;
 }

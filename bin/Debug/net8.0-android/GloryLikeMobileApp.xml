@@ -648,6 +648,18 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.IsBusy">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.isBusy"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.StatusMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.statusMessage"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.OnStatusMessageChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.StatusMessage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.StatusMessage"/> is changed.</remarks>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.backCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.BackCommand"/>.</summary>
@@ -665,13 +677,143 @@
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmasCommand"/>.</summary>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmasCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmas"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.ImportFromEmas"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.uploadFileCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFileCommand"/>.</summary>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFileCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFile"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.CareerExperienceViewModel.UploadFile"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ErrorMessage">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.errorMessage"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.OnErrorMessageChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ErrorMessage"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ErrorMessage"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.loadCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.LoadCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.LoadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.Load"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.toggleSkillCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ToggleSkillCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ToggleSkillCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ToggleSkill(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.attachCertificateCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.AttachCertificateCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.AttachCertificateCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.AttachCertificateAsync(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.selectCompanyTypeCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectCompanyTypeCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectCompanyTypeCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectCompanyType(MetanetA_MobileApp.ViewModels.Sign.SingUp.ChoiceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.selectDurationCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectDurationCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectDurationCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SelectDuration(MetanetA_MobileApp.ViewModels.Sign.SingUp.ChoiceChipItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.submitCertificateCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitCertificateCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitCertificateCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitCertificateAsync(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.submitEmployerHistoryCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitEmployerHistoryCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitEmployerHistoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SubmitEmployerHistoryAsync(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem)"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.backCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.BackCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.BackCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.BackAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.skipForNowCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SkipForNowCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SkipForNowCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.SkipForNowAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.continueCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ContinueCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ContinueCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceViewModel.ContinueAsync"/>.</summary>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.IsExpanded">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.isExpanded"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.CredibilityScore">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.credibilityScore"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.CertificateName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.certificateName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.Issuer">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.issuer"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.AttachedCertificateFileName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.attachedCertificateFileName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.CompanyName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.companyName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.SelectedCompanyType">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.selectedCompanyType"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.SelectedIndustry">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.selectedIndustry"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.Role">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.role"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.SelectedDuration">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.selectedDuration"/>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.OnCredibilityScoreChanged(System.Int32)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.CredibilityScore"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.CredibilityScore"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.OnAttachedCertificateFileNameChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.AttachedCertificateFileName"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillEvidenceItem.AttachedCertificateFileName"/> is changed.</remarks>
+        </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.ChoiceChipItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.ChoiceChipItem.IsSelected">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.ChoiceChipItem.isSelected"/>
         </member>
         <member name="T:MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillSelectionItem">
             <inheritdoc/>
@@ -733,11 +875,11 @@
         <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SelectOptionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SelectOption(MetanetA_MobileApp.ViewModels.Sign.SingUp.QuestionnaireOptionItem)"/>.</summary>
         </member>
-        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.submitSkillCommand">
-            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillCommand"/>.</summary>
+        <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.continueCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ContinueCommand"/>.</summary>
         </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.SubmitSkillAsync(MetanetA_MobileApp.ViewModels.Sign.SingUp.SkillQuestionnaireSessionItem)"/>.</summary>
+        <member name="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ContinueCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.ContinueAsync"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.backCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Sign.SingUp.VerifySkillsViewModel.BackCommand"/>.</summary>
@@ -1457,6 +1599,39 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedJob">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedJob" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CredibilityScore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CredibilityScore" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CertificateName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CertificateName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Issuer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Issuer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AttachedCertificateFileName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AttachedCertificateFileName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CompanyName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CompanyName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedCompanyType">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedCompanyType" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedIndustry">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedIndustry" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Role">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Role" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedDuration">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedDuration" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CurrentStep">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CurrentStep" generated properties.</summary>
         </member>
@@ -1468,9 +1643,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedPosition">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedPosition" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ErrorMessage">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLoading">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLoading" generated properties.</summary>
@@ -1733,6 +1905,39 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedJob">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedJob" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CredibilityScore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CredibilityScore" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CertificateName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CertificateName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Issuer">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Issuer" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AttachedCertificateFileName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AttachedCertificateFileName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CompanyName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CompanyName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedCompanyType">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedCompanyType" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedIndustry">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedIndustry" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Role">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Role" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedDuration">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedDuration" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CurrentStep">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CurrentStep" generated properties.</summary>
         </member>
@@ -1744,9 +1949,6 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedPosition">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedPosition" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ErrorMessage">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ErrorMessage" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLoading">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLoading" generated properties.</summary>

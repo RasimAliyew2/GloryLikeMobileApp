@@ -1,67 +1,106 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.View.SignUp;
 
-namespace MetanetA_MobileApp.ViewModels.Sign.SingUp
+namespace MetanetA_MobileApp.ViewModels.Sign.SingUp;
+
+public partial class CareerExperienceViewModel : ObservableObject
 {
-   public partial class CareerExperienceViewModel : ObservableObject
+    public ObservableCollection<IdentityStepModel> Steps { get; } = new();
+
+    [ObservableProperty]
+    private bool isBusy;
+
+    [ObservableProperty]
+    private string? statusMessage;
+
+    public bool HasStatusMessage => !string.IsNullOrWhiteSpace(StatusMessage);
+
+    public CareerExperienceViewModel()
     {
-        public ObservableCollection<IdentityStepModel> Steps { get; } = new();
+        Steps.Add(new IdentityStepModel { Title = "Identity", SubTitle = "", IsActive = false, IsCompleted = true });
+        Steps.Add(new IdentityStepModel { Title = "Career", SubTitle = "3 min", IsActive = true, IsCompleted = false });
+        Steps.Add(new IdentityStepModel { Title = "Skills", SubTitle = "", IsActive = false });
+        Steps.Add(new IdentityStepModel { Title = "Verify", SubTitle = "", IsActive = false });
+        Steps.Add(new IdentityStepModel { Title = "Prefs", SubTitle = "", IsActive = false });
+        Steps.Add(new IdentityStepModel { Title = "Ready", SubTitle = "", IsActive = false });
+    }
 
-        public CareerExperienceViewModel()
+    [RelayCommand]
+    private async Task Back()
+    {
+        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
+    }
+
+    [RelayCommand]
+    private async Task SkipForNow()
+    {
+        await Shell.Current.GoToAsync($"//{nameof(SkillsSelectionPage)}");
+    }
+
+    [RelayCommand]
+    private async Task ImportFromEmas()
+    {
+        try
         {
-            Steps.Add(new IdentityStepModel
-            {
-                Title = "Identity",
-                SubTitle = "",
-                IsActive = false,
-                IsCompleted = true
-            });
+            IsBusy = true;
+            StatusMessage = null;
 
-            Steps.Add(new IdentityStepModel
-            {
-                Title = "Career",
-                SubTitle = "3 min",
-                IsActive = true,
-                IsCompleted = false
-            });
+            // ƏMAS integration real API ilə qoşulanda bu hissə dəyişdiriləcək.
+            await Task.Delay(500);
 
-            Steps.Add(new IdentityStepModel { Title = "Skills", SubTitle = "", IsActive = false });
-            Steps.Add(new IdentityStepModel { Title = "Verify", SubTitle = "", IsActive = false });
-            Steps.Add(new IdentityStepModel { Title = "Prefs", SubTitle = "", IsActive = false });
-            Steps.Add(new IdentityStepModel { Title = "Ready", SubTitle = "", IsActive = false });
-        }
+            await Application.Current!.MainPage!.DisplayAlert(
+                "ƏMAS import",
+                "ƏMAS import bağlantısı hələ qoşulmayıb. Hələlik skills mərhələsinə keçilir.",
+                "OK");
 
-        [RelayCommand]
-        private async Task Back()
-        {
-            await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
-        }
-
-        [RelayCommand]
-        private async Task SkipForNow()
-        {
             await Shell.Current.GoToAsync($"//{nameof(SkillsSelectionPage)}");
         }
-
-        [RelayCommand]
-        private void ImportFromEmas()
+        finally
         {
-            // Özün dolduracaqsan.
-        }
-
-        [RelayCommand]
-        private void UploadFile()
-        {
-            // Özün dolduracaqsan.
+            IsBusy = false;
         }
     }
-}
 
+    [RelayCommand]
+    private async Task UploadFile()
+    {
+        try
+        {
+            IsBusy = true;
+            StatusMessage = null;
+
+            var result = await FilePicker.Default.PickAsync(new PickOptions
+            {
+                PickerTitle = "Upload work experience file",
+                FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+                    { DevicePlatform.Android, new[] { "application/pdf", "text/xml", "application/xml", "application/json", "text/plain" } },
+                    { DevicePlatform.iOS, new[] { "com.adobe.pdf", "public.xml", "public.json", "public.text" } },
+                    { DevicePlatform.WinUI, new[] { ".pdf", ".xml", ".json" } },
+                    { DevicePlatform.macOS, new[] { "pdf", "xml", "json" } }
+                })
+            });
+
+            if (result is null)
+                return;
+
+            StatusMessage = $"Selected file: {result.FileName}. File parsing will be connected later.";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = ex.Message;
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    partial void OnStatusMessageChanged(string? value)
+    {
+        OnPropertyChanged(nameof(HasStatusMessage));
+    }
+}
