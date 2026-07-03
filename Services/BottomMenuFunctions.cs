@@ -16,7 +16,7 @@ namespace MetanetA_MobileApp.Services
         }
         public static async Task Profile()
         {
-            await Shell.Current.GoToAsync($"//{nameof(ProfilePage)}");
+            //await Shell.Current.GoToAsync($"//{nameof(ProfilePage)}");
         }
 
         public static async Task Products()

@@ -14,23 +14,11 @@ namespace MetanetA_MobileApp.Model
         [ObservableProperty]
         private string surname;
         [ObservableProperty]
-        private string city;
-        [ObservableProperty]
-        private string fatherName;
-        [ObservableProperty]
-        private string job;
+        private JobFamily job;
         [ObservableProperty]
         private string phoneNumber;
         [ObservableProperty]
-        private DateTime birthDate = DateTime.Today;
-        [ObservableProperty]
-        private string village;
-        [ObservableProperty]
-        private float bonus;
-        [ObservableProperty]
         private string password;
-        [ObservableProperty]
-        private ProfileBonus bonusOfProfile = new ProfileBonus();
     }
 }
 

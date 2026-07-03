@@ -114,10 +114,7 @@ namespace MetanetA_MobileApp.ViewModels.ProductsViewModels
         [RelayCommand]
         public async Task Buy()
         {
-            if (userInfo.BonusOfProfile.CurrentBonus > Price)
-                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-            else
-                IsVisible = true;
+      
         }
 
         [RelayCommand]

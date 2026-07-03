@@ -38,8 +38,7 @@ using Android.OS;
 #if IOS
 using WebKit;
 using Microsoft.Maui.Platform;
-using MetanetA_MobileApp.ViewModels.Job;
-using MetanetA_MobileApp.View.Job;
+
 #endif
 
 
@@ -127,13 +126,10 @@ namespace MetanetA_MobileApp
             builder.Services.AddSingleton<SignUpPage>();
             builder.Services.AddSingleton<OthersPage>();
             builder.Services.AddSingleton<ProductPage>();
-            builder.Services.AddSingleton<ProfilePage>();
             builder.Services.AddSingleton<QrScannerPage>();
             builder.Services.AddSingleton<ConfrimTheSMS>(); 
             builder.Services.AddSingleton<QrCodeAccepted>();
             builder.Services.AddTransient<LocationMapPage>();
-            builder.Services.AddSingleton<SetPasswordPage>();
-            builder.Services.AddSingleton<ProfileUserPage>();
             builder.Services.AddSingleton<ApplicationsPage>();
             builder.Services.AddSingleton<ProductDetailPage>();
             builder.Services.AddTransient<OpportunitiesPage>();
@@ -164,7 +160,6 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<SkillEvidenceViewModel>();
             
             builder.Services.AddTransient<LocationMapViewModel>();
-            builder.Services.AddTransient<ProfileUserViewModel>();
             builder.Services.AddTransient<VerifySkillsViewModel>();
             builder.Services.AddTransient<ApplicationsViewModel>();
             builder.Services.AddTransient<CareerExperienceViewModel>();
@@ -180,7 +175,6 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<SkillsViewModel>();
             builder.Services.AddTransient<SignInViewModel>();
             builder.Services.AddTransient<SignUpViewModel>();
-            builder.Services.AddTransient<ProfileViewModel>();
             builder.Services.AddTransient<ProductViewModel>();
             builder.Services.AddTransient<FaqPageViewModel>();
             builder.Services.AddSingleton<VerifySkillsPage>();

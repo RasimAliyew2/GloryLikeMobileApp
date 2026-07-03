@@ -5,11 +5,7 @@ namespace MetanetA_MobileApp.View;
 
 public partial class SignUpPage : ContentPage
 {
-    public SignUpPage()
-    {
-        InitializeComponent();
-    }
-
+   
     public SignUpPage(SignUpViewModel vm)
     {
         InitializeComponent();
@@ -18,17 +14,17 @@ public partial class SignUpPage : ContentPage
 
     private async void Continue_Clicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
-            string.IsNullOrWhiteSpace(LastNameEntry.Text) ||
-            string.IsNullOrWhiteSpace(EmailEntry.Text))
-        {
-            ValidationLabel.Text = "Please fill first name, last name, and email.";
-            ValidationPanel.IsVisible = true;
-            return;
-        }
+        //if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
+        //    string.IsNullOrWhiteSpace(LastNameEntry.Text) ||
+        //    string.IsNullOrWhiteSpace(EmailEntry.Text))
+        //{
+        //    ValidationLabel.Text = "Please fill first name, last name, and email.";
+        //    ValidationPanel.IsVisible = true;
+        //    return;
+        //}
 
-        ValidationPanel.IsVisible = false;
-        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
+        //ValidationPanel.IsVisible = false;
+       
     }
 
     private async void Back_Tapped(object sender, TappedEventArgs e)

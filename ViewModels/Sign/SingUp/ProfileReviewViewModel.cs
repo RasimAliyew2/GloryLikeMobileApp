@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MetanetA_MobileApp.View;
 
 namespace MetanetA_MobileApp.ViewModels.Sign.SingUp;
 
@@ -22,10 +23,11 @@ public partial class ProfileReviewViewModel : ObservableObject
     [RelayCommand]
     private async Task FinishAsync()
     {
-        await Application.Current!.MainPage!.DisplayAlert(
-            "Profile ready",
-            "Your onboarding profile has been prepared.",
-            "OK");
+        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+       //await Application.Current!.MainPage!.DisplayAlert(
+       //    "Profile ready",
+       //    "Your onboarding profile has been prepared.",
+       //    "OK");
     }
 
     [RelayCommand]

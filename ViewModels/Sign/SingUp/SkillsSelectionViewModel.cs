@@ -13,12 +13,18 @@ public partial class SkillsSelectionViewModel : ObservableObject
 {
     private readonly ISkillAndJobApiService _skillAndJobApiService;
     private readonly SkillVerificationState _skillVerificationState;
+    private readonly IUserSession userSession;
+    [ObservableProperty] private UserInfo userInfo;
     private bool _isLoaded;
 
     public SkillsSelectionViewModel(
         ISkillAndJobApiService skillAndJobApiService,
-        SkillVerificationState skillVerificationState)
+        SkillVerificationState skillVerificationState,
+        IUserSession userSession, UserInfo userInfo)
     {
+
+        this.userInfo = userInfo;
+        this.userSession = userSession;
         _skillAndJobApiService = skillAndJobApiService;
         _skillVerificationState = skillVerificationState;
     }
@@ -102,6 +108,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
         if (item is null)
             return;
 
+        UserInfo.Job = item.Value;
         MarkSingleSelected(JobFamilyOptions, item);
         SelectedJobFamily = item.Value;
         SelectedSeniority = null;
@@ -176,6 +183,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
             SelectedSeniority?.Name,
             language: "az");
 
+        //userSession.CurrentUser.Job
         await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
     }
 
@@ -228,10 +236,14 @@ public partial class SkillsSelectionViewModel : ObservableObject
         await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
     }
 
-    private static void MarkSingleSelected<T>(IEnumerable<SelectableItem<T>> items, SelectableItem<T> selectedItem)
+    private void MarkSingleSelected<T>(
+        IEnumerable<SelectableItem<T>> items,
+        SelectableItem<T> selectedItem)
     {
         foreach (var item in items)
+        {
             item.IsSelected = item == selectedItem;
+        }
     }
 
     private static int GetSeniorityOrder(string name)

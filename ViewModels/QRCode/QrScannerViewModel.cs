@@ -50,9 +50,9 @@ public partial class QrScannerViewModel : BaseViewModel
                 else if(isValid && !used)
                 {
                      bonus = GetbonusBasedOnProductType(value);
-                    _userInfo.BonusOfProfile.CurrentBonus += bonus;
+                   // _userInfo.BonusOfProfile.CurrentBonus += bonus;
                   
-                    _userInfo.BonusOfProfile.CollectedBonus += bonus;
+                    //_userInfo.BonusOfProfile.CollectedBonus += bonus;
 
                     QRBonusNotifier.PublishNewQRBonus(new BonusTransaction
                     {

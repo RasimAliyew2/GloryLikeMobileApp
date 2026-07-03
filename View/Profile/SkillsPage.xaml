@@ -1,264 +1,426 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetanetA_MobileApp.View.Profile.SkillsPage"
-             xmlns:controls="clr-namespace:MetanetA_MobileApp.View"
-             xmlns:ViewModel="clr-namespace:MetanetA_MobileApp.ViewModels.Profile"
-             x:DataType="ViewModel:SkillsViewModel"
-             BackgroundColor="#F6F8FC"
-             Shell.NavBarIsVisible="False">
+<ContentPage
+    x:Class="MetanetA_MobileApp.View.Profile.SkillsPage"
+    x:Name="Page"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:MetanetA_MobileApp.View"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#020617">
+
+    <ContentPage.Resources>
+        <Style x:Key="SectionTitleStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+
+        <Style x:Key="MutedTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#AAB3C5" />
+        </Style>
+
+        <Style x:Key="CaptionStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="CharacterSpacing" Value="1.2" />
+            <Setter Property="TextColor" Value="#8B95AA" />
+        </Style>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions="*,Auto">
-        
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#03031A" Offset="0" />
+                <GradientStop Color="#081627" Offset="0.55" />
+                <GradientStop Color="#061D24" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="24,20,24,30" Spacing="24">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="18,22,18,28" Spacing="18">
 
-            <!-- Settings -->
-            <Grid ColumnDefinitions="*,50">
-                <BoxView Grid.Column="0" Color="Transparent" />
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Skills"
+                            FontSize="28"
+                            FontAttributes="Bold"
+                            TextColor="White" />
 
-                <Border Grid.Column="1"
-                        WidthRequest="48"
-                        HeightRequest="48"
-                        BackgroundColor="#EDEFF8"
+                        <Label
+                            Text="Add skills and tie them to work experience."
+                            FontSize="14"
+                            TextColor="#AAB3C5" />
+                    </VerticalStackLayout>
+
+                    <Border
+                        Grid.Column="1"
+                        HeightRequest="42"
+                        Padding="14,0"
                         StrokeThickness="0"
-                        StrokeShape="RoundRectangle 24">
-                    <Label Text="⚙"
-                           FontSize="26"
-                           TextColor="#071331"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
+                        StrokeShape="RoundRectangle 21"
+                        VerticalOptions="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#3545D4" Offset="0" />
+                                <GradientStop Color="#985CF2" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowAddSkillCommand}" />
+                        </Border.GestureRecognizers>
+
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                            <Label
+                                Text="+"
+                                FontSize="22"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Text="Add"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Color="#8B5CF6" />
+
+                <Border
+                    IsVisible="{Binding HasError}"
+                    BackgroundColor="#3A1018"
+                    Stroke="#EF4444"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14">
+                    <Label
+                        Text="{Binding ErrorMessage}"
+                        TextColor="#FCA5A5"
+                        FontSize="13" />
                 </Border>
-            </Grid>
 
-            <!-- Profile header -->
-            <Grid ColumnDefinitions="100,*" ColumnSpacing="18">
-                <Border WidthRequest="100"
-                        HeightRequest="100"
-                        BackgroundColor="#FF6F55"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 32">
-                    <Label Text="AS"
-                           FontSize="30"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
-                </Border>
+                <!-- Add skill form -->
+                <Border
+                    IsVisible="{Binding IsAddSkillVisible}"
+                    Stroke="#4F46E5"
+                    StrokeThickness="1.2"
+                    StrokeDashArray="4,4"
+                    StrokeShape="RoundRectangle 28"
+                    BackgroundColor="#111827"
+                    Padding="18">
 
-                <VerticalStackLayout Grid.Column="1"
-                                     VerticalOptions="Center"
-                                     Spacing="4">
-                    <Label Text="Aigerim Suleimenova"
-                           FontSize="23"
-                           FontAttributes="Bold"
-                           TextColor="#071331" />
+                    <VerticalStackLayout Spacing="16">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Spacing="3">
+                                <Label
+                                    Text="Add a skill"
+                                    FontSize="19"
+                                    FontAttributes="Bold"
+                                    TextColor="White" />
+                                <Label
+                                    Text="Choose a skill from your job selection data."
+                                    FontSize="13"
+                                    TextColor="#AAB3C5" />
+                            </VerticalStackLayout>
 
-                    <Label Text="Senior Product Designer · 6y experience"
-                           FontSize="16"
-                           TextColor="#3D455C" />
+                            <Label
+                                Grid.Column="1"
+                                Text="×"
+                                FontSize="26"
+                                TextColor="#AAB3C5">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CancelAddSkillCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
 
-                    <Label Text="Almaty, KZ"
-                           FontSize="14"
-                           TextColor="#3D455C" />
-                </VerticalStackLayout>
-            </Grid>
+                        <VerticalStackLayout Spacing="8">
+                            <Label
+                                Text="SKILL"
+                                Style="{StaticResource CaptionStyle}" />
 
-            <!-- Edit profile button -->
-            <Border HeightRequest="56"
-                    BackgroundColor="#EDEFF6"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 28">
+                            <Border
+                                BackgroundColor="#F8FAFC"
+                                Stroke="#334155"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 18"
+                                Padding="10,0">
+                                <Picker
+                                    Title="Choose a skill"
+                                    ItemsSource="{Binding AvailableSkills}"
+                                    ItemDisplayBinding="{Binding DisplayName}"
+                                    SelectedItem="{Binding SelectedAvailableSkill}"
+                                    TextColor="#111827"
+                                    TitleColor="#667085"
+                                    FontSize="15"
+                                    HeightRequest="48" />
+                            </Border>
+                        </VerticalStackLayout>
 
-                <Border.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding EditProfileCommand}" />
-                </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Label
+                                Text="USED IN"
+                                Style="{StaticResource CaptionStyle}" />
 
-                <HorizontalStackLayout HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       Spacing="12">
-                    <Label Text="✎"
-                           FontSize="26"
-                           TextColor="#071331" />
+                            <FlexLayout
+                                BindableLayout.ItemsSource="{Binding CompanyOptions}"
+                                Wrap="Wrap"
+                                Direction="Row"
+                                AlignItems="Start"
+                                JustifyContent="Start">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Stroke="#334155"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 18"
+                                            BackgroundColor="#182235"
+                                            Padding="14,8"
+                                            Margin="0,0,8,8">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.ToggleCompanyCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <Border.Triggers>
+                                                <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="BackgroundColor" Value="#3344D5" />
+                                                    <Setter Property="Stroke" Value="#7C8CFF" />
+                                                </DataTrigger>
+                                            </Border.Triggers>
 
-                    <Label Text="Edit profile"
-                           FontSize="17"
-                           FontAttributes="Bold"
-                           TextColor="#071331"
-                           VerticalOptions="Center" />
-                </HorizontalStackLayout>
-            </Border>
+                                            <Label
+                                                Text="{Binding Name}"
+                                                FontSize="13"
+                                                TextColor="#DDE3F0" />
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
 
-            <!-- Scores -->
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Border
+                                Grid.Column="0"
+                                HeightRequest="48"
+                                Stroke="#334155"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 24"
+                                BackgroundColor="#0F172A">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CancelAddSkillCommand}" />
+                                </Border.GestureRecognizers>
+                                <Label
+                                    Text="Cancellation"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="#DDE3F0"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Border>
 
-                <Border Grid.Column="0"
-                        HeightRequest="138"
-                        Padding="20"
-                        Stroke="#E3D5EF"
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 26">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#F4E7FF" Offset="0.0" />
-                            <GradientStop Color="#EBCDF4" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.Background>
-
-                    <VerticalStackLayout Spacing="6">
-                        <Label Text="✣  MATCH SCORE"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#263DB7" />
-
-                        <Label Text="88"
-                               FontSize="42"
-                               FontAttributes="Bold"
-                               TextColor="#071331" />
-
-                        <Label Text="Top 12%"
-                               FontSize="14"
-                               TextColor="#3D455C" />
+                            <Border
+                                Grid.Column="1"
+                                HeightRequest="48"
+                                Padding="20,0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 24">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#3545D4" Offset="0" />
+                                        <GradientStop Color="#985CF2" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddSelectedSkillCommand}" />
+                                </Border.GestureRecognizers>
+                                <Label
+                                    Text="Add a skill"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Border>
+                        </Grid>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Grid.Column="1"
-                        HeightRequest="138"
-                        Padding="20"
-                        Stroke="#D3E7E2"
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 26">
-                    <Border.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#DAFAED" Offset="0.0" />
-                            <GradientStop Color="#CDEEEA" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.Background>
+                <!-- Added skill cards -->
+                <CollectionView
+                    ItemsSource="{Binding AddedSkills}"
+                    SelectionMode="None"
+                    IsVisible="{Binding HasAddedSkills}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Stroke="#26344D"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 24"
+                                BackgroundColor="#0F172A"
+                                Padding="16"
+                                Margin="0,0,0,14">
 
-                    <VerticalStackLayout Spacing="6">
-                        <Label Text="♙  TRUST SCORE"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#10A96D" />
+                                <VerticalStackLayout Spacing="14">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                        <Border
+                                            WidthRequest="46"
+                                            HeightRequest="46"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 15"
+                                            BackgroundColor="#1D2740">
+                                            <Label
+                                                Text="✧"
+                                                FontSize="22"
+                                                TextColor="#C4B5FD"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </Border>
 
-                        <Label Text="92"
-                               FontSize="42"
-                               FontAttributes="Bold"
-                               TextColor="#071331" />
+                                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                            <Label
+                                                Text="{Binding SkillName}"
+                                                FontSize="19"
+                                                FontAttributes="Bold"
+                                                TextColor="White" />
+                                            <Label
+                                                Text="{Binding UsedInText}"
+                                                FontSize="12"
+                                                TextColor="#8B95AA" />
+                                        </VerticalStackLayout>
 
-                        <Label Text="Verified"
-                               FontSize="14"
-                               TextColor="#3D455C" />
+                                        <Label
+                                            Grid.Column="2"
+                                            Text="×"
+                                            FontSize="22"
+                                            TextColor="#8B95AA">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.RemoveSkillCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </Grid>
+
+                                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="88,*,34" RowSpacing="12" ColumnSpacing="10">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="Knowledge" FontSize="12" TextColor="#AAB3C5" />
+                                        <ProgressBar Grid.Row="0" Grid.Column="1" Progress="{Binding KnowledgeRatio}" ProgressColor="#8B5CF6" BackgroundColor="#27344B" HeightRequest="5" />
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Knowledge}" FontAttributes="Bold" FontSize="12" TextColor="White" HorizontalTextAlignment="End" />
+
+                                        <Label Grid.Row="1" Grid.Column="0" Text="Experience" FontSize="12" TextColor="#AAB3C5" />
+                                        <ProgressBar Grid.Row="1" Grid.Column="1" Progress="{Binding ExperienceRatio}" ProgressColor="#8B5CF6" BackgroundColor="#27344B" HeightRequest="5" />
+                                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding Experience}" FontAttributes="Bold" FontSize="12" TextColor="White" HorizontalTextAlignment="End" />
+
+                                        <Label Grid.Row="2" Grid.Column="0" Text="Depth" FontSize="12" TextColor="#AAB3C5" />
+                                        <ProgressBar Grid.Row="2" Grid.Column="1" Progress="{Binding DepthRatio}" ProgressColor="#8B5CF6" BackgroundColor="#27344B" HeightRequest="5" />
+                                        <Label Grid.Row="2" Grid.Column="2" Text="{Binding Depth}" FontAttributes="Bold" FontSize="12" TextColor="White" HorizontalTextAlignment="End" />
+                                    </Grid>
+
+                                    <BoxView HeightRequest="1" BackgroundColor="#26344D" />
+
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                            <Label Text="CREDIBILITY" FontSize="12" CharacterSpacing="1.1" TextColor="#8B95AA" />
+                                            <Label Text="{Binding Credibility}" FontSize="18" FontAttributes="Bold" TextColor="White" />
+                                        </HorizontalStackLayout>
+
+                                        <Border
+                                            Grid.Column="1"
+                                            HeightRequest="36"
+                                            Padding="12,0"
+                                            Stroke="#334155"
+                                            StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 18"
+                                            BackgroundColor="#121B2E">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.AssessDepthCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <HorizontalStackLayout Spacing="7" VerticalOptions="Center">
+                                                <Label Text="⚡" FontSize="16" TextColor="White" />
+                                                <Label Text="Assess depth" FontSize="13" FontAttributes="Bold" TextColor="White" />
+                                            </HorizontalStackLayout>
+                                        </Border>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Border
+                    IsVisible="{Binding HasNoSkills}"
+                    Stroke="#26344D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 24"
+                    BackgroundColor="#0F172A"
+                    Padding="22"
+                    HeightRequest="170">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                        <Label
+                            Text="No skills added yet"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center" />
+                        <Label
+                            Text="Tap Add to create your first skill."
+                            FontSize="13"
+                            TextColor="#AAB3C5"
+                            HorizontalTextAlignment="Center" />
                     </VerticalStackLayout>
                 </Border>
 
-            </Grid>
+                <!-- Experience section -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,10,0,0">
+                    <Label
+                        Text="Experience"
+                        Style="{StaticResource SectionTitleStyle}" />
+                    <Label
+                        Grid.Column="1"
+                        Text="+ Add"
+                        FontSize="15"
+                        TextColor="#8B5CF6"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddExperienceCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
 
-            <!-- Skills title -->
-            <Grid ColumnDefinitions="*,Auto">
-                <Label Text="Skills"
-                       FontSize="21"
-                       FontAttributes="Bold"
-                       TextColor="#071331" />
-
-                <HorizontalStackLayout Grid.Column="1"
-                                       Spacing="6"
-                                       VerticalOptions="Center">
-                    <Label Text="+"
-                           FontSize="25"
-                           TextColor="#263DB7"
-                           VerticalOptions="Center" />
-
-                    <Label Text="Add"
-                           FontSize="17"
-                           TextColor="#263DB7"
-                           VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddSkillCommand}" />
-                </Grid.GestureRecognizers>
-            </Grid>
-
-            <!-- Skills container - hələlik boş -->
-            <Border Padding="20"
-                    MinimumHeightRequest="190"
-                    BackgroundColor="White"
-                    Stroke="#DDE2EC"
+                <Border
+                    Stroke="#26344D"
                     StrokeThickness="1"
-                    StrokeShape="RoundRectangle 28">
+                    StrokeShape="RoundRectangle 24"
+                    BackgroundColor="#0F172A"
+                    Padding="22"
+                    HeightRequest="155">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                        <Label
+                            Text="No experience added yet"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center" />
+                        <Label
+                            Text="Tap Add to create your first experience."
+                            FontSize="13"
+                            TextColor="#AAB3C5"
+                            HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
 
-                <VerticalStackLayout Spacing="12">
-                    <Label Text="No skills added yet"
-                           FontSize="16"
-                           FontAttributes="Bold"
-                           TextColor="#071331"
-                           HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
 
-                    <Label Text="Tap Add to create your first skill."
-                           FontSize="14"
-                           TextColor="#697083"
-                           HorizontalTextAlignment="Center"
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Experience title -->
-            <Grid ColumnDefinitions="*,Auto" Margin="0,8,0,0">
-                <Label Text="Experience"
-                       FontSize="21"
-                       FontAttributes="Bold"
-                       TextColor="#071331" />
-
-                <HorizontalStackLayout Grid.Column="1"
-                                       Spacing="6"
-                                       VerticalOptions="Center">
-                    <Label Text="+"
-                           FontSize="25"
-                           TextColor="#263DB7"
-                           VerticalOptions="Center" />
-
-                    <Label Text="Add"
-                           FontSize="17"
-                           TextColor="#263DB7"
-                           VerticalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddExperienceCommand}" />
-                </Grid.GestureRecognizers>
-            </Grid>
-
-            <!-- Experience container - hələlik boş -->
-            <Border Padding="20"
-                    MinimumHeightRequest="170"
-                    BackgroundColor="White"
-                    Stroke="#DDE2EC"
-                    StrokeThickness="1"
-                    StrokeShape="RoundRectangle 28">
-
-                <VerticalStackLayout Spacing="12">
-                    <Label Text="No experience added yet"
-                           FontSize="16"
-                           FontAttributes="Bold"
-                           TextColor="#071331"
-                           HorizontalOptions="Center" />
-
-                    <Label Text="Tap Add to create your first experience."
-                           FontSize="14"
-                           TextColor="#697083"
-                           HorizontalTextAlignment="Center"
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Border>
-
-        </VerticalStackLayout>
-    </ScrollView>
-
-        <!-- Bottom menu -->
-        <controls:BottomMenu Grid.Row="1"
-                      VerticalOptions="End"
-                      Margin="0,0,0,6"/>
+        <view:BottomMenu Grid.Row="1" />
     </Grid>
 </ContentPage>

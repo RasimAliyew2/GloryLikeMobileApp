@@ -90,14 +90,14 @@
                             <VerticalStackLayout Spacing="7">
                                 <Label Text="First name" Style="{StaticResource FieldLabelStyle}" />
                                 <Border Style="{StaticResource FieldBorderStyle}">
-                                    <Entry x:Name="FirstNameEntry" Placeholder="Rasim" BackgroundColor="Transparent" />
+                                    <Entry x:Name="FirstNameEntry" Placeholder="Your name" Text="{Binding UserInfo.Name}" BackgroundColor="Transparent" />
                                 </Border>
                             </VerticalStackLayout>
 
                             <VerticalStackLayout Grid.Column="1" Spacing="7">
                                 <Label Text="Last name" Style="{StaticResource FieldLabelStyle}" />
                                 <Border Style="{StaticResource FieldBorderStyle}">
-                                    <Entry x:Name="LastNameEntry" Placeholder="Aliyev" BackgroundColor="Transparent" />
+                                    <Entry x:Name="LastNameEntry" Placeholder="Surname"  Text="{Binding UserInfo.Surname}" BackgroundColor="Transparent" />
                                 </Border>
                             </VerticalStackLayout>
                         </Grid>
@@ -112,14 +112,14 @@
                         <VerticalStackLayout Spacing="7">
                             <Label Text="Phone number" Style="{StaticResource FieldLabelStyle}" />
                             <Border Style="{StaticResource FieldBorderStyle}">
-                                <Entry x:Name="PhoneEntry" Placeholder="+994 XX XXX XX XX" Keyboard="Telephone" BackgroundColor="Transparent" />
+                                <Entry x:Name="PhoneEntry" Placeholder="+994 XX XXX XX XX"  Text="{Binding UserInfo.PhoneNumber}" Keyboard="Telephone" BackgroundColor="Transparent" />
                             </Border>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Spacing="7">
                             <Label Text="Password" Style="{StaticResource FieldLabelStyle}" />
                             <Border Style="{StaticResource FieldBorderStyle}">
-                                <Entry x:Name="PasswordEntry" Placeholder="Create password" IsPassword="True" BackgroundColor="Transparent" />
+                                <Entry x:Name="PasswordEntry" Placeholder="Create password"  Text="{Binding UserInfo.Password}" IsPassword="True" BackgroundColor="Transparent" />
                             </Border>
                         </VerticalStackLayout>
 
@@ -146,7 +146,7 @@
                             TextColor="#FFFFFF"
                             FontSize="16"
                             FontAttributes="Bold"
-                            Clicked="Continue_Clicked" />
+                            Command="{Binding ContinueCommand}"/>
 
                         <Label
                             Text="Already have an account? Sign in"

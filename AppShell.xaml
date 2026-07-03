@@ -65,15 +65,15 @@
        ContentTemplate="{DataTemplate local:QrScannerPage}"
        Route="QrScannerPage"/>
 
-    <ShellContent
+    <!--<ShellContent
        Title=""
        ContentTemplate="{DataTemplate local:ProfileUserPage}"
-       Route="ProfileUserPage"/>
+       Route="ProfileUserPage"/>-->
 
-    <ShellContent
+    <!--<ShellContent
        Title=""
        ContentTemplate="{DataTemplate local:ProfilePage}"
-       Route="ProfilePage"/>
+       Route="ProfilePage"/>-->
 
     <ShellContent
        Title=""
