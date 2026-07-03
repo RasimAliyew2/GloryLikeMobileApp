@@ -146,20 +146,55 @@
                                 Style="{StaticResource CaptionStyle}" />
 
                             <Border
-                                BackgroundColor="#F8FAFC"
-                                Stroke="#334155"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 18"
-                                Padding="10,0">
-                                <Picker
-                                    Title="Choose a skill"
-                                    ItemsSource="{Binding AvailableSkills}"
-                                    ItemDisplayBinding="{Binding DisplayName}"
-                                    SelectedItem="{Binding SelectedAvailableSkill}"
-                                    TextColor="#111827"
-                                    TitleColor="#667085"
-                                    FontSize="15"
-                                    HeightRequest="48" />
+                                BackgroundColor="#0B1220"
+                                Stroke="#3545D4"
+                                StrokeThickness="1.2"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="0">
+
+                                <Grid
+                                    ColumnDefinitions="Auto,*,Auto"
+                                    ColumnSpacing="10"
+                                    Padding="14,0"
+                                    HeightRequest="56">
+
+                                    <Border
+                                        WidthRequest="30"
+                                        HeightRequest="30"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 15"
+                                        BackgroundColor="#1E293B"
+                                        VerticalOptions="Center">
+
+                                        <Label
+                                           Text="✦"
+                                           FontSize="15"
+                                           TextColor="#C4B5FD"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center" />
+                                    </Border>
+
+                                    <Picker
+                                      Grid.Column="1"
+                                      Title="Choose a skill"
+                                      ItemsSource="{Binding AvailableSkills}"
+                                      ItemDisplayBinding="{Binding DisplayName}"
+                                      SelectedItem="{Binding SelectedAvailableSkill}"
+                                      TextColor="White"
+                                      TitleColor="#8B95AA"
+                                      FontSize="15"
+                                      BackgroundColor="Transparent"
+                                      HeightRequest="56"
+                                      VerticalOptions="Center" />
+
+                                    <Label
+                                      Grid.Column="2"
+                                      Text="⌄"
+                                      FontSize="22"
+                                      TextColor="#8B95AA"
+                                      InputTransparent="True"
+                                      VerticalTextAlignment="Center" />
+                                </Grid>
                             </Border>
                         </VerticalStackLayout>
 

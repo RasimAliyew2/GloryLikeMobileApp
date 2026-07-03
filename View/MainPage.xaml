@@ -49,7 +49,7 @@
                             TextColor="#B8BDD4" />
 
                         <Label
-                            Text="Aigerim "
+                            Text="{Binding UserInfo.Name} "
                             FontSize="28"
                             FontAttributes="Bold"
                             TextColor="White" />

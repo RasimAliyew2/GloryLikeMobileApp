@@ -13,39 +13,61 @@ public partial class SkillsSelectionViewModel : ObservableObject
 {
     private readonly ISkillAndJobApiService _skillAndJobApiService;
     private readonly SkillVerificationState _skillVerificationState;
-    private readonly IUserSession userSession;
-    [ObservableProperty] private UserInfo userInfo;
+    private readonly IUserSession _userSession;
+    private readonly UserInfo _userInfo;
+
     private bool _isLoaded;
 
     public SkillsSelectionViewModel(
         ISkillAndJobApiService skillAndJobApiService,
         SkillVerificationState skillVerificationState,
-        IUserSession userSession, UserInfo userInfo)
+        IUserSession userSession,
+        UserInfo userInfo)
     {
-
-        this.userInfo = userInfo;
-        this.userSession = userSession;
         _skillAndJobApiService = skillAndJobApiService;
         _skillVerificationState = skillVerificationState;
+        _userSession = userSession;
+        _userInfo = userInfo;
+
+        _userSession.CurrentUser ??= _userInfo;
     }
 
     public ObservableCollection<SelectableItem<JobFamily>> JobFamilyOptions { get; } = new();
+
     public ObservableCollection<SelectableItem<Seniority>> SeniorityOptions { get; } = new();
+
     public ObservableCollection<SelectableItem<Position>> PositionOptions { get; } = new();
+
     public ObservableCollection<SkillSelectionItem> SkillOptions { get; } = new();
 
-    [ObservableProperty] private SelectionStep currentStep = SelectionStep.JobFamily;
-    [ObservableProperty] private JobFamily? selectedJobFamily;
-    [ObservableProperty] private Seniority? selectedSeniority;
-    [ObservableProperty] private Position? selectedPosition;
-    [ObservableProperty] private bool isBusy;
-    [ObservableProperty] private string? errorMessage;
+    [ObservableProperty]
+    private SelectionStep currentStep = SelectionStep.JobFamily;
+
+    [ObservableProperty]
+    private JobFamily? selectedJobFamily;
+
+    [ObservableProperty]
+    private Seniority? selectedSeniority;
+
+    [ObservableProperty]
+    private Position? selectedPosition;
+
+    [ObservableProperty]
+    private bool isBusy;
+
+    [ObservableProperty]
+    private string? errorMessage;
 
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
+
     public bool IsJobFamilyStep => CurrentStep == SelectionStep.JobFamily;
+
     public bool IsSeniorityStep => CurrentStep == SelectionStep.Seniority;
+
     public bool IsPositionStep => CurrentStep == SelectionStep.Position;
+
     public bool IsSkillStep => CurrentStep == SelectionStep.Skill;
+
     public bool ShowBreadcrumb => CurrentStep != SelectionStep.JobFamily;
 
     public string BreadcrumbText => CurrentStep switch
@@ -58,14 +80,17 @@ public partial class SkillsSelectionViewModel : ObservableObject
 
     public string SectionTitle => CurrentStep switch
     {
-        SelectionStep.JobFamily => "Choose your job family",
-        SelectionStep.Seniority => "Select your seniority",
-        SelectionStep.Position => "Choose your role",
-        SelectionStep.Skill => SelectedPosition is null ? "Select skills" : $"Skills for {SelectedPosition.Name}",
+        SelectionStep.JobFamily => "JOB FAMILY",
+        SelectionStep.Seniority => "SENIORITY",
+        SelectionStep.Position => "POSITION",
+        SelectionStep.Skill => SelectedPosition is null
+            ? "SUGGESTED SKILLS"
+            : $"SUGGESTED SKILLS FOR {SelectedPosition.Name.ToUpper()}",
         _ => string.Empty
     };
 
     public int SelectedSkillCount => SkillOptions.Count(x => x.IsSelected);
+
     public bool HasSelectedSkills => SelectedSkillCount > 0;
 
     public List<Skill> SelectedSkills => SkillOptions
@@ -87,8 +112,11 @@ public partial class SkillsSelectionViewModel : ObservableObject
             var result = await _skillAndJobApiService.GetJobFamiliesAsync();
 
             JobFamilyOptions.Clear();
+
             foreach (var item in result.OrderBy(x => x.JobName))
+            {
                 JobFamilyOptions.Add(new SelectableItem<JobFamily>(item, item.JobName));
+            }
 
             _isLoaded = true;
         }
@@ -108,9 +136,12 @@ public partial class SkillsSelectionViewModel : ObservableObject
         if (item is null)
             return;
 
-        UserInfo.Job = item.Value;
         MarkSingleSelected(JobFamilyOptions, item);
+
         SelectedJobFamily = item.Value;
+        _userInfo.Job = item.Value;
+        _userSession.CurrentUser = _userInfo;
+
         SelectedSeniority = null;
         SelectedPosition = null;
 
@@ -119,7 +150,9 @@ public partial class SkillsSelectionViewModel : ObservableObject
         SkillOptions.Clear();
 
         foreach (var seniority in item.Value.Seniorities.OrderBy(x => GetSeniorityOrder(x.Name)))
+        {
             SeniorityOptions.Add(new SelectableItem<Seniority>(seniority, seniority.Name));
+        }
 
         CurrentStep = SelectionStep.Seniority;
         RefreshComputedProperties();
@@ -132,6 +165,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
             return;
 
         MarkSingleSelected(SeniorityOptions, item);
+
         SelectedSeniority = item.Value;
         SelectedPosition = null;
 
@@ -139,7 +173,9 @@ public partial class SkillsSelectionViewModel : ObservableObject
         SkillOptions.Clear();
 
         foreach (var position in item.Value.Positions.OrderBy(x => x.Name))
+        {
             PositionOptions.Add(new SelectableItem<Position>(position, position.Name));
+        }
 
         CurrentStep = SelectionStep.Position;
         RefreshComputedProperties();
@@ -152,11 +188,15 @@ public partial class SkillsSelectionViewModel : ObservableObject
             return;
 
         MarkSingleSelected(PositionOptions, item);
+
         SelectedPosition = item.Value;
 
         SkillOptions.Clear();
+
         foreach (var skill in item.Value.Skills.OrderBy(x => x.SkillName))
+        {
             SkillOptions.Add(new SkillSelectionItem(skill));
+        }
 
         CurrentStep = SelectionStep.Skill;
         RefreshComputedProperties();
@@ -178,12 +218,13 @@ public partial class SkillsSelectionViewModel : ObservableObject
         if (!HasSelectedSkills)
             return;
 
+        SaveSelectedSkillsToUserSession();
+
         _skillVerificationState.SetSelectedSkills(
             SelectedSkills,
             SelectedSeniority?.Name,
             language: "az");
 
-        //userSession.CurrentUser.Job
         await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
     }
 
@@ -195,8 +236,10 @@ public partial class SkillsSelectionViewModel : ObservableObject
             case SelectionStep.Skill:
                 SkillOptions.Clear();
                 SelectedPosition = null;
+
                 foreach (var item in PositionOptions)
                     item.IsSelected = false;
+
                 CurrentStep = SelectionStep.Position;
                 break;
 
@@ -205,8 +248,10 @@ public partial class SkillsSelectionViewModel : ObservableObject
                 SkillOptions.Clear();
                 SelectedSeniority = null;
                 SelectedPosition = null;
+
                 foreach (var item in SeniorityOptions)
                     item.IsSelected = false;
+
                 CurrentStep = SelectionStep.Seniority;
                 break;
 
@@ -217,13 +262,15 @@ public partial class SkillsSelectionViewModel : ObservableObject
                 SelectedJobFamily = null;
                 SelectedSeniority = null;
                 SelectedPosition = null;
+
                 foreach (var item in JobFamilyOptions)
                     item.IsSelected = false;
+
                 CurrentStep = SelectionStep.JobFamily;
                 break;
 
             case SelectionStep.JobFamily:
-                await Shell.Current.GoToAsync($"//{nameof(CareerExperiencePage)}");
+                await Shell.Current.GoToAsync("..");
                 break;
         }
 
@@ -233,10 +280,42 @@ public partial class SkillsSelectionViewModel : ObservableObject
     [RelayCommand]
     private async Task SkipAsync()
     {
-        await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
     }
 
-    private void MarkSingleSelected<T>(
+    private void SaveSelectedSkillsToUserSession()
+    {
+        _userInfo.Job = SelectedJobFamily;
+
+        foreach (var selectedSkill in SkillOptions.Where(x => x.IsSelected))
+        {
+            var skill = selectedSkill.Skill;
+
+            var exists = _userInfo.SelectedSkills.Any(x =>
+                x.SkillId == skill.Id ||
+                x.SkillName.Equals(skill.SkillName, StringComparison.OrdinalIgnoreCase));
+
+            if (exists)
+                continue;
+
+            _userInfo.SelectedSkills.Add(new UserSkillInfo
+            {
+                SkillId = skill.Id,
+                SkillName = skill.SkillName,
+                PositionId = SelectedPosition?.Id ?? skill.PositionId,
+                PositionName = SelectedPosition?.Name ?? string.Empty,
+                SeniorityName = SelectedSeniority?.Name ?? string.Empty,
+                JobFamilyName = SelectedJobFamily?.JobName ?? string.Empty,
+                SkillComplexity = string.IsNullOrWhiteSpace(skill.SkillComplexity)
+                    ? "medium"
+                    : skill.SkillComplexity.Trim().ToLowerInvariant()
+            });
+        }
+
+        _userSession.CurrentUser = _userInfo;
+    }
+
+    private static void MarkSingleSelected<T>(
         IEnumerable<SelectableItem<T>> items,
         SelectableItem<T> selectedItem)
     {
@@ -260,9 +339,13 @@ public partial class SkillsSelectionViewModel : ObservableObject
     }
 
     partial void OnCurrentStepChanged(SelectionStep value) => RefreshComputedProperties();
+
     partial void OnSelectedJobFamilyChanged(JobFamily? value) => RefreshComputedProperties();
+
     partial void OnSelectedSeniorityChanged(Seniority? value) => RefreshComputedProperties();
+
     partial void OnSelectedPositionChanged(Position? value) => RefreshComputedProperties();
+
     partial void OnErrorMessageChanged(string? value) => OnPropertyChanged(nameof(HasError));
 
     private void RefreshComputedProperties()

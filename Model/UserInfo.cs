@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace MetanetA_MobileApp.Model
+namespace MetanetA_MobileApp.Model;
+
+public partial class UserInfo : ObservableObject
 {
-    public partial class UserInfo : ObservableObject
-    {
-        [ObservableProperty]
-        private string name;
-        [ObservableProperty]
-        private string surname;
-        [ObservableProperty]
-        private JobFamily job;
-        [ObservableProperty]
-        private string phoneNumber;
-        [ObservableProperty]
-        private string password;
-    }
+    [ObservableProperty]
+    private string name = string.Empty;
+
+    [ObservableProperty]
+    private string surname = string.Empty;
+
+    [ObservableProperty]
+    private JobFamily? job;
+
+    [ObservableProperty]
+    private string phoneNumber = string.Empty;
+
+    [ObservableProperty]
+    private string password = string.Empty;
+
+    public ObservableCollection<UserSkillInfo> SelectedSkills { get; } = new();
 }
-
-

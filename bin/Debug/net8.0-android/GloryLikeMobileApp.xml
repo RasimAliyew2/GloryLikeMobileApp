@@ -1139,9 +1139,6 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.UserInfo">
-            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.userInfo"/>
-        </member>
         <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.currentStep"/>
         </member>

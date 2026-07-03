@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View;
 using MetanetA_MobileApp.View.Job;
@@ -17,9 +19,12 @@ namespace MetanetA_MobileApp.ViewModels
     public partial class BaseViewModel : ObservableObject
     {
         [ObservableProperty] private BottomMenuState menuState;
-
-        public BaseViewModel(BottomMenuState menuState)
+        private readonly IUserSession _userSession;
+        private readonly UserInfo userInfo;
+        public BaseViewModel(BottomMenuState menuState, IUserSession userSession, UserInfo userInfo)
         {
+            _userSession = userSession;
+            this.userInfo = userInfo;
             this.menuState = menuState;
         }
   

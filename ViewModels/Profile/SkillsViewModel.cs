@@ -12,20 +12,25 @@ public partial class SkillsViewModel : BaseViewModel
 {
     private readonly ISkillAndJobApiService _skillAndJobApiService;
     private readonly SkillVerificationState? _skillVerificationState;
-    private readonly IUserSession userSession;
-    [ObservableProperty] private UserInfo userInfo;
+    private readonly IUserSession _userSession;
+
     private bool _isLoaded;
 
     public SkillsViewModel(
         BottomMenuState menuState,
         ISkillAndJobApiService skillAndJobApiService,
-        IUserSession userSession, UserInfo userInfo,
-        SkillVerificationState? skillVerificationState = null) : base(menuState)
+        IUserSession userSession,
+        UserInfo userInfo,
+        SkillVerificationState? skillVerificationState = null)
+        : base(menuState)
     {
         _skillAndJobApiService = skillAndJobApiService;
         _skillVerificationState = skillVerificationState;
-        this.userSession = userSession;
+        _userSession = userSession;
+
         UserInfo = userInfo;
+        _userSession.CurrentUser ??= UserInfo;
+
         MenuState.Select(BottomTab.Profile);
 
         CompanyOptions.Add(new CompanyChip("Azercell Telecom", true));
@@ -37,6 +42,9 @@ public partial class SkillsViewModel : BaseViewModel
     public ObservableCollection<CompanyChip> CompanyOptions { get; } = new();
 
     public ObservableCollection<ProfileSkillItem> AddedSkills { get; } = new();
+
+    [ObservableProperty]
+    private UserInfo userInfo;
 
     [ObservableProperty]
     private AvailableSkillItem? selectedAvailableSkill;
@@ -67,37 +75,8 @@ public partial class SkillsViewModel : BaseViewModel
             IsBusy = true;
             ErrorMessage = null;
 
-            //var jobFamilies = await _skillAndJobApiService.GetJobFamiliesAsync();
-
-            var selectedJob = userInfo.Job;
-
-            if (selectedJob is null)
-                return;
-
-            var allSkills = selectedJob.Seniorities
-                .SelectMany(seniority => seniority.Positions.Select(position => new
-                {
-                    seniority,
-                    position
-                }))
-                .SelectMany(x => x.position.Skills.Select(skill => new AvailableSkillItem
-                {
-                    SkillId = skill.Id,
-                    SkillName = skill.SkillName,
-                    PositionName = x.position.Name,
-                    SeniorityName = x.seniority.Name,
-                    JobFamilyName = selectedJob.JobName
-                }))
-                .Where(x => !string.IsNullOrWhiteSpace(x.SkillName))
-                .GroupBy(x => x.SkillName.Trim(), StringComparer.OrdinalIgnoreCase)
-                .Select(g => g.First())
-                .OrderBy(x => x.SkillName)
-                .ToList();
-
-            AvailableSkills.Clear();
-
-            foreach (var skill in allSkills)
-                AvailableSkills.Add(skill);
+            LoadAvailableSkillsFromSelectedJob();
+            LoadSkillsSelectedDuringSignup();
 
             _isLoaded = true;
         }
@@ -152,6 +131,7 @@ public partial class SkillsViewModel : BaseViewModel
         }
 
         var alreadyExists = AddedSkills.Any(x =>
+            x.SkillId == SelectedAvailableSkill.SkillId ||
             x.SkillName.Equals(SelectedAvailableSkill.SkillName, StringComparison.OrdinalIgnoreCase));
 
         if (alreadyExists)
@@ -168,17 +148,23 @@ public partial class SkillsViewModel : BaseViewModel
         if (selectedCompanies.Count == 0)
             selectedCompanies.Add("Not linked to experience");
 
-        AddedSkills.Add(new ProfileSkillItem
+        var profileSkill = new ProfileSkillItem
         {
             SkillId = SelectedAvailableSkill.SkillId,
             SkillName = SelectedAvailableSkill.SkillName,
             PositionName = SelectedAvailableSkill.PositionName,
             SeniorityName = SelectedAvailableSkill.SeniorityName,
+            JobFamilyName = SelectedAvailableSkill.JobFamilyName,
+            SkillComplexity = SelectedAvailableSkill.SkillComplexity,
             UsedIn = selectedCompanies
-        });
+        };
+
+        AddedSkills.Add(profileSkill);
+        SaveSkillToSession(profileSkill);
 
         IsAddSkillVisible = false;
         SelectedAvailableSkill = null;
+
         RefreshSkillState();
     }
 
@@ -189,6 +175,7 @@ public partial class SkillsViewModel : BaseViewModel
             return;
 
         AddedSkills.Remove(item);
+        RemoveSkillFromSession(item);
         RefreshSkillState();
     }
 
@@ -204,7 +191,8 @@ public partial class SkillsViewModel : BaseViewModel
             {
                 Id = item.SkillId,
                 SkillName = item.SkillName,
-                PositionId = 0
+                PositionId = 0,
+                SkillComplexity = item.SkillComplexity
             };
 
             _skillVerificationState.SetSelectedSkills(
@@ -226,6 +214,120 @@ public partial class SkillsViewModel : BaseViewModel
     private async Task EditProfileAsync()
     {
         await Shell.Current.DisplayAlert("Edit profile", "Edit profile clicked", "OK");
+    }
+
+    private void LoadAvailableSkillsFromSelectedJob()
+    {
+        AvailableSkills.Clear();
+
+        var currentUser = GetCurrentUser();
+        var selectedJob = currentUser.Job;
+
+        if (selectedJob is null)
+            return;
+
+        var allSkills = selectedJob.Seniorities
+            .SelectMany(seniority => seniority.Positions.Select(position => new
+            {
+                seniority,
+                position
+            }))
+            .SelectMany(x => x.position.Skills.Select(skill => new AvailableSkillItem
+            {
+                SkillId = skill.Id,
+                SkillName = skill.SkillName,
+                PositionId = skill.PositionId,
+                PositionName = x.position.Name,
+                SeniorityName = x.seniority.Name,
+                JobFamilyName = selectedJob.JobName,
+                SkillComplexity = string.IsNullOrWhiteSpace(skill.SkillComplexity)
+                    ? "medium"
+                    : skill.SkillComplexity.Trim().ToLowerInvariant()
+            }))
+            .Where(x => !string.IsNullOrWhiteSpace(x.SkillName))
+            .GroupBy(x => x.SkillName.Trim(), StringComparer.OrdinalIgnoreCase)
+            .Select(g => g.First())
+            .OrderBy(x => x.SkillName)
+            .ToList();
+
+        foreach (var skill in allSkills)
+            AvailableSkills.Add(skill);
+    }
+
+    private void LoadSkillsSelectedDuringSignup()
+    {
+        AddedSkills.Clear();
+
+        var currentUser = GetCurrentUser();
+
+        foreach (var selectedSkill in currentUser.SelectedSkills)
+        {
+            if (AddedSkills.Any(x => x.SkillId == selectedSkill.SkillId))
+                continue;
+
+            AddedSkills.Add(new ProfileSkillItem
+            {
+                SkillId = selectedSkill.SkillId,
+                SkillName = selectedSkill.SkillName,
+                PositionName = selectedSkill.PositionName,
+                SeniorityName = selectedSkill.SeniorityName,
+                JobFamilyName = selectedSkill.JobFamilyName,
+                SkillComplexity = selectedSkill.SkillComplexity,
+                UsedIn = new List<string> { "Selected during sign up" }
+            });
+        }
+
+        RefreshSkillState();
+    }
+
+    private void SaveSkillToSession(ProfileSkillItem item)
+    {
+        var currentUser = GetCurrentUser();
+
+        var exists = currentUser.SelectedSkills.Any(x =>
+            x.SkillId == item.SkillId ||
+            x.SkillName.Equals(item.SkillName, StringComparison.OrdinalIgnoreCase));
+
+        if (exists)
+            return;
+
+        currentUser.SelectedSkills.Add(new UserSkillInfo
+        {
+            SkillId = item.SkillId,
+            SkillName = item.SkillName,
+            PositionName = item.PositionName,
+            SeniorityName = item.SeniorityName,
+            JobFamilyName = item.JobFamilyName,
+            SkillComplexity = item.SkillComplexity
+        });
+
+        _userSession.CurrentUser = currentUser;
+    }
+
+    private void RemoveSkillFromSession(ProfileSkillItem item)
+    {
+        var currentUser = GetCurrentUser();
+
+        var saved = currentUser.SelectedSkills.FirstOrDefault(x =>
+            x.SkillId == item.SkillId ||
+            x.SkillName.Equals(item.SkillName, StringComparison.OrdinalIgnoreCase));
+
+        if (saved is not null)
+            currentUser.SelectedSkills.Remove(saved);
+
+        _userSession.CurrentUser = currentUser;
+    }
+
+    private UserInfo GetCurrentUser()
+    {
+        if (_userSession.CurrentUser is not null)
+        {
+            UserInfo = _userSession.CurrentUser;
+            return _userSession.CurrentUser;
+        }
+
+        _userSession.CurrentUser = UserInfo;
+        return UserInfo;
     }
 
     partial void OnIsAddSkillVisibleChanged(bool value)
@@ -265,11 +367,15 @@ public class AvailableSkillItem
 
     public string SkillName { get; set; } = string.Empty;
 
+    public int PositionId { get; set; }
+
     public string PositionName { get; set; } = string.Empty;
 
     public string SeniorityName { get; set; } = string.Empty;
 
     public string JobFamilyName { get; set; } = string.Empty;
+
+    public string SkillComplexity { get; set; } = "medium";
 
     public string DisplayName => string.IsNullOrWhiteSpace(PositionName)
         ? SkillName
@@ -285,6 +391,10 @@ public class ProfileSkillItem
     public string PositionName { get; set; } = string.Empty;
 
     public string SeniorityName { get; set; } = string.Empty;
+
+    public string JobFamilyName { get; set; } = string.Empty;
+
+    public string SkillComplexity { get; set; } = "medium";
 
     public List<string> UsedIn { get; set; } = new();
 
