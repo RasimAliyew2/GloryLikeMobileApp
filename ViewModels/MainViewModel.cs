@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.Cart;
 using MetanetA_MobileApp.Services.Sales;
 using MetanetA_MobileApp.Services.UIState;
@@ -21,6 +22,9 @@ namespace MetanetA_MobileApp.ViewModels
         [ObservableProperty] private CartState cart;
         [ObservableProperty] private CartService cartService;
 
+        private readonly IUserSession _userSession;
+        private readonly UserInfo userInfo;
+
         // MainPage search
         [ObservableProperty] private string searchText;
         [ObservableProperty] private bool isSearchResultsVisible;
@@ -31,8 +35,12 @@ namespace MetanetA_MobileApp.ViewModels
             BottomMenuState menuState,
             CartState cart,
             CartService cartService,
-            SalesCatalogService catalog) : base(menuState)
+            SalesCatalogService catalog,
+            IUserSession userSession,
+            UserInfo userInfo) : base(menuState)
         {
+            _userSession = userSession;
+            this.userInfo = userInfo;
             Cart = cart;
             CartService = cartService;
             _catalog = catalog;

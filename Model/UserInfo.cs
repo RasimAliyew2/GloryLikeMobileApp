@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace MetanetA_MobileApp.Model;
@@ -20,5 +20,9 @@ public partial class UserInfo : ObservableObject
     [ObservableProperty]
     private string password = string.Empty;
 
-    public ObservableCollection<UserSkillInfo> SelectedSkills { get; } = new();
+    /// <summary>
+    /// Skills selected during sign-up and the scores collected during VerifySkillsPage.
+    /// SkillsPage reads this list and renders the skill cards.
+    /// </summary>
+    public List<UserSkillInfo> SelectedSkills { get; set; } = new();
 }

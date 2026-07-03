@@ -79,6 +79,12 @@
         <member name="T:MetanetA_MobileApp.Model.UserInfo">
             <inheritdoc/>
         </member>
+        <member name="P:MetanetA_MobileApp.Model.UserInfo.SelectedSkills">
+            <summary>
+            Skills selected during sign-up and the scores collected during VerifySkillsPage.
+            SkillsPage reads this list and renders the skill cards.
+            </summary>
+        </member>
         <member name="P:MetanetA_MobileApp.Model.UserInfo.Name">
             <inheritdoc cref="F:MetanetA_MobileApp.Model.UserInfo.name"/>
         </member>
@@ -1138,6 +1144,9 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.UserInfo">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.userInfo"/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.CurrentStep">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.SkillsSelectionViewModel.currentStep"/>

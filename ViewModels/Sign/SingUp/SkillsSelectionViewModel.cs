@@ -14,7 +14,9 @@ public partial class SkillsSelectionViewModel : ObservableObject
     private readonly ISkillAndJobApiService _skillAndJobApiService;
     private readonly SkillVerificationState _skillVerificationState;
     private readonly IUserSession _userSession;
-    private readonly UserInfo _userInfo;
+
+    [ObservableProperty]
+    private UserInfo userInfo;
 
     private bool _isLoaded;
 
@@ -24,12 +26,12 @@ public partial class SkillsSelectionViewModel : ObservableObject
         IUserSession userSession,
         UserInfo userInfo)
     {
+        _userSession = userSession;
+        UserInfo = userSession.CurrentUser;
         _skillAndJobApiService = skillAndJobApiService;
         _skillVerificationState = skillVerificationState;
-        _userSession = userSession;
-        _userInfo = userInfo;
 
-        _userSession.CurrentUser ??= _userInfo;
+        _userSession.CurrentUser ??= UserInfo;
     }
 
     public ObservableCollection<SelectableItem<JobFamily>> JobFamilyOptions { get; } = new();
@@ -80,12 +82,10 @@ public partial class SkillsSelectionViewModel : ObservableObject
 
     public string SectionTitle => CurrentStep switch
     {
-        SelectionStep.JobFamily => "JOB FAMILY",
-        SelectionStep.Seniority => "SENIORITY",
-        SelectionStep.Position => "POSITION",
-        SelectionStep.Skill => SelectedPosition is null
-            ? "SUGGESTED SKILLS"
-            : $"SUGGESTED SKILLS FOR {SelectedPosition.Name.ToUpper()}",
+        SelectionStep.JobFamily => "Choose your job family",
+        SelectionStep.Seniority => "Select your seniority",
+        SelectionStep.Position => "Choose your role",
+        SelectionStep.Skill => SelectedPosition is null ? "Select skills" : $"Skills for {SelectedPosition.Name}",
         _ => string.Empty
     };
 
@@ -114,9 +114,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
             JobFamilyOptions.Clear();
 
             foreach (var item in result.OrderBy(x => x.JobName))
-            {
                 JobFamilyOptions.Add(new SelectableItem<JobFamily>(item, item.JobName));
-            }
 
             _isLoaded = true;
         }
@@ -136,12 +134,13 @@ public partial class SkillsSelectionViewModel : ObservableObject
         if (item is null)
             return;
 
+        UserInfo.Job = item.Value;
+        _userSession.CurrentUser ??= UserInfo;
+        _userSession.CurrentUser.Job = item.Value;
+
         MarkSingleSelected(JobFamilyOptions, item);
 
         SelectedJobFamily = item.Value;
-        _userInfo.Job = item.Value;
-        _userSession.CurrentUser = _userInfo;
-
         SelectedSeniority = null;
         SelectedPosition = null;
 
@@ -150,9 +149,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
         SkillOptions.Clear();
 
         foreach (var seniority in item.Value.Seniorities.OrderBy(x => GetSeniorityOrder(x.Name)))
-        {
             SeniorityOptions.Add(new SelectableItem<Seniority>(seniority, seniority.Name));
-        }
 
         CurrentStep = SelectionStep.Seniority;
         RefreshComputedProperties();
@@ -173,9 +170,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
         SkillOptions.Clear();
 
         foreach (var position in item.Value.Positions.OrderBy(x => x.Name))
-        {
             PositionOptions.Add(new SelectableItem<Position>(position, position.Name));
-        }
 
         CurrentStep = SelectionStep.Position;
         RefreshComputedProperties();
@@ -194,9 +189,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
         SkillOptions.Clear();
 
         foreach (var skill in item.Value.Skills.OrderBy(x => x.SkillName))
-        {
             SkillOptions.Add(new SkillSelectionItem(skill));
-        }
 
         CurrentStep = SelectionStep.Skill;
         RefreshComputedProperties();
@@ -218,12 +211,12 @@ public partial class SkillsSelectionViewModel : ObservableObject
         if (!HasSelectedSkills)
             return;
 
-        SaveSelectedSkillsToUserSession();
-
         _skillVerificationState.SetSelectedSkills(
             SelectedSkills,
             SelectedSeniority?.Name,
             language: "az");
+
+        SaveSelectedSkillsToSession();
 
         await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
     }
@@ -270,7 +263,7 @@ public partial class SkillsSelectionViewModel : ObservableObject
                 break;
 
             case SelectionStep.JobFamily:
-                await Shell.Current.GoToAsync("..");
+                await Shell.Current.GoToAsync($"//{nameof(CareerExperiencePage)}");
                 break;
         }
 
@@ -280,49 +273,56 @@ public partial class SkillsSelectionViewModel : ObservableObject
     [RelayCommand]
     private async Task SkipAsync()
     {
-        await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(VerifySkillsPage)}");
     }
 
-    private void SaveSelectedSkillsToUserSession()
+    private void SaveSelectedSkillsToSession()
     {
-        _userInfo.Job = SelectedJobFamily;
+        _userSession.CurrentUser ??= UserInfo;
 
-        foreach (var selectedSkill in SkillOptions.Where(x => x.IsSelected))
+        var selectedUser = _userSession.CurrentUser;
+        selectedUser.Job = UserInfo.Job;
+
+        foreach (var skill in SelectedSkills)
         {
-            var skill = selectedSkill.Skill;
+            var existing = selectedUser.SelectedSkills.FirstOrDefault(x => x.SkillId == skill.Id);
 
-            var exists = _userInfo.SelectedSkills.Any(x =>
-                x.SkillId == skill.Id ||
-                x.SkillName.Equals(skill.SkillName, StringComparison.OrdinalIgnoreCase));
-
-            if (exists)
-                continue;
-
-            _userInfo.SelectedSkills.Add(new UserSkillInfo
+            if (existing is null)
             {
-                SkillId = skill.Id,
-                SkillName = skill.SkillName,
-                PositionId = SelectedPosition?.Id ?? skill.PositionId,
-                PositionName = SelectedPosition?.Name ?? string.Empty,
-                SeniorityName = SelectedSeniority?.Name ?? string.Empty,
-                JobFamilyName = SelectedJobFamily?.JobName ?? string.Empty,
-                SkillComplexity = string.IsNullOrWhiteSpace(skill.SkillComplexity)
-                    ? "medium"
-                    : skill.SkillComplexity.Trim().ToLowerInvariant()
-            });
+                selectedUser.SelectedSkills.Add(new UserSkillInfo
+                {
+                    SkillId = skill.Id,
+                    SkillName = skill.SkillName,
+                    PositionId = SelectedPosition?.Id ?? skill.PositionId,
+                    PositionName = SelectedPosition?.Name ?? string.Empty,
+                    SeniorityName = NormalizeSeniority(SelectedSeniority?.Name),
+                    JobFamilyName = SelectedJobFamily?.JobName ?? UserInfo.Job?.JobName ?? string.Empty,
+                    SkillComplexity = NormalizeComplexity(skill.SkillComplexity),
+                    Knowledge = 0,
+                    Experience = 0,
+                    Depth = 0,
+                    Credibility = 0,
+                    DepthScore = 0
+                });
+            }
+            else
+            {
+                existing.SkillName = skill.SkillName;
+                existing.PositionId = SelectedPosition?.Id ?? skill.PositionId;
+                existing.PositionName = SelectedPosition?.Name ?? existing.PositionName;
+                existing.SeniorityName = NormalizeSeniority(SelectedSeniority?.Name);
+                existing.JobFamilyName = SelectedJobFamily?.JobName ?? existing.JobFamilyName;
+                existing.SkillComplexity = NormalizeComplexity(skill.SkillComplexity);
+            }
         }
-
-        _userSession.CurrentUser = _userInfo;
     }
 
-    private static void MarkSingleSelected<T>(
+    private void MarkSingleSelected<T>(
         IEnumerable<SelectableItem<T>> items,
         SelectableItem<T> selectedItem)
     {
         foreach (var item in items)
-        {
             item.IsSelected = item == selectedItem;
-        }
     }
 
     private static int GetSeniorityOrder(string name)
@@ -335,6 +335,36 @@ public partial class SkillsSelectionViewModel : ObservableObject
             "Lead" => 4,
             "Head" => 5,
             _ => 99
+        };
+    }
+
+    private static string NormalizeSeniority(string? seniority)
+    {
+        if (string.IsNullOrWhiteSpace(seniority))
+            return "middle";
+
+        return seniority.Trim().ToLowerInvariant() switch
+        {
+            "junior" => "junior",
+            "middle" => "middle",
+            "senior" => "senior",
+            "lead" => "lead",
+            "head" => "lead",
+            _ => "middle"
+        };
+    }
+
+    private static string NormalizeComplexity(string? complexity)
+    {
+        if (string.IsNullOrWhiteSpace(complexity))
+            return "medium";
+
+        return complexity.Trim().ToLowerInvariant() switch
+        {
+            "low" => "low",
+            "medium" => "medium",
+            "high" => "high",
+            _ => "medium"
         };
     }
 

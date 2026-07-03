@@ -19,12 +19,9 @@ namespace MetanetA_MobileApp.ViewModels
     public partial class BaseViewModel : ObservableObject
     {
         [ObservableProperty] private BottomMenuState menuState;
-        private readonly IUserSession _userSession;
-        private readonly UserInfo userInfo;
-        public BaseViewModel(BottomMenuState menuState, IUserSession userSession, UserInfo userInfo)
+
+        public BaseViewModel(BottomMenuState menuState)
         {
-            _userSession = userSession;
-            this.userInfo = userInfo;
             this.menuState = menuState;
         }
   
