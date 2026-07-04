@@ -126,6 +126,8 @@ public partial class OpportunitiesViewModel : BaseViewModel
             .GroupBy(x => new
             {
                 RequiredJob = x.RequiredJob.Trim(),
+                Name = x.Name,
+                Description = x.Description,
                 Seniority = string.IsNullOrWhiteSpace(x.Seniority) ? "Middle" : x.Seniority.Trim()
             })
             .ToList();
@@ -168,18 +170,20 @@ public partial class OpportunitiesViewModel : BaseViewModel
 
             result.Add(new OpportunityItem
             {
+                
                 LogoLetter = GetLogoLetter(group.Key.RequiredJob),
                 Company = group.Key.RequiredJob,
                 PostedAgo = index == 0 ? "2d" : $"{Math.Min(index + 1, 7)}d",
-                Title = BuildTitle(group.Key.RequiredJob, group.Key.Seniority),
-                Location = "Role template · API",
+                Title = group.Key.Name,// BuildTitle(group.Key.RequiredJob, group.Key.Seniority),
+                Location = "Role template ·",
                 WorkType = "Role",
                 Level = group.Key.Seniority,
                 Salary = $"{requiredSkills.Count} skills",
                 Score = score,
                 ScoreColor = GetScoreColor(score),
                 IsExpanded = index == 0,
-                AboutRole = BuildAboutRole(group.Key.RequiredJob, group.Key.Seniority, requiredSkills.Count),
+       
+                AboutRole = group.Key.Description,// BuildAboutRole(group.Key.RequiredJob, group.Key.Seniority, requiredSkills.Count),
                 Responsibilities = BuildResponsibilities(requiredSkills),
                 MatchedSkills = matchedSkills.Count == 0 ? "No matched skills yet" : string.Join(", ", matchedSkills),
                 MissingSkills = missingSkills.Count == 0 ? "No missing required skills" : string.Join(", ", missingSkills.Take(8)),
@@ -277,7 +281,7 @@ public partial class OpportunitiesViewModel : BaseViewModel
 
     private static string BuildAboutRole(string requiredJob, string seniority, int skillCount)
     {
-        return $"This role template is loaded from the JobOffers API for {requiredJob}. It evaluates your readiness for the {seniority} level using {skillCount} weighted required skills.";
+        return $"No Description for noü";
     }
 
     private static string BuildResponsibilities(List<RequiredSkillTemplate> requiredSkills)

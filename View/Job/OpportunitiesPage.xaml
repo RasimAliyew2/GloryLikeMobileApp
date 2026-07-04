@@ -189,11 +189,12 @@
                                             WidthRequest="74"
                                             HeightRequest="74"
                                             Progress="{Binding Score}"
+                                            
                                             CenterText="{Binding ScoreText}"
                                             SubText="match"
                                             StrokeSize="6"
                                             ProgressColor="{Binding ScoreMauiColor}"
-                                            TrackColor="#FFFFFF25"
+                                            TrackColor="Green"
                                             FillColor="#10FFFFFF"
                                             TextColor="White"
                                             HorizontalOptions="End"

@@ -126,28 +126,29 @@ public class CircularProgressView : GraphicsView, IDrawable
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
-        var progress = Math.Clamp(Progress, 0d, 100d) / 100d;
+        var progress = Math.Clamp(Progress, 0, 100) / 100d;
+
         var size = Math.Min(dirtyRect.Width, dirtyRect.Height);
         var stroke = StrokeSize;
-        var padding = stroke + 2f;
-        var diameter = size - padding * 2f;
-        var x = dirtyRect.Center.X - diameter / 2f;
-        var y = dirtyRect.Center.Y - diameter / 2f;
+
+        var padding = stroke + 2;
+        var x = dirtyRect.Center.X - size / 2 + padding;
+        var y = dirtyRect.Center.Y - size / 2 + padding;
+        var diameter = size - padding * 2;
 
         canvas.Antialias = true;
-
-        canvas.FillColor = FillColor;
-        canvas.FillEllipse(x, y, diameter, diameter);
-
         canvas.StrokeSize = stroke;
         canvas.StrokeLineCap = LineCap.Round;
 
+        // Track
         canvas.StrokeColor = TrackColor;
         canvas.DrawEllipse(x, y, diameter, diameter);
 
+        // Progress
         if (progress > 0)
         {
             canvas.StrokeColor = ProgressColor;
+
             var startAngle = -90f;
             var endAngle = startAngle + (float)(360d * progress);
 
@@ -162,30 +163,52 @@ public class CircularProgressView : GraphicsView, IDrawable
                 closed: false);
         }
 
+        // Fill
+        if (FillColor is not null)
+        {
+            canvas.FillColor = FillColor;
+            canvas.FillEllipse(x + stroke, y + stroke, diameter - stroke * 2, diameter - stroke * 2);
+        }
+
         canvas.FontColor = TextColor;
+
+        // Kiçik dairələr üçün font avtomatik balacalaşır
+        var centerFontSize = size <= 78 ? 19 : 22;
+        var subFontSize = size <= 78 ? 8 : 10;
+
+        // Center text üçün yuxarı hissə
+        var centerTextRect = new RectF(
+            dirtyRect.X,
+            dirtyRect.Y + size * 0.25f,
+            dirtyRect.Width,
+            size * 0.30f);
+
+        canvas.FontSize = centerFontSize;
         canvas.Font = Microsoft.Maui.Graphics.Font.DefaultBold;
-        canvas.FontSize = 25;
+
         canvas.DrawString(
             CenterText,
-            dirtyRect,
+            centerTextRect,
             HorizontalAlignment.Center,
             VerticalAlignment.Center);
 
+        // SubText üçün aşağı hissə, amma dairənin içində
         if (!string.IsNullOrWhiteSpace(SubText))
         {
-            canvas.Font = Microsoft.Maui.Graphics.Font.Default;
-            canvas.FontSize = 11;
-            var subRect = new RectF(
+            var subTextRect = new RectF(
                 dirtyRect.X,
-                dirtyRect.Center.Y + 16,
+                dirtyRect.Y + size * 0.52f,
                 dirtyRect.Width,
-                18);
+                size * 0.20f);
+
+            canvas.FontSize = subFontSize;
+            canvas.Font = Microsoft.Maui.Graphics.Font.Default;
 
             canvas.DrawString(
                 SubText,
-                subRect,
+                subTextRect,
                 HorizontalAlignment.Center,
-                VerticalAlignment.Top);
+                VerticalAlignment.Center);
         }
     }
 
