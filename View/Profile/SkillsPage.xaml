@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage
     x:Class="MetanetA_MobileApp.View.Profile.SkillsPage"
     x:Name="Page"
@@ -39,6 +40,7 @@
         <ScrollView Grid.Row="0">
             <VerticalStackLayout Padding="18,22,18,28" Spacing="18">
 
+                <!-- Skills header -->
                 <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
                     <VerticalStackLayout Spacing="4">
                         <Label
@@ -77,6 +79,7 @@
                                 FontSize="22"
                                 TextColor="White"
                                 VerticalTextAlignment="Center" />
+
                             <Label
                                 Text="Add"
                                 FontSize="15"
@@ -123,6 +126,7 @@
                                     FontSize="19"
                                     FontAttributes="Bold"
                                     TextColor="White" />
+
                                 <Label
                                     Text="Choose a skill from your job selection data."
                                     FontSize="13"
@@ -141,9 +145,7 @@
                         </Grid>
 
                         <VerticalStackLayout Spacing="8">
-                            <Label
-                                Text="SKILL"
-                                Style="{StaticResource CaptionStyle}" />
+                            <Label Text="SKILL" Style="{StaticResource CaptionStyle}" />
 
                             <Border
                                 BackgroundColor="#0B1220"
@@ -167,41 +169,39 @@
                                         VerticalOptions="Center">
 
                                         <Label
-                                           Text="✦"
-                                           FontSize="15"
-                                           TextColor="#C4B5FD"
-                                           HorizontalTextAlignment="Center"
-                                           VerticalTextAlignment="Center" />
+                                            Text="✦"
+                                            FontSize="15"
+                                            TextColor="#C4B5FD"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center" />
                                     </Border>
 
                                     <Picker
-                                      Grid.Column="1"
-                                      Title="Choose a skill"
-                                      ItemsSource="{Binding AvailableSkills}"
-                                      ItemDisplayBinding="{Binding DisplayName}"
-                                      SelectedItem="{Binding SelectedAvailableSkill}"
-                                      TextColor="White"
-                                      TitleColor="#8B95AA"
-                                      FontSize="15"
-                                      BackgroundColor="Transparent"
-                                      HeightRequest="56"
-                                      VerticalOptions="Center" />
+                                        Grid.Column="1"
+                                        Title="Choose a skill"
+                                        ItemsSource="{Binding AvailableSkills}"
+                                        ItemDisplayBinding="{Binding DisplayName}"
+                                        SelectedItem="{Binding SelectedAvailableSkill}"
+                                        TextColor="White"
+                                        TitleColor="#8B95AA"
+                                        FontSize="15"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="56"
+                                        VerticalOptions="Center" />
 
                                     <Label
-                                      Grid.Column="2"
-                                      Text="⌄"
-                                      FontSize="22"
-                                      TextColor="#8B95AA"
-                                      InputTransparent="True"
-                                      VerticalTextAlignment="Center" />
+                                        Grid.Column="2"
+                                        Text="⌄"
+                                        FontSize="22"
+                                        TextColor="#8B95AA"
+                                        InputTransparent="True"
+                                        VerticalTextAlignment="Center" />
                                 </Grid>
                             </Border>
                         </VerticalStackLayout>
 
                         <VerticalStackLayout Spacing="10">
-                            <Label
-                                Text="USED IN"
-                                Style="{StaticResource CaptionStyle}" />
+                            <Label Text="USED IN" Style="{StaticResource CaptionStyle}" />
 
                             <FlexLayout
                                 BindableLayout.ItemsSource="{Binding CompanyOptions}"
@@ -209,6 +209,7 @@
                                 Direction="Row"
                                 AlignItems="Start"
                                 JustifyContent="Start">
+
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <Border
@@ -223,6 +224,7 @@
                                                     Command="{Binding Source={x:Reference Page}, Path=BindingContext.ToggleCompanyCommand}"
                                                     CommandParameter="{Binding .}" />
                                             </Border.GestureRecognizers>
+
                                             <Border.Triggers>
                                                 <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
                                                     <Setter Property="BackgroundColor" Value="#3344D5" />
@@ -251,6 +253,7 @@
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CancelAddSkillCommand}" />
                                 </Border.GestureRecognizers>
+
                                 <Label
                                     Text="Cancellation"
                                     FontSize="15"
@@ -272,9 +275,11 @@
                                         <GradientStop Color="#985CF2" Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.Background>
+
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddSelectedSkillCommand}" />
                                 </Border.GestureRecognizers>
+
                                 <Label
                                     Text="Add a skill"
                                     FontSize="15"
@@ -292,6 +297,7 @@
                     ItemsSource="{Binding AddedSkills}"
                     SelectionMode="None"
                     IsVisible="{Binding HasAddedSkills}">
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border
@@ -324,6 +330,7 @@
                                                 FontSize="19"
                                                 FontAttributes="Bold"
                                                 TextColor="White" />
+
                                             <Label
                                                 Text="{Binding UsedInText}"
                                                 FontSize="12"
@@ -378,6 +385,7 @@
                                                     Command="{Binding Source={x:Reference Page}, Path=BindingContext.AssessDepthCommand}"
                                                     CommandParameter="{Binding .}" />
                                             </Border.GestureRecognizers>
+
                                             <HorizontalStackLayout Spacing="7" VerticalOptions="Center">
                                                 <Label Text="⚡" FontSize="16" TextColor="White" />
                                                 <Label Text="Assess depth" FontSize="13" FontAttributes="Bold" TextColor="White" />
@@ -405,6 +413,7 @@
                             FontAttributes="Bold"
                             TextColor="White"
                             HorizontalTextAlignment="Center" />
+
                         <Label
                             Text="Tap Add to create your first skill."
                             FontSize="13"
@@ -413,25 +422,318 @@
                     </VerticalStackLayout>
                 </Border>
 
-                <!-- Experience section -->
+                <!-- Experience section header -->
                 <Grid ColumnDefinitions="*,Auto" Margin="0,10,0,0">
-                    <Label
-                        Text="Experience"
-                        Style="{StaticResource SectionTitleStyle}" />
-                    <Label
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Experience"
+                            Style="{StaticResource SectionTitleStyle}" />
+
+                        <Label
+                            Text="Upload your employment record book or add it manually."
+                            Style="{StaticResource MutedTextStyle}" />
+                    </VerticalStackLayout>
+
+                    <Border
                         Grid.Column="1"
-                        Text="+ Add"
-                        FontSize="15"
-                        TextColor="#8B5CF6"
-                        FontAttributes="Bold"
-                        VerticalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding AddExperienceCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
+                        HeightRequest="42"
+                        Padding="14,0"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 21"
+                        VerticalOptions="Center">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#3545D4" Offset="0" />
+                                <GradientStop Color="#985CF2" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowAddExperienceCommand}" />
+                        </Border.GestureRecognizers>
+
+                        <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                            <Label Text="+" FontSize="22" TextColor="White" VerticalTextAlignment="Center" />
+                            <Label Text="Add" FontSize="15" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                    </Border>
                 </Grid>
 
+                <!-- Add experience form -->
+                <VerticalStackLayout
+                    IsVisible="{Binding IsAddExperienceVisible}"
+                    Spacing="14">
+
+                    <Border
+                        Stroke="#4F46E5"
+                        StrokeThickness="1.2"
+                        StrokeDashArray="4,4"
+                        StrokeShape="RoundRectangle 28"
+                        BackgroundColor="#111827"
+                        Padding="20">
+
+                        <VerticalStackLayout Spacing="14" HorizontalOptions="Center">
+                            <Border
+                                WidthRequest="58"
+                                HeightRequest="58"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 20"
+                                BackgroundColor="#26203F"
+                                HorizontalOptions="Center">
+                                <Label
+                                    Text="⇧"
+                                    FontSize="30"
+                                    TextColor="#8B5CF6"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Border>
+
+                            <Label
+                                Text="Download the employment record book (ƏMAS)"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                HorizontalTextAlignment="Center" />
+
+                            <Label
+                                Text="The system will automatically extract data about your work experience."
+                                FontSize="13"
+                                TextColor="#AAB3C5"
+                                HorizontalTextAlignment="Center" />
+
+                            <Border
+                                HeightRequest="46"
+                                Padding="20,0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 18"
+                                HorizontalOptions="Center">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#3545D4" Offset="0" />
+                                        <GradientStop Color="#985CF2" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UploadExperienceFileCommand}" />
+                                </Border.GestureRecognizers>
+
+                                <HorizontalStackLayout Spacing="9" VerticalOptions="Center">
+                                    <Label Text="⇧" FontSize="18" TextColor="White" VerticalTextAlignment="Center" />
+                                    <Label Text="Upload File" FontSize="15" FontAttributes="Bold" TextColor="White" VerticalTextAlignment="Center" />
+                                </HorizontalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                        Stroke="#4F46E5"
+                        StrokeThickness="1.2"
+                        StrokeDashArray="4,4"
+                        StrokeShape="RoundRectangle 28"
+                        BackgroundColor="#111827"
+                        Padding="18">
+
+                        <VerticalStackLayout Spacing="14">
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label Text="COMPANY" Style="{StaticResource CaptionStyle}" />
+                                    <Border BackgroundColor="#0B1220" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="12,0">
+                                        <Entry
+                                            Placeholder="Company name"
+                                            PlaceholderColor="#8B95AA"
+                                            TextColor="White"
+                                            BackgroundColor="Transparent"
+                                            Text="{Binding ExperienceCompanyName}"
+                                            HeightRequest="52" />
+                                    </Border>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="8">
+                                    <Label Text="POSITION" Style="{StaticResource CaptionStyle}" />
+                                    <Border BackgroundColor="#0B1220" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="12,0">
+                                        <Entry
+                                            Placeholder="Your position"
+                                            PlaceholderColor="#8B95AA"
+                                            TextColor="White"
+                                            BackgroundColor="Transparent"
+                                            Text="{Binding ExperiencePositionName}"
+                                            HeightRequest="52" />
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label Text="FROM" Style="{StaticResource CaptionStyle}" />
+                                    <Border BackgroundColor="#0B1220" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="12,0">
+                                        <Entry
+                                            Placeholder="2020"
+                                            Keyboard="Numeric"
+                                            PlaceholderColor="#8B95AA"
+                                            TextColor="White"
+                                            BackgroundColor="Transparent"
+                                            Text="{Binding ExperienceStartYear}"
+                                            HeightRequest="52" />
+                                    </Border>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="8">
+                                    <Label Text="ENDING" Style="{StaticResource CaptionStyle}" />
+                                    <Border BackgroundColor="#0B1220" Stroke="#334155" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="12,0">
+                                        <Entry
+                                            Placeholder="Present"
+                                            PlaceholderColor="#8B95AA"
+                                            TextColor="White"
+                                            BackgroundColor="Transparent"
+                                            Text="{Binding ExperienceEndYear}"
+                                            HeightRequest="52" />
+                                    </Border>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <Border
+                                    Grid.Column="0"
+                                    HeightRequest="48"
+                                    Stroke="#334155"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 24"
+                                    BackgroundColor="#0F172A">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CancelAddExperienceCommand}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Label
+                                        Text="Cancellation"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="#DDE3F0"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Column="1"
+                                    HeightRequest="48"
+                                    Padding="22,0"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 24">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="#3545D4" Offset="0" />
+                                            <GradientStop Color="#985CF2" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddExperienceCommand}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Label
+                                        Text="Add"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="White"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Added experiences -->
+                <CollectionView
+                    ItemsSource="{Binding AddedExperiences}"
+                    SelectionMode="None"
+                    IsVisible="{Binding HasAddedExperiences}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" Margin="0,0,0,12">
+                                <VerticalStackLayout Grid.Column="0" WidthRequest="26" HorizontalOptions="Center">
+                                    <Border
+                                        WidthRequest="18"
+                                        HeightRequest="18"
+                                        Stroke="#8B5CF6"
+                                        StrokeThickness="2"
+                                        StrokeShape="RoundRectangle 9"
+                                        BackgroundColor="#020617"
+                                        HorizontalOptions="Center" />
+                                    <BoxView
+                                        WidthRequest="1"
+                                        HeightRequest="74"
+                                        BackgroundColor="#26344D"
+                                        HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="1"
+                                    Stroke="#26344D"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 24"
+                                    BackgroundColor="#0F172A"
+                                    Padding="16">
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <VerticalStackLayout Spacing="4">
+                                            <Label
+                                                Text="{Binding CompanyName}"
+                                                FontSize="17"
+                                                FontAttributes="Bold"
+                                                TextColor="White" />
+
+                                            <Label
+                                                Text="{Binding PositionName}"
+                                                FontSize="14"
+                                                TextColor="#AAB3C5" />
+
+                                            <HorizontalStackLayout Spacing="8" Margin="0,6,0,0">
+                                                <Label
+                                                    Text="▣"
+                                                    FontSize="13"
+                                                    TextColor="#8B95AA"
+                                                    VerticalTextAlignment="Center" />
+                                                <Label
+                                                    Text="{Binding PeriodText}"
+                                                    FontSize="13"
+                                                    TextColor="#AAB3C5"
+                                                    VerticalTextAlignment="Center" />
+
+                                                <Border
+                                                    IsVisible="{Binding HasDuration}"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    BackgroundColor="#1D2740"
+                                                    Padding="10,4">
+                                                    <Label
+                                                        Text="{Binding DurationText}"
+                                                        FontSize="12"
+                                                        FontAttributes="Bold"
+                                                        TextColor="White" />
+                                                </Border>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="×"
+                                            FontSize="22"
+                                            TextColor="#8B95AA">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.RemoveExperienceCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
                 <Border
+                    IsVisible="{Binding HasNoExperiences}"
                     Stroke="#26344D"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 24"
@@ -445,6 +747,7 @@
                             FontAttributes="Bold"
                             TextColor="White"
                             HorizontalTextAlignment="Center" />
+
                         <Label
                             Text="Tap Add to create your first experience."
                             FontSize="13"
@@ -452,7 +755,6 @@
                             HorizontalTextAlignment="Center" />
                     </VerticalStackLayout>
                 </Border>
-
             </VerticalStackLayout>
         </ScrollView>
 

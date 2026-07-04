@@ -381,6 +381,10 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.UserInfo">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.userInfo"/>
@@ -390,6 +394,21 @@
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddSkillVisible">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.isAddSkillVisible"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddExperienceVisible">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.isAddExperienceVisible"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ExperienceCompanyName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.experienceCompanyName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ExperiencePositionName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.experiencePositionName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ExperienceStartYear">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.experienceStartYear"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ExperienceEndYear">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.experienceEndYear"/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsBusy">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.isBusy"/>
@@ -401,6 +420,11 @@
             <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddSkillVisible"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddSkillVisible"/> is changed.</remarks>
+        </member>
+        <member name="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.OnIsAddExperienceVisibleChanged(System.Boolean)">
+            <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddExperienceVisible"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.IsAddExperienceVisible"/> is changed.</remarks>
         </member>
         <member name="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.OnErrorMessageChanged(System.String)">
             <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ErrorMessage"/> just changed.</summary>
@@ -449,11 +473,35 @@
         <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AssessDepthCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AssessDepthAsync(MetanetA_MobileApp.ViewModels.Profile.ProfileSkillItem)"/>.</summary>
         </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.showAddExperienceCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ShowAddExperienceCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ShowAddExperienceCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.ShowAddExperience"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.cancelAddExperienceCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.CancelAddExperienceCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.CancelAddExperienceCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.CancelAddExperience"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.uploadExperienceFileCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.UploadExperienceFileCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.UploadExperienceFileCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.UploadExperienceFileAsync"/>.</summary>
+        </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.addExperienceCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperienceCommand"/>.</summary>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperienceCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.AddExperienceAsync"/>.</summary>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.removeExperienceCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.RemoveExperienceCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.RemoveExperienceCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.RemoveExperience(MetanetA_MobileApp.ViewModels.Profile.ProfileExperienceItem)"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.editProfileCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel.EditProfileCommand"/>.</summary>
@@ -1559,6 +1607,21 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsAddSkillVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsAddSkillVisible" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsAddExperienceVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsAddExperienceVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExperienceCompanyName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExperienceCompanyName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExperiencePositionName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExperiencePositionName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExperienceStartYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExperienceStartYear" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ExperienceEndYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ExperienceEndYear" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
         </member>
@@ -1831,6 +1894,21 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsAddSkillVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsAddSkillVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsAddExperienceVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsAddExperienceVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExperienceCompanyName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExperienceCompanyName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExperiencePositionName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExperiencePositionName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExperienceStartYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExperienceStartYear" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ExperienceEndYear">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ExperienceEndYear" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
