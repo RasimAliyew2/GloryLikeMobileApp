@@ -4,9 +4,20 @@ namespace MetanetA_MobileApp.View.Job;
 
 public partial class OpportunitiesPage : ContentPage
 {
-	public OpportunitiesPage(OpportunitiesViewModel vm)
-	{
-		InitializeComponent();
-		BindingContext = vm;
-	}
+    private readonly OpportunitiesViewModel _viewModel;
+
+    public OpportunitiesPage(OpportunitiesViewModel vm)
+    {
+        InitializeComponent();
+        _viewModel = vm;
+        BindingContext = _viewModel;
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (_viewModel.LoadCommand.CanExecute(null))
+            _viewModel.LoadCommand.Execute(null);
+    }
 }

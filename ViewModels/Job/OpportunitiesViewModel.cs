@@ -1,109 +1,333 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 
-namespace MetanetA_MobileApp.ViewModels.Job
+namespace MetanetA_MobileApp.ViewModels.Job;
+
+public partial class OpportunitiesViewModel : BaseViewModel
 {
-    public partial class OpportunitiesViewModel : BaseViewModel
+    private readonly IJobOffersApiService _jobOffersApiService;
+    private readonly IUserSession _userSession;
+    private bool _isLoaded;
+
+    public ObservableCollection<OpportunityItem> Opportunities { get; } = new();
+
+    [ObservableProperty]
+    private string searchText = string.Empty;
+
+    [ObservableProperty]
+    private bool isBusy;
+
+    [ObservableProperty]
+    private string? errorMessage;
+
+    public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
+
+    public bool HasOpportunities => Opportunities.Count > 0;
+
+    public bool HasNoOpportunities => !HasOpportunities && !IsBusy && !HasError;
+
+    public string RolesCountText => $"{Opportunities.Count} roles for you";
+
+    public OpportunitiesViewModel(
+        BottomMenuState menuState,
+        IJobOffersApiService jobOffersApiService,
+        IUserSession userSession)
+        : base(menuState)
     {
-        public ObservableCollection<OpportunityItem> Opportunities { get; } = new();
+        _jobOffersApiService = jobOffersApiService;
+        _userSession = userSession;
+    }
 
-        [ObservableProperty]
-        private string searchText;
+    [RelayCommand]
+    private async Task LoadAsync()
+    {
+        if (_isLoaded)
+            return;
 
-        public string RolesCountText => $"{Opportunities.Count} roles for you";
-
-        public OpportunitiesViewModel(BottomMenuState menuState) : base(menuState)
+        try
         {
-            AddSampleData();
+            IsBusy = true;
+            ErrorMessage = null;
+            Opportunities.Clear();
+
+            var jobOffers = await _jobOffersApiService.GetJobOffersAsync();
+            var builtOpportunities = BuildOpportunities(jobOffers);
+
+            foreach (var opportunity in builtOpportunities)
+                Opportunities.Add(opportunity);
+
+            _isLoaded = true;
+            RefreshCollectionState();
         }
-
-        private void AddSampleData()
+        catch (Exception ex)
         {
-            AddOpportunity(new OpportunityItem
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task RefreshAsync()
+    {
+        _isLoaded = false;
+        await LoadAsync();
+    }
+
+    [RelayCommand]
+    private void ToggleOpportunity(OpportunityItem? item)
+    {
+        if (item is null)
+            return;
+
+        item.IsExpanded = !item.IsExpanded;
+        RefreshItem(item);
+    }
+
+    [RelayCommand]
+    private void ToggleSave(OpportunityItem? item)
+    {
+        if (item is null)
+            return;
+
+        item.IsSaved = !item.IsSaved;
+        RefreshItem(item);
+    }
+
+    [RelayCommand]
+    private async Task ApplyAsync(OpportunityItem? item)
+    {
+        if (item is null)
+            return;
+
+        await Shell.Current.DisplayAlert(
+            "Apply",
+            $"{item.Title} üçün müraciət edildi.",
+            "OK");
+    }
+
+    private List<OpportunityItem> BuildOpportunities(List<JobOfferApiItem> jobOffers)
+    {
+        var selectedJobName = _userSession.CurrentUser?.Job?.JobName;
+        var candidateSkills = BuildCandidateSkillScoreMap();
+
+        var groups = jobOffers
+            .Where(x => !string.IsNullOrWhiteSpace(x.RequiredJob))
+            .Where(x => !string.IsNullOrWhiteSpace(x.Skills))
+            .Where(x => x.SkillsWeight > 0)
+            .Where(x => string.IsNullOrWhiteSpace(selectedJobName) ||
+                        Normalize(x.RequiredJob) == Normalize(selectedJobName))
+            .GroupBy(x => new
             {
-                LogoLetter = "L",
-                Company = "Linear",
-                PostedAgo = "2d",
-                Title = "Senior Product Designer",
-                Location = "Remote · EU",
-                WorkType = "Remote",
-                Level = "Senior",
-                Salary = "$110k – $140k",
-                Score = 94,
-                ScoreColor = "#09B889",
-                IsExpanded = true,
-                AboutRole = "Lead end-to-end product design for Linear's collaboration tools. Partner tightly with engineering and ship features used by thousands of teams.",
-                Responsibilities = "• Own design end-to-end across discovery and delivery\n• Build and evolve the design system with engineering\n• Run usability sessions with power users",
-                MatchedSkills = "Figma, Design Systems, Prototyping, User Research",
-                MissingSkills = "Motion Design",
-                MatchNote = "You match the core craft and research skills. Adding Motion Design would lift your fit by ~6%."
+                RequiredJob = x.RequiredJob.Trim(),
+                Seniority = string.IsNullOrWhiteSpace(x.Seniority) ? "Middle" : x.Seniority.Trim()
+            })
+            .ToList();
+
+        var result = new List<OpportunityItem>();
+        var index = 0;
+
+        foreach (var group in groups)
+        {
+            var requiredSkills = group
+                .Where(x => !string.IsNullOrWhiteSpace(x.Skills) && x.SkillsWeight > 0)
+                .Select(x => new RequiredSkillTemplate
+                {
+                    SkillName = x.Skills.Trim(),
+                    Weight = x.SkillsWeight
+                })
+                .GroupBy(x => Normalize(x.SkillName))
+                .Select(g => new RequiredSkillTemplate
+                {
+                    SkillName = g.First().SkillName,
+                    Weight = g.Max(x => x.Weight)
+                })
+                .ToList();
+
+            if (requiredSkills.Count == 0)
+                continue;
+
+            var score = CalculateRoleReadiness(requiredSkills, candidateSkills);
+            var matchedSkills = requiredSkills
+                .Where(x => candidateSkills.ContainsKey(Normalize(x.SkillName)))
+                .Select(x => x.SkillName)
+                .OrderBy(x => x)
+                .ToList();
+
+            var missingSkills = requiredSkills
+                .Where(x => !candidateSkills.ContainsKey(Normalize(x.SkillName)))
+                .Select(x => x.SkillName)
+                .OrderBy(x => x)
+                .ToList();
+
+            result.Add(new OpportunityItem
+            {
+                LogoLetter = GetLogoLetter(group.Key.RequiredJob),
+                Company = group.Key.RequiredJob,
+                PostedAgo = index == 0 ? "2d" : $"{Math.Min(index + 1, 7)}d",
+                Title = BuildTitle(group.Key.RequiredJob, group.Key.Seniority),
+                Location = "Role template · API",
+                WorkType = "Role",
+                Level = group.Key.Seniority,
+                Salary = $"{requiredSkills.Count} skills",
+                Score = score,
+                ScoreColor = GetScoreColor(score),
+                IsExpanded = index == 0,
+                AboutRole = BuildAboutRole(group.Key.RequiredJob, group.Key.Seniority, requiredSkills.Count),
+                Responsibilities = BuildResponsibilities(requiredSkills),
+                MatchedSkills = matchedSkills.Count == 0 ? "No matched skills yet" : string.Join(", ", matchedSkills),
+                MissingSkills = missingSkills.Count == 0 ? "No missing required skills" : string.Join(", ", missingSkills.Take(8)),
+                MatchNote = BuildMatchNote(score, matchedSkills.Count, requiredSkills.Count)
             });
 
-            AddOpportunity(new OpportunityItem
-            {
-                LogoLetter = "S",
-                Company = "Stripe",
-                PostedAgo = "1d",
-                Title = "Frontend Engineer, React",
-                Location = "Berlin, DE",
-                WorkType = "Hybrid",
-                Level = "Middle",
-                Salary = "€75k – €95k",
-                Score = 87,
-                ScoreColor = "#09B889",
-                AboutRole = "Build customer-facing payment dashboards and improve frontend performance across product surfaces.",
-                Responsibilities = "• Build React components\n• Improve page performance\n• Work with backend APIs",
-                MatchedSkills = "React, TypeScript, UI Components",
-                MissingSkills = "Payments API",
-                MatchNote = "Strong frontend match. Payment domain knowledge would improve your profile."
-            });
+            index++;
         }
 
-        public void AddOpportunity(OpportunityItem item)
+        return result
+            .OrderByDescending(x => x.Score)
+            .ThenBy(x => x.Title)
+            .ToList();
+    }
+
+    private Dictionary<string, double> BuildCandidateSkillScoreMap()
+    {
+        var selectedSkills = _userSession.CurrentUser?.SelectedSkills ?? new List<UserSkillInfo>();
+
+        return selectedSkills
+            .Where(x => !string.IsNullOrWhiteSpace(x.SkillName))
+            .GroupBy(x => Normalize(x.SkillName))
+            .ToDictionary(
+                g => g.Key,
+                g => g.Max(x => GetCandidateSkillScore(x)),
+                StringComparer.OrdinalIgnoreCase);
+    }
+
+    private static double GetCandidateSkillScore(UserSkillInfo skill)
+    {
+        if (skill.DepthScore > 0)
+            return Math.Clamp(skill.DepthScore, 0, 100);
+
+        if (skill.Knowledge > 0)
+            return Math.Clamp(skill.Knowledge, 0, 100);
+
+        if (skill.Depth > 0)
+            return Math.Clamp(skill.Depth, 0, 100);
+
+        return 0;
+    }
+
+    private static int CalculateRoleReadiness(
+        List<RequiredSkillTemplate> requiredSkills,
+        Dictionary<string, double> candidateSkills)
+    {
+        var denominator = requiredSkills.Sum(x => x.Weight);
+
+        if (denominator <= 0)
+            return 0;
+
+        var numerator = requiredSkills.Sum(x =>
         {
-            Opportunities.Add(item);
-            OnPropertyChanged(nameof(RolesCountText));
-        }
+            var key = Normalize(x.SkillName);
+            var candidateScore = candidateSkills.TryGetValue(key, out var value) ? value : 0d;
+            return x.Weight * candidateScore;
+        });
 
-        [RelayCommand]
-        private void ToggleOpportunity(OpportunityItem item)
+        var readiness = numerator / denominator;
+
+        // Round half up: 40.5 -> 41.
+        return (int)Math.Clamp(Math.Floor(readiness + 0.5d), 0, 100);
+    }
+
+    private static string Normalize(string value)
+    {
+        return value.Trim().ToLowerInvariant();
+    }
+
+    private static string GetLogoLetter(string requiredJob)
+    {
+        var trimmed = requiredJob.Trim();
+        return string.IsNullOrWhiteSpace(trimmed)
+            ? "J"
+            : trimmed[0].ToString().ToUpperInvariant();
+    }
+
+    private static string BuildTitle(string requiredJob, string seniority)
+    {
+        return string.IsNullOrWhiteSpace(seniority)
+            ? requiredJob
+            : $"{seniority} {requiredJob}";
+    }
+
+    private static string GetScoreColor(int score)
+    {
+        return score switch
         {
-            if (item == null)
-                return;
+            >= 85 => "#10B981",
+            >= 70 => "#6D5EF2",
+            >= 50 => "#F59E0B",
+            _ => "#EF4444"
+        };
+    }
 
-            item.IsExpanded = !item.IsExpanded;
-            RefreshItem(item);
-        }
+    private static string BuildAboutRole(string requiredJob, string seniority, int skillCount)
+    {
+        return $"This role template is loaded from the JobOffers API for {requiredJob}. It evaluates your readiness for the {seniority} level using {skillCount} weighted required skills.";
+    }
 
-        [RelayCommand]
-        private void ToggleSave(OpportunityItem item)
-        {
-            if (item == null)
-                return;
+    private static string BuildResponsibilities(List<RequiredSkillTemplate> requiredSkills)
+    {
+        var topSkills = requiredSkills
+            .OrderByDescending(x => x.Weight)
+            .Take(5)
+            .Select(x => $"• {x.SkillName} — weight {x.Weight}");
 
-            item.IsSaved = !item.IsSaved;
-            RefreshItem(item);
-        }
+        return string.Join("\n", topSkills);
+    }
 
-        [RelayCommand]
-        private async Task Apply(OpportunityItem item)
-        {
-            if (item == null)
-                return;
+    private static string BuildMatchNote(int score, int matchedCount, int requiredCount)
+    {
+        if (requiredCount <= 0)
+            return "This role has no required skills and was excluded from scoring.";
 
-            await Shell.Current.DisplayAlert("Apply", $"{item.Title} üçün müraciət edildi.", "OK");
-        }
+        return $"Role readiness is {score}%. Matched {matchedCount} of {requiredCount} required skills. The score uses Σ(wᵢ × sᵢ) / Σ(wᵢ).";
+    }
 
-        private void RefreshItem(OpportunityItem item)
-        {
-            var index = Opportunities.IndexOf(item);
-            if (index < 0)
-                return;
+    private void RefreshItem(OpportunityItem item)
+    {
+        var index = Opportunities.IndexOf(item);
+        if (index < 0)
+            return;
 
-            Opportunities[index] = item;
-        }
+        Opportunities[index] = item;
+    }
+
+    private void RefreshCollectionState()
+    {
+        OnPropertyChanged(nameof(RolesCountText));
+        OnPropertyChanged(nameof(HasOpportunities));
+        OnPropertyChanged(nameof(HasNoOpportunities));
+    }
+
+    partial void OnErrorMessageChanged(string? value)
+    {
+        OnPropertyChanged(nameof(HasError));
+        OnPropertyChanged(nameof(HasNoOpportunities));
+    }
+
+    partial void OnIsBusyChanged(bool value)
+    {
+        OnPropertyChanged(nameof(HasNoOpportunities));
+    }
+
+    private class RequiredSkillTemplate
+    {
+        public string SkillName { get; set; } = string.Empty;
+        public int Weight { get; set; }
     }
 }

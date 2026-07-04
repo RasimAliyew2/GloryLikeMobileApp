@@ -191,6 +191,7 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<RequestAcceptedViewModel>();
             builder.Services.AddTransient<QRCodeNotAcceptedViewModel>();
             //Services
+            builder.Services.AddTransient<IJobOffersApiService, JobOffersApiService>();
             builder.Services.AddSingleton<IQRBonusNotifier, QRBonusNotifier>(); 
             builder.Services.AddSingleton<IUserSession, UserSession>();  
             builder.Services.AddSingleton<IQrCode, QrCode>();
