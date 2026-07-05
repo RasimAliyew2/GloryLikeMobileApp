@@ -24,21 +24,19 @@ public partial class SignInPage : ContentPage
         await Shell.Current.GoToAsync($"//{nameof(SignUpPage)}");
     }
 
-    private async void ContinueGoogle_Tapped(object sender, TappedEventArgs e)
+    private async void ContinueGoogle_Tapped(object sender, EventArgs e)
     {
         await DisplayAlert("Google", "Google sign-in hələ qoşulmayıb.", "OK");
     }
 
-    private async void ContinueApple_Tapped(object sender, TappedEventArgs e)
+    private async void ContinueApple_Tapped(object sender, EventArgs e)
     {
         await DisplayAlert("Apple", "Apple sign-in hələ qoşulmayıb.", "OK");
     }
 
-    // Keçmiş XAML event-ləri saxlanılıb, amma artıq olmayan RegistrationPanel/SignInPanel adlarına toxunmur.
-    // Bunun məqsədi əvvəlki gözəl SignInPage.xaml dizaynını pozmadan build xətasını aradan qaldırmaqdır.
     private void ShowSignIn_Tapped(object sender, TappedEventArgs e)
     {
-        // No-op. Əgər XAML-də bu event qalıbsa, compile xətası verməsin.
+        // Kept for compatibility if an old XAML reference still exists.
     }
 
     private async void ShowRegistration_Tapped(object sender, TappedEventArgs e)
@@ -51,7 +49,7 @@ public partial class SignInPage : ContentPage
         await Shell.Current.GoToAsync($"//{nameof(ForgetPasswordPage)}");
     }
 
-    private async void SignIn_Tapped(object sender, TappedEventArgs e)
+    private async void SignIn_Tapped(object sender, EventArgs e)
     {
         CopyEntryValuesIntoViewModelIfNeeded();
         await _viewModel.SignIn();
@@ -59,8 +57,6 @@ public partial class SignInPage : ContentPage
 
     private void CopyEntryValuesIntoViewModelIfNeeded()
     {
-        // Köhnə dizaynda Entry-lər Binding ilə işləyirsə, bu metod heç nəyi pozmur.
-        // Binding yoxdursa, mümkün Entry adlarından dəyəri götürür.
         var login = GetEntryText("LoginEntry")
                     ?? GetEntryText("EmailEntry")
                     ?? GetEntryText("PhoneEntry")

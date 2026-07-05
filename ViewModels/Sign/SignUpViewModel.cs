@@ -70,17 +70,17 @@ namespace MetanetA_MobileApp.ViewModels;
                 IsBusy = true;
                 ErrorMessage = null;
 
-                var response = await _authApiService.RegisterAsync(new RegisterRequest
-                {
-                    UserName = UserName.Trim(),
-                    Name = Name.Trim(),
-                    Surname = Surname.Trim(),
-                    PhoneNumber = PhoneNumber.Trim(),
-                    Email = Email.Trim(),
-                    Password = Password
-                });
-
-                if (!response.Success || response.User is null)
+            var response = await _authApiService.RegisterAsync(
+              new MetanetA_MobileApp.Services.GetDataFromServer.AuthRegisterRequest
+              {
+                  Username = UserName.Trim(),
+                  Name = Name.Trim(),
+                  Surname = Surname.Trim(),
+                  PhoneNumber = PhoneNumber.Trim(),
+                  Email = Email.Trim(),
+                  Password = Password
+              });
+            if (!response.Success || response.Data.Username is null)
                 {
                     ErrorMessage = response.Message;
                     return;
@@ -88,12 +88,12 @@ namespace MetanetA_MobileApp.ViewModels;
 
                 _userSession.CurrentUser = new UserInfo
                 {
-                    Id = response.User.Id,
-                    UserName = response.User.UserName,
-                    Name = response.User.Name,
-                    Surname = response.User.Surname,
-                    PhoneNumber = response.User.PhoneNumber,
-                    Email = response.User.Email
+                    Id = response.Data.Id,
+                    UserName = response.Data.Username,
+                    Name = response.Data.Name,
+                    Surname = response.Data.Surname,
+                    PhoneNumber = response.Data.PhoneNumber,
+                    Email = response.Data.Email
                 };
 
                 await Shell.Current.GoToAsync(nameof(VerifyIdentityPage));

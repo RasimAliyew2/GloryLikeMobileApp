@@ -191,6 +191,7 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<RequestAcceptedViewModel>();
             builder.Services.AddTransient<QRCodeNotAcceptedViewModel>();
             //Services
+            builder.Services.AddSingleton<IAuthApiService, AuthApiService>();
             builder.Services.AddTransient<IJobOffersApiService, JobOffersApiService>();
             builder.Services.AddSingleton<IQRBonusNotifier, QRBonusNotifier>(); 
             builder.Services.AddSingleton<IUserSession, UserSession>();  
@@ -198,6 +199,7 @@ namespace MetanetA_MobileApp
             builder.Services.AddSingleton<BottomMenuState>(); 
             builder.Services.AddSingleton<SalesCatalogService>();
             builder.Services.AddSingleton<CartService>();
+            
             builder.Services.AddTransient<ISkillAndJobApiService, SkillAndJobApiService>();
             builder.Services.AddSingleton<HttpClient>(sp =>
             {
