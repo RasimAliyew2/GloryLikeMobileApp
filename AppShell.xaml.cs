@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using MetanetA_MobileApp.View;
+using MetanetA_MobileApp.View.Profile;
 using MetanetA_MobileApp.View.SignUp;
 using Microsoft.Maui.Controls;
 
@@ -16,7 +17,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(VerifySkillsPage), typeof(VerifySkillsPage));
         Routing.RegisterRoute(nameof(SkillEvidencePage), typeof(SkillEvidencePage));
         Routing.RegisterRoute(nameof(VerifyIdentityPage), typeof(VerifyIdentityPage));
-
+        Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
         Routing.RegisterRoute(nameof(CareerPreferencesPage), typeof(CareerPreferencesPage));
         Routing.RegisterRoute(nameof(ProfileReviewPage), typeof(ProfileReviewPage));
 

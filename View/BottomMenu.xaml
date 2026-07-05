@@ -1,135 +1,191 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetanetA_MobileApp.View.BottomMenu"
-             HeightRequest="70"
-             BackgroundColor="White">
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MetanetA_MobileApp.View.BottomMenu"
+    HeightRequest="86"
+    BackgroundColor="Transparent">
 
-    <Border>
-        <Grid ColumnDefinitions="*,*,*,*,*"
-              Padding="20,6"
-              VerticalOptions="Center">
+    <Grid Padding="14,0,14,12"
+          VerticalOptions="End">
 
-            <!-- Home -->
-            <VerticalStackLayout Grid.Column="0"
-                                 Spacing="2"
-                                 HorizontalOptions="Center">
-                <ImageButton
-                    Source="house_button.png"
-                    Style="{StaticResource BottomIconStyle}"
-                    Command="{Binding HomeCommand}">
-                    <ImageButton.Triggers>
-                        <DataTrigger  TargetType="ImageButton" Value="True"  Binding="{Binding MenuState.IsHomeSelected}">
-                            <Setter Property="Source" Value="house_button_green"/>
-                        </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
-                <Label
-                    Text="Əsas"
-                    FontSize="10"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"/>
-            </VerticalStackLayout>
+        <Border
+            HeightRequest="74"
+            StrokeThickness="1"
+            Stroke="#24304A"
+            StrokeShape="RoundRectangle 28"
+            Padding="10,8">
 
-            <!-- Products -->
-            <VerticalStackLayout Grid.Column="1"
-                                 Spacing="2"
-                                 HorizontalOptions="Center">
-                <ImageButton
-                    Source="job.png"
-                    Style="{StaticResource BottomIconStyle}"
-                    Command="{Binding ProductsCommand}" >
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#070B18" Offset="0" />
+                    <GradientStop Color="#0D1630" Offset="0.55" />
+                    <GradientStop Color="#111827" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
 
+            <Grid
+                ColumnDefinitions="*,*,*,*,*"
+                ColumnSpacing="4"
+                VerticalOptions="Center">
 
-                    <ImageButton.Triggers>
-                        <DataTrigger TargetType="ImageButton"
-                     Binding="{Binding MenuState.IsProductsSelected}"
-                     Value="True">
-                            <Setter Property="BorderColor" Value="Green" />
-                        </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
-                
-                <Label
-                    Text="Jobs"
-                    FontSize="10"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"/>
-            </VerticalStackLayout>
+                <!-- Home -->
+                <VerticalStackLayout
+                    Grid.Column="0"
+                    Spacing="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
 
-            <!-- QR -->
-            <VerticalStackLayout Grid.Column="2"
-                                 Spacing="2"
-                                 HorizontalOptions="Center">
-                <ImageButton
-                    Source="briefcase.png"
-                    Style="{StaticResource BottomIconStyle}"
-                    Command="{Binding ApplicationsCommand}">
-                    <ImageButton.Triggers>
-                        <DataTrigger TargetType="ImageButton"
-                                     Binding="{Binding MenuState.IsQrSelected}"
-                                     Value="True">
-                            <Setter Property="Source" Value="qr_code_green.png" />
-                        </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
+                    <Border
+                        WidthRequest="42"
+                        HeightRequest="34"
+                        StrokeThickness="0"
+                        BackgroundColor="#111A2E"
+                        StrokeShape="RoundRectangle 17">
 
-                <Label
-                    Text="Applied"
-                    FontSize="10"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"/>
-            </VerticalStackLayout>
+                        <ImageButton
+                            Source="house_button.png"
+                            BackgroundColor="Transparent"
+                            Padding="8"
+                            Aspect="AspectFit"
+                            Command="{Binding HomeCommand}" />
+                    </Border>
 
-            <!-- Profile -->
-            <VerticalStackLayout Grid.Column="3"
-                                 Spacing="2"
-                                 HorizontalOptions="Center">
-                <ImageButton
-                    Source="profile.png"
-                    Style="{StaticResource BottomIconStyle}"
-                    Command="{Binding ProfileCommand}">
-                    <ImageButton.Triggers>
-                        <DataTrigger TargetType="ImageButton"
-                                     Binding="{Binding MenuState.IsProfileSelected}"
-                                     Value="True">
-                            <Setter Property="Source" Value="profile_green.png" />
-                        </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
-                <Label
-                    Text="Profil"
-                    FontSize="10"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"/>
-            </VerticalStackLayout>
+                    <Label
+                        Text="Əsas"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#D9E2F3"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
 
-            <!-- Other -->
-            <VerticalStackLayout Grid.Column="4"
-                                 Spacing="2"
-                                 HorizontalOptions="Center">
-                <ImageButton
-                                 Source="other_icon.png"
-                                 Style="{StaticResource BottomIconStyle}"
-                                 Command="{Binding OtherCommand}">
+                <!-- Jobs -->
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
 
-                    <ImageButton.Triggers>
-                        <DataTrigger TargetType="ImageButton"
-                     Binding="{Binding MenuState.IsOtherSelected}"
-                     Value="True">
-                            <Setter Property="Source" Value="other_green.png" />
-                        </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
+                    <Border
+                        WidthRequest="42"
+                        HeightRequest="34"
+                        StrokeThickness="0"
+                        BackgroundColor="#111A2E"
+                        StrokeShape="RoundRectangle 17">
 
+                        <ImageButton
+                            Source="job.png"
+                            BackgroundColor="Transparent"
+                            Padding="8"
+                            Aspect="AspectFit"
+                            Command="{Binding ProductsCommand}" />
+                    </Border>
 
-                <Label
-                    Text="Inbox"
-                    FontSize="10"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"/>
-            </VerticalStackLayout>
+                    <Label
+                        Text="Jobs"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#D9E2F3"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
 
-        </Grid>
-    </Border>
+                <!-- Applied -->
+                <VerticalStackLayout
+                    Grid.Column="2"
+                    Spacing="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Border
+                        WidthRequest="48"
+                        HeightRequest="38"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 19">
+
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#3545D4" Offset="0" />
+                                <GradientStop Color="#985CF2" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <ImageButton
+                            Source="briefcase.png"
+                            BackgroundColor="Transparent"
+                            Padding="9"
+                            Aspect="AspectFit"
+                            Command="{Binding ApplicationsCommand}" />
+                    </Border>
+
+                    <Label
+                        Text="Applied"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Profile -->
+                <VerticalStackLayout
+                    Grid.Column="3"
+                    Spacing="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Border
+                        WidthRequest="42"
+                        HeightRequest="34"
+                        StrokeThickness="0"
+                        BackgroundColor="#111A2E"
+                        StrokeShape="RoundRectangle 17">
+
+                        <ImageButton
+                            Source="profile.png"
+                            BackgroundColor="Transparent"
+                            Padding="8"
+                            Aspect="AspectFit"
+                            Command="{Binding ProfileCommand}" />
+                    </Border>
+
+                    <Label
+                        Text="Profil"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#D9E2F3"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+                <!-- Inbox -->
+                <VerticalStackLayout
+                    Grid.Column="4"
+                    Spacing="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Border
+                        WidthRequest="42"
+                        HeightRequest="34"
+                        StrokeThickness="0"
+                        BackgroundColor="#111A2E"
+                        StrokeShape="RoundRectangle 17">
+
+                        <ImageButton
+                            Source="other_icon.png"
+                            BackgroundColor="Transparent"
+                            Padding="8"
+                            Aspect="AspectFit"
+                            Command="{Binding OtherCommand}" />
+                    </Border>
+
+                    <Label
+                        Text="Inbox"
+                        FontSize="10"
+                        FontAttributes="Bold"
+                        TextColor="#D9E2F3"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+            </Grid>
+        </Border>
+    </Grid>
 </ContentView>

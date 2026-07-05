@@ -189,6 +189,10 @@ namespace MetanetA_MobileApp
             builder.Services.AddTransient<QRCodeAcceptedViewModel>();
             builder.Services.AddSingleton<VerifyIdentityViewModel>();
             builder.Services.AddTransient<RequestAcceptedViewModel>();
+
+            builder.Services.AddTransient<ProfilePage>();
+            builder.Services.AddTransient<ProfileViewModel>();
+
             builder.Services.AddTransient<QRCodeNotAcceptedViewModel>();
             //Services
             builder.Services.AddSingleton<IAuthApiService, AuthApiService>();

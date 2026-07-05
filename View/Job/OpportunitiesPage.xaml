@@ -5,11 +5,12 @@
     x:Name="Page"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controlsBottom="clr-namespace:MetanetA_MobileApp.View"
     xmlns:controls="clr-namespace:MetanetA_MobileApp.Controls"
     xmlns:model="clr-namespace:MetanetA_MobileApp.Model"
     BackgroundColor="#030817">
 
-    <Grid RowDefinitions="*">
+    <Grid RowDefinitions="*,Auto">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#05061A" Offset="0" />
@@ -300,5 +301,9 @@
                 </CollectionView>
             </VerticalStackLayout>
         </ScrollView>
+
+
+        <!-- Aşağı hissə: sabit bottom menu -->
+        <controlsBottom:BottomMenu Grid.Row="1" />
     </Grid>
 </ContentPage>

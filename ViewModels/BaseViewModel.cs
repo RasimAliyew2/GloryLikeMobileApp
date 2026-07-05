@@ -51,7 +51,7 @@ namespace MetanetA_MobileApp.ViewModels
         public async Task Profile()
         {
             MenuState.Select(BottomTab.Profile);
-            await Shell.Current.GoToAsync($"//{nameof(SkillsPage)}");
+            await Shell.Current.GoToAsync(nameof(ProfilePage));
         }
         [RelayCommand]
         public async Task Skills()

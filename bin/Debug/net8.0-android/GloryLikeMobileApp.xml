@@ -414,6 +414,45 @@
         <member name="P:MetanetA_MobileApp.ViewModels.LocationMapViewModel.GoBackCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.LocationMapViewModel.GoBack"/>.</summary>
         </member>
+        <member name="T:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.FullName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.fullName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.Initials">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.initials"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.RoleTitle">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.roleTitle"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.ProfileCompletionText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.profileCompletionText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.ProfileCompletionProgress">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.profileCompletionProgress"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.MatchScoreText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.matchScoreText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.TrustScoreText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.trustScoreText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.VerificationLevel">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.verificationLevel"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.StrengthScoreText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.strengthScoreText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.StrongestRoleText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.strongestRoleText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.HasNoSkills">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.hasNoSkills"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.HasNoExperiences">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.Profile.ProfileViewModel.hasNoExperiences"/>
+        </member>
         <member name="T:MetanetA_MobileApp.ViewModels.Profile.SkillsViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -1685,6 +1724,42 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CategoryKey">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CategoryKey" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FullName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FullName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Initials">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Initials" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RoleTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RoleTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProfileCompletionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProfileCompletionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProfileCompletionProgress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProfileCompletionProgress" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MatchScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MatchScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TrustScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TrustScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.VerificationLevel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "VerificationLevel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StrengthScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StrengthScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StrongestRoleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StrongestRoleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasNoSkills">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasNoSkills" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasNoExperiences">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasNoExperiences" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UserInfo">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UserInfo" generated properties.</summary>
         </member>
@@ -1972,6 +2047,42 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CategoryKey">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CategoryKey" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FullName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FullName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Initials">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Initials" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RoleTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RoleTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProfileCompletionText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProfileCompletionText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProfileCompletionProgress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProfileCompletionProgress" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MatchScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MatchScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TrustScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TrustScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.VerificationLevel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "VerificationLevel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StrengthScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StrengthScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StrongestRoleText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StrongestRoleText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasNoSkills">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasNoSkills" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasNoExperiences">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasNoExperiences" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UserInfo">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UserInfo" generated properties.</summary>

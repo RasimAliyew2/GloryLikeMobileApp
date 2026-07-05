@@ -129,6 +129,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.Pr
 build_metadata.AdditionalFiles.TargetPath = View\Products\ProductPreSelectedPage.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Products\ProductPreSelectedPage.xaml
 
+[C:/Users/Rasim/source/repos/GloryLikeMobileApp/GloryLikeMobileApp/View/Profile/ProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.Profile.ProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = View\Profile\ProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = View\Profile\ProfilePage.xaml
+
 [C:/Users/Rasim/source/repos/GloryLikeMobileApp/GloryLikeMobileApp/View/Profile/SkillsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MetanetA_MobileApp.View.Profile.SkillsPage.xaml
