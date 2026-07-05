@@ -24,7 +24,7 @@ using MetanetA_MobileApp.ViewModels.Job;
 using MetanetA_MobileApp.View.SignUp;
 using MetanetA_MobileApp.ViewModels.Sign.SingUp;
 using MetanetA_MobileApp.Services.GetDataFromServer;
-
+using MetanetA_MobileApp.Services.Scoring;
 
 #if ANDROID
 using Android.Webkit;
@@ -194,11 +194,12 @@ namespace MetanetA_MobileApp
             builder.Services.AddSingleton<IAuthApiService, AuthApiService>();
             builder.Services.AddTransient<IJobOffersApiService, JobOffersApiService>();
             builder.Services.AddSingleton<IQRBonusNotifier, QRBonusNotifier>(); 
-            builder.Services.AddSingleton<IUserSession, UserSession>();  
+            builder.Services.AddSingleton<IUserSession, UserSession>();
             builder.Services.AddSingleton<IQrCode, QrCode>();
             builder.Services.AddSingleton<BottomMenuState>(); 
             builder.Services.AddSingleton<SalesCatalogService>();
             builder.Services.AddSingleton<CartService>();
+            builder.Services.AddSingleton<IScoreCalculationService, ScoreCalculationService>();
             
             builder.Services.AddTransient<ISkillAndJobApiService, SkillAndJobApiService>();
             builder.Services.AddSingleton<HttpClient>(sp =>

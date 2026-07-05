@@ -338,6 +338,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.Cart">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.cart"/>
@@ -351,10 +352,28 @@
         <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.IsSearchResultsVisible">
             <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.isSearchResultsVisible"/>
         </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.OverallScoreText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.overallScoreText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.StrongestRoleName">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.strongestRoleName"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.ImprovementHintText">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.improvementHintText"/>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.HasOverallScore">
+            <inheritdoc cref="F:MetanetA_MobileApp.ViewModels.MainViewModel.hasOverallScore"/>
+        </member>
         <member name="M:MetanetA_MobileApp.ViewModels.MainViewModel.OnSearchTextChanged(System.String)">
             <summary>Executes the logic for when <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.SearchText"/> just changed.</summary>
             <param name="value">The new property value that was set.</param>
             <remarks>This method is invoked right after the value of <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.refreshScoreCommand">
+            <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.RefreshScoreCommand"/>.</summary>
+        </member>
+        <member name="P:MetanetA_MobileApp.ViewModels.MainViewModel.RefreshScoreCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MetanetA_MobileApp.ViewModels.MainViewModel.RefreshScore"/>.</summary>
         </member>
         <member name="F:MetanetA_MobileApp.ViewModels.MainViewModel.clearMainSearchCommand">
             <summary>The backing field for <see cref="P:MetanetA_MobileApp.ViewModels.MainViewModel.ClearMainSearchCommand"/>.</summary>
@@ -1625,6 +1644,18 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsSearchResultsVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsSearchResultsVisible" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OverallScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OverallScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StrongestRoleName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StrongestRoleName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImprovementHintText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImprovementHintText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasOverallScore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasOverallScore" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CenterLatitude">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CenterLatitude" generated properties.</summary>
         </member>
@@ -1897,6 +1928,18 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsSearchResultsVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsSearchResultsVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OverallScoreText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OverallScoreText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StrongestRoleName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StrongestRoleName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImprovementHintText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImprovementHintText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasOverallScore">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasOverallScore" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CenterLatitude">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CenterLatitude" generated properties.</summary>

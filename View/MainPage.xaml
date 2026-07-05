@@ -313,10 +313,13 @@
                             <Border WidthRequest="40" HeightRequest="40" BackgroundColor="#EEF2FF" StrokeThickness="0" StrokeShape="RoundRectangle 20">
                                 <Label Text="✦" FontSize="18" TextColor="#3342BA" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                             </Border>
-                            <VerticalStackLayout Grid.Column="1" Spacing="3">
-                                <Label Text="Verify one more skill" Style="{StaticResource CardTitle}" />
-                                <Label Text="Increase your match score by adding another verified skill." Style="{StaticResource MutedLabel}" />
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="Score" FontSize="12" TextColor="#6B7280" />
+                                <Label Text="{Binding OverallScoreText}" FontSize="28" FontAttributes="Bold" TextColor="#111827" />
+                                <Label Text="{Binding StrongestRoleName}" FontSize="13" TextColor="#6B7280" IsVisible="{Binding HasOverallScore}" />
+                                <Label Text="{Binding ImprovementHintText}" FontSize="12" TextColor="#16A34A" LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
+
                         </Grid>
                     </Border>
 

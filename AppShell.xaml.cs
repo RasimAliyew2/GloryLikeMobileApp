@@ -15,7 +15,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(SkillsSelectionPage), typeof(SkillsSelectionPage));
         Routing.RegisterRoute(nameof(VerifySkillsPage), typeof(VerifySkillsPage));
         Routing.RegisterRoute(nameof(SkillEvidencePage), typeof(SkillEvidencePage));
-
+        Routing.RegisterRoute(nameof(VerifyIdentityPage), typeof(VerifyIdentityPage));
 
         Routing.RegisterRoute(nameof(CareerPreferencesPage), typeof(CareerPreferencesPage));
         Routing.RegisterRoute(nameof(ProfileReviewPage), typeof(ProfileReviewPage));

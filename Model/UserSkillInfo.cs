@@ -18,7 +18,7 @@ public class UserSkillInfo
 
     public string JobFamilyName { get; set; } = string.Empty;
 
-    public string SkillComplexity { get; set; } = string.Empty;
+    public string SkillComplexity { get; set; } = "medium";
 
     // verified | self_declared | absent
     public string Status { get; set; } = "self_declared";
@@ -47,22 +47,40 @@ public class UserSkillInfo
 
     public double ResultScore { get; set; }
 
-    // Formula üzrə skill signal
+    // Word faylındakı CS: KnowledgeScore * 0.45 + ExperienceScore * 0.55.
+    public double CalculatedCredibilityScore
+    {
+        get
+        {
+            if (CredibilityScore > 0)
+                return Math.Clamp(CredibilityScore, 0, 100);
+
+            return Math.Clamp((KnowledgeScore * 0.45d) + (ExperienceScore * 0.55d), 0, 100);
+        }
+    }
+
+    // Skill Signal:
+    // verified      => CS
+    // self_declared => min(CS, 40)
+    // absent        => 0
     public double Signal
     {
         get
         {
-            if (Status == "verified" || IsVerified)
-                return CredibilityScore;
+            var status = (Status ?? string.Empty).Trim().ToLowerInvariant();
+            var cs = CalculatedCredibilityScore;
 
-            if (Status == "self_declared")
-                return Math.Min(CredibilityScore, 40);
+            if (IsVerified || status == "verified")
+                return cs;
+
+            if (status == "self_declared" || string.IsNullOrWhiteSpace(status))
+                return Math.Min(cs, 40);
 
             return 0;
         }
     }
 
-    // Backward-compatible aliases
+    // Backward-compatible aliases. Köhnə ViewModel-lər bu adları oxuyur.
     public double Knowledge
     {
         get => KnowledgeScore;
