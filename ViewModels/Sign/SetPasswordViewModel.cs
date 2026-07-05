@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.GetDataFromServer;
 using MetanetA_MobileApp.View;
 
 namespace MetanetA_MobileApp.ViewModels.Sign;
@@ -20,16 +21,15 @@ public partial class SetPasswordViewModel : ObservableObject
 
     private readonly IUserSession userSession;
     private readonly HttpClient httpClient;
+    private readonly UserProfileDataApiService profileDataApiService;
 
     [ObservableProperty] private string password = string.Empty;
     [ObservableProperty] private string confirmPassword = string.Empty;
     [ObservableProperty] private bool isMismatch;
     [ObservableProperty] private string mismatchText = "uyğun gəlmir";
     [ObservableProperty] private OperationType operationType;
-
     [ObservableProperty] private bool isPasswordHidden = true;
     [ObservableProperty] private bool isConfirmPasswordHidden = true;
-
     [ObservableProperty] private bool isPasswordRuleInvalid;
     [ObservableProperty] private string passwordRuleText = string.Empty;
     [ObservableProperty] private bool isBusy;
@@ -39,6 +39,7 @@ public partial class SetPasswordViewModel : ObservableObject
     {
         this.userSession = userSession;
         this.httpClient = httpClient;
+        profileDataApiService = new UserProfileDataApiService(httpClient);
     }
 
     partial void OnPasswordChanged(string value)
@@ -75,7 +76,6 @@ public partial class SetPasswordViewModel : ObservableObject
         if (!minLen || !hasUpper)
         {
             IsPasswordRuleInvalid = true;
-
             PasswordRuleText = (!minLen, !hasUpper) switch
             {
                 (true, true) => "Parol minimum 8 simvol olmalı və ən azı 1 böyük hərf (A-Z) içərməlidir.",
@@ -139,7 +139,6 @@ public partial class SetPasswordViewModel : ObservableObject
             return;
 
         var user = userSession.CurrentUser!;
-
         NormalizeUserForRegister(user);
 
         var validation = ValidateUserForRegister(user);
@@ -182,6 +181,15 @@ public partial class SetPasswordViewModel : ObservableObject
             }
 
             userSession.CurrentUser = user;
+
+            // Register tamamlandıqdan sonra sign-up zamanı seçilmiş skill və experience-ləri SQL-ə yazırıq.
+            var saveProfile = await profileDataApiService.SaveAsync(user);
+            if (!saveProfile.Success)
+            {
+                ErrorMessage = saveProfile.Message;
+                return;
+            }
+
             await Shell.Current.GoToAsync($"//{nameof(SignInPage)}");
         }
         catch (Exception ex)

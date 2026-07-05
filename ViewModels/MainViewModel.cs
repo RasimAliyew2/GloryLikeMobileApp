@@ -8,7 +8,6 @@ using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.Cart;
 using MetanetA_MobileApp.Services.Sales;
 using MetanetA_MobileApp.Services.UIState;
-using MetanetA_MobileApp.View;
 using MetanetA_MobileApp.View.Profile;
 
 namespace MetanetA_MobileApp.ViewModels;
@@ -17,7 +16,7 @@ public partial class MainViewModel : BaseViewModel
 {
     private readonly SalesCatalogService _catalog;
     private readonly IUserSession _userSession;
-    private readonly UserInfo userInfo;
+    private readonly UserInfo _fallbackUserInfo;
 
     [ObservableProperty]
     private CartState cart;
@@ -31,11 +30,24 @@ public partial class MainViewModel : BaseViewModel
     [ObservableProperty]
     private bool isSearchResultsVisible;
 
+    // Bind this to the big number on MainPage.
+    // Example: <Label Text="{Binding OverallScoreText}" />
+    // It returns only the number, not "%", so your existing "/100" label can stay.
     [ObservableProperty]
-    private string overallScoreText = "Choose target roles";
+    private string overallScoreText = "0";
 
     [ObservableProperty]
-    private string strongestRoleName = string.Empty;
+    private int overallScoreValue;
+
+    public string OverallScorePercentText => $"{OverallScoreValue}%";
+
+    partial void OnOverallScoreValueChanged(int value)
+    {
+        OnPropertyChanged(nameof(OverallScorePercentText));
+    }
+
+    [ObservableProperty]
+    private string strongestRoleName = "Score";
 
     [ObservableProperty]
     private string improvementHintText = string.Empty;
@@ -54,7 +66,8 @@ public partial class MainViewModel : BaseViewModel
         UserInfo userInfo) : base(menuState)
     {
         _userSession = userSession;
-        this.userInfo = userInfo;
+        _fallbackUserInfo = userInfo;
+
         Cart = cart;
         CartService = cartService;
         _catalog = catalog;
@@ -67,14 +80,14 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private void RefreshScore()
+    public void RefreshScore()
     {
-        var currentUser = _userSession.CurrentUser ?? userInfo;
-
+        var currentUser = _userSession.CurrentUser ?? _fallbackUserInfo;
         var result = CalculateOverallScore(currentUser);
 
         HasOverallScore = result.HasScore;
-        OverallScoreText = result.HasScore ? $"{result.Score}%" : "Choose target roles";
+        OverallScoreValue = result.Score;
+        OverallScoreText = result.Score.ToString();
         StrongestRoleName = result.StrongestRoleName;
         ImprovementHintText = result.ImprovementHintText;
     }
@@ -100,53 +113,26 @@ public partial class MainViewModel : BaseViewModel
             return;
         }
 
-        var k = Normalize(key);
+        var normalizedKey = Normalize(key);
 
         var results = _catalog.Products
-            .Where(p => p != null && !string.IsNullOrWhiteSpace(p.Name))
-            .Select(p => new
+            .Where(product => product != null && !string.IsNullOrWhiteSpace(product.Name))
+            .Select(product => new
             {
-                p,
-                score = Score(Normalize(p.Name), k)
+                Product = product,
+                Score = SearchScore(Normalize(product.Name), normalizedKey)
             })
-            .Where(x => x.score < 1000)
-            .OrderBy(x => x.score)
-            .ThenBy(x => x.p.Name)
+            .Where(x => x.Score < 1000)
+            .OrderBy(x => x.Score)
+            .ThenBy(x => x.Product.Name)
             .Take(8)
-            .Select(x => x.p)
+            .Select(x => x.Product)
             .ToList();
 
         foreach (var item in results)
             SearchResults.Add(item);
 
         IsSearchResultsVisible = SearchResults.Count > 0;
-    }
-
-    private static string Normalize(string s)
-    {
-        s = (s ?? string.Empty).Trim().ToLowerInvariant();
-        while (s.Contains("  "))
-            s = s.Replace("  ", " ");
-        return s;
-    }
-
-    private static int Score(string name, string key)
-    {
-        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(key))
-            return 1000;
-
-        if (name.StartsWith(key, StringComparison.Ordinal))
-            return 0;
-
-        var idx = name.IndexOf(key, StringComparison.Ordinal);
-        if (idx >= 0)
-            return 10 + idx;
-
-        var parts = key.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        if (parts.Length > 1 && parts.All(p => name.Contains(p, StringComparison.Ordinal)))
-            return 80;
-
-        return 1000;
     }
 
     [RelayCommand]
@@ -169,42 +155,45 @@ public partial class MainViewModel : BaseViewModel
 
     private static OverallScoreUiResult CalculateOverallScore(UserInfo? user)
     {
-        if (user?.Job is null)
-        {
-            return new OverallScoreUiResult
-            {
-                HasScore = false,
-                Score = 0,
-                StrongestRoleName = string.Empty,
-                ImprovementHintText = "Choose target roles"
-            };
-        }
+        var selectedSkills = (user?.SelectedSkills ?? new List<UserSkillInfo>())
+            .Where(skill => skill is not null && (!string.IsNullOrWhiteSpace(skill.SkillName) || skill.SkillId > 0))
+            .ToList();
 
-        var template = BuildTemplateFromSelectedJob(user.Job);
+        // First preference: calculate against selected JobFamily role template.
+        // Fallback: if Job was not preserved in session yet, calculate over selected skills themselves.
+        // This prevents the MainPage from showing "--" while SkillsPage already has scored skills.
+        var template = user?.Job is null
+            ? new List<RoleSkillTemplateItem>()
+            : BuildTemplateFromSelectedJob(user.Job);
+
+        if (template.Count == 0 && selectedSkills.Count > 0)
+            template = BuildTemplateFromSelectedSkills(selectedSkills);
+
         if (template.Count == 0)
         {
             return new OverallScoreUiResult
             {
                 HasScore = false,
                 Score = 0,
-                StrongestRoleName = user.Job.JobName,
-                ImprovementHintText = "No role template skills"
+                StrongestRoleName = "Score",
+                ImprovementHintText = "Add and verify skills"
             };
         }
 
-        var candidateSkills = (user.SelectedSkills ?? new List<UserSkillInfo>())
-            .Where(x => x is not null && (!string.IsNullOrWhiteSpace(x.SkillName) || x.SkillId > 0))
-            .GroupBy(x => x.SkillId > 0 ? $"id:{x.SkillId}" : $"name:{Normalize(x.SkillName)}")
-            .ToDictionary(g => g.Key, g => g.OrderByDescending(x => x.Signal).First());
+        var candidateSkills = selectedSkills
+            .GroupBy(skill => BuildSkillKey(skill.SkillId, skill.SkillName))
+            .ToDictionary(
+                group => group.Key,
+                group => group.OrderByDescending(skill => GetSkillSignal(skill)).First());
 
-        var denominator = template.Sum(x => x.Weight);
+        var denominator = template.Sum(item => item.Weight);
         if (denominator <= 0)
         {
             return new OverallScoreUiResult
             {
                 HasScore = false,
                 Score = 0,
-                StrongestRoleName = user.Job.JobName,
+                StrongestRoleName = user?.Job?.JobName ?? "Score",
                 ImprovementHintText = "No role template skills"
             };
         }
@@ -212,7 +201,8 @@ public partial class MainViewModel : BaseViewModel
         var numerator = template.Sum(item =>
         {
             var skill = FindCandidateSkill(candidateSkills, item);
-            return item.Weight * (skill?.Signal ?? 0d);
+            var signal = skill is null ? 0d : GetSkillSignal(skill);
+            return item.Weight * signal;
         });
 
         var readiness = numerator / denominator;
@@ -223,33 +213,79 @@ public partial class MainViewModel : BaseViewModel
         {
             HasScore = true,
             Score = score,
-            StrongestRoleName = user.Job.JobName,
+            StrongestRoleName = user?.Job?.JobName ?? "Current skills",
             ImprovementHintText = hint
         };
     }
 
     private static List<RoleSkillTemplateItem> BuildTemplateFromSelectedJob(JobFamily job)
     {
-        return job.Seniorities
-            .SelectMany(seniority => seniority.Positions)
-            .SelectMany(position => position.Skills)
-            .Where(skill => skill is not null && !string.IsNullOrWhiteSpace(skill.SkillName))
-            .GroupBy(skill => skill.Id > 0 ? $"id:{skill.Id}" : $"name:{Normalize(skill.SkillName)}")
-            .Select(group =>
+        var result = new List<RoleSkillTemplateItem>();
+
+        if (job.Seniorities is null)
+            return result;
+
+        foreach (var seniority in job.Seniorities)
+        {
+            if (seniority?.Positions is null)
+                continue;
+
+            foreach (var position in seniority.Positions)
             {
-                var skill = group.First();
-                return new RoleSkillTemplateItem
+                if (position?.Skills is null)
+                    continue;
+
+                foreach (var skill in position.Skills)
                 {
-                    SkillId = skill.Id,
-                    SkillName = skill.SkillName,
-                    Weight = group.Max(x => WeightFromSkillComplexity(x.SkillComplexity))
-                };
+                    if (skill is null || string.IsNullOrWhiteSpace(skill.SkillName))
+                        continue;
+
+                    result.Add(new RoleSkillTemplateItem
+                    {
+                        SkillId = skill.Id,
+                        SkillName = skill.SkillName,
+                        Weight = WeightFromSkillComplexity(skill.SkillComplexity)
+                    });
+                }
+            }
+        }
+
+        return result
+            .GroupBy(item => BuildSkillKey(item.SkillId, item.SkillName))
+            .Select(group => new RoleSkillTemplateItem
+            {
+                SkillId = group.First().SkillId,
+                SkillName = group.First().SkillName,
+                Weight = group.Max(item => item.Weight)
+            })
+            .ToList();
+    }
+
+    private static List<RoleSkillTemplateItem> BuildTemplateFromSelectedSkills(List<UserSkillInfo> selectedSkills)
+    {
+        return selectedSkills
+            .Where(skill => skill is not null && (!string.IsNullOrWhiteSpace(skill.SkillName) || skill.SkillId > 0))
+            .Select(skill => new RoleSkillTemplateItem
+            {
+                SkillId = skill.SkillId,
+                SkillName = skill.SkillName,
+                Weight = WeightFromSkillComplexity(skill.SkillComplexity)
+            })
+            .GroupBy(item => BuildSkillKey(item.SkillId, item.SkillName))
+            .Select(group => new RoleSkillTemplateItem
+            {
+                SkillId = group.First().SkillId,
+                SkillName = group.First().SkillName,
+                Weight = group.Max(item => item.Weight)
             })
             .ToList();
     }
 
     private static int WeightFromSkillComplexity(string? complexity)
     {
+        // Word spec says role-template weight is core=2, secondary=1.
+        // Current mobile model has SkillComplexity instead of Core/Secondary.
+        // Mapping for MVP: high => core(2), everything else => secondary(1).
         var value = (complexity ?? string.Empty).Trim().ToLowerInvariant();
         return value == "high" ? 2 : 1;
     }
@@ -258,14 +294,50 @@ public partial class MainViewModel : BaseViewModel
         Dictionary<string, UserSkillInfo> candidateSkills,
         RoleSkillTemplateItem templateItem)
     {
-        if (templateItem.SkillId > 0 && candidateSkills.TryGetValue($"id:{templateItem.SkillId}", out var byId))
-            return byId;
+        var key = BuildSkillKey(templateItem.SkillId, templateItem.SkillName);
+        if (candidateSkills.TryGetValue(key, out var exact))
+            return exact;
 
-        if (!string.IsNullOrWhiteSpace(templateItem.SkillName) &&
-            candidateSkills.TryGetValue($"name:{Normalize(templateItem.SkillName)}", out var byName))
-            return byName;
+        if (!string.IsNullOrWhiteSpace(templateItem.SkillName))
+        {
+            var nameKey = BuildSkillKey(0, templateItem.SkillName);
+            if (candidateSkills.TryGetValue(nameKey, out var byName))
+                return byName;
+        }
 
         return null;
+    }
+
+    private static double GetSkillSignal(UserSkillInfo skill)
+    {
+        // Prefer UserSkillInfo.Signal because that model already contains the spec logic:
+        // verified => CS, self_declared => min(CS, 40), absent => 0.
+        // The fallback below keeps this MainViewModel safe if an older UserSkillInfo is used.
+        var modelSignal = skill.Signal;
+        if (modelSignal > 0)
+            return ClampScore(modelSignal);
+
+        var credibility = GetCredibilityScore(skill);
+        var status = (skill.Status ?? string.Empty).Trim().ToLowerInvariant();
+
+        if (skill.IsVerified || status == "verified")
+            return credibility;
+
+        if (status == "absent")
+            return 0;
+
+        return Math.Min(credibility, 40d);
+    }
+
+    private static double GetCredibilityScore(UserSkillInfo skill)
+    {
+        if (skill.CredibilityScore > 0)
+            return ClampScore(skill.CredibilityScore);
+
+        var knowledge = skill.KnowledgeScore > 0 ? skill.KnowledgeScore : skill.Knowledge;
+        var experience = skill.ExperienceScore > 0 ? skill.ExperienceScore : skill.Experience;
+
+        return ClampScore((knowledge * 0.45d) + (experience * 0.55d));
     }
 
     private static string BuildImprovementHint(
@@ -284,11 +356,12 @@ public partial class MainViewModel : BaseViewModel
                 Template = item,
                 Skill = FindCandidateSkill(candidateSkills, item)
             })
-            .Where(x => x.Skill is null || !x.Skill.IsVerified && !string.Equals(x.Skill.Status, "verified", StringComparison.OrdinalIgnoreCase))
+            .Where(x => x.Skill is null || !IsVerified(x.Skill))
             .Select(x =>
             {
-                var signal = x.Skill?.Signal ?? 0d;
+                var signal = x.Skill is null ? 0d : GetSkillSignal(x.Skill);
                 var gain = x.Template.Weight * Math.Max(target - signal, 0d) / denominator;
+
                 return new
                 {
                     x.Template,
@@ -306,15 +379,66 @@ public partial class MainViewModel : BaseViewModel
             return "All key skills verified";
 
         var best = candidates[0];
-        var roundedGain = RoundHalfUp(best.Gain);
         var prefix = best.Skill is null ? "Add & verify" : "Verify";
+        var roundedGain = RoundHalfUp(best.Gain);
 
         return $"{prefix} {best.Template.SkillName} → ≈ +{roundedGain}";
+    }
+
+    private static bool IsVerified(UserSkillInfo skill)
+    {
+        return skill.IsVerified ||
+               string.Equals(skill.Status, "verified", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string BuildSkillKey(int id, string? name)
+    {
+        if (id > 0)
+            return $"id:{id}";
+
+        return $"name:{Normalize(name ?? string.Empty)}";
+    }
+
+    private static string Normalize(string value)
+    {
+        value = (value ?? string.Empty).Trim().ToLowerInvariant();
+
+        while (value.Contains("  ", StringComparison.Ordinal))
+            value = value.Replace("  ", " ", StringComparison.Ordinal);
+
+        return value;
+    }
+
+    private static int SearchScore(string name, string key)
+    {
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(key))
+            return 1000;
+
+        if (name.StartsWith(key, StringComparison.Ordinal))
+            return 0;
+
+        var index = name.IndexOf(key, StringComparison.Ordinal);
+        if (index >= 0)
+            return 10 + index;
+
+        var parts = key.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length > 1 && parts.All(part => name.Contains(part, StringComparison.Ordinal)))
+            return 80;
+
+        return 1000;
     }
 
     private static int RoundHalfUp(double value)
     {
         return (int)Math.Clamp(Math.Floor(value + 0.5d), 0, 100);
+    }
+
+    private static double ClampScore(double value)
+    {
+        if (double.IsNaN(value) || double.IsInfinity(value))
+            return 0;
+
+        return Math.Clamp(value, 0d, 100d);
     }
 
     private sealed class OverallScoreUiResult

@@ -5,6 +5,7 @@ using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Model.Questionnaires;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.GetDataFromServer;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View.SignUp;
 
@@ -15,17 +16,19 @@ public partial class VerifySkillsViewModel : ObservableObject
     private readonly SkillVerificationState _skillVerificationState;
     private readonly ISkillQuestionnaireApiService _questionnaireApiService;
     private readonly IUserSession _userSession;
-
+    private readonly UserProfileDataApiService? _profileDataApiService;
     private bool _isLoaded;
 
     public VerifySkillsViewModel(
         SkillVerificationState skillVerificationState,
         ISkillQuestionnaireApiService questionnaireApiService,
-        IUserSession userSession)
+        IUserSession userSession,
+        HttpClient? httpClient = null)
     {
         _skillVerificationState = skillVerificationState;
         _questionnaireApiService = questionnaireApiService;
         _userSession = userSession;
+        _profileDataApiService = httpClient is null ? null : new UserProfileDataApiService(httpClient);
 
         Steps.Add(new IdentityStepModel { Title = "Identity", IsCompleted = true });
         Steps.Add(new IdentityStepModel { Title = "Career", IsCompleted = true });
@@ -36,28 +39,17 @@ public partial class VerifySkillsViewModel : ObservableObject
     }
 
     public ObservableCollection<IdentityStepModel> Steps { get; } = new();
-
     public ObservableCollection<SkillQuestionnaireSessionItem> Skills { get; } = new();
 
-    [ObservableProperty]
-    private bool isBusy;
-
-    [ObservableProperty]
-    private string? errorMessage;
+    [ObservableProperty] private bool isBusy;
+    [ObservableProperty] private string? errorMessage;
 
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
-
     public bool HasSkills => Skills.Count > 0;
-
     public int CompletedSkillCount => Skills.Count(x => x.IsCompleted);
-
     public int TotalSkillCount => Skills.Count;
-
     public bool AllSkillsCompleted => TotalSkillCount > 0 && Skills.All(x => x.IsCompleted);
-
-    public string ContinueButtonText => AllSkillsCompleted
-        ? "Continue"
-        : $"Continue ({CompletedSkillCount}/{TotalSkillCount})";
+    public string ContinueButtonText => AllSkillsCompleted ? "Continue" : $"Continue ({CompletedSkillCount}/{TotalSkillCount})";
 
     [RelayCommand]
     private async Task LoadAsync()
@@ -81,7 +73,6 @@ public partial class VerifySkillsViewModel : ObservableObject
             {
                 var session = new SkillQuestionnaireSessionItem(selectedSkill);
                 Skills.Add(session);
-
                 await LoadQuestionnaireForSkillAsync(session);
             }
 
@@ -166,6 +157,18 @@ public partial class VerifySkillsViewModel : ObservableObject
 
         SaveVerifiedSkillScoresToSession();
 
+        // Əgər user artıq register olubsa, verify score-ları dərhal SQL-ə yazılır.
+        var currentUser = _userSession.CurrentUser;
+        if (_profileDataApiService is not null && currentUser is not null && currentUser.Id > 0)
+        {
+            var saveResult = await _profileDataApiService.SaveAsync(currentUser);
+            if (!saveResult.Success)
+            {
+                ErrorMessage = saveResult.Message;
+                return;
+            }
+        }
+
         await Shell.Current.GoToAsync(nameof(SkillEvidencePage));
     }
 
@@ -217,7 +220,6 @@ public partial class VerifySkillsViewModel : ObservableObject
     private void SaveVerifiedSkillScoresToSession()
     {
         var currentUser = _userSession.CurrentUser;
-
         if (currentUser is null)
             return;
 
@@ -236,21 +238,42 @@ public partial class VerifySkillsViewModel : ObservableObject
                     SkillId = session.SelectedSkill.SkillId,
                     SkillName = session.SelectedSkill.SkillName,
                     SeniorityName = session.SelectedSkill.Seniority,
-                    CredibilityScore = 0
+                    SkillComplexity = session.SelectedSkill.SkillComplexity
                 };
 
                 currentUser.SelectedSkills.Add(existing);
             }
 
+            existing.SkillName = session.SelectedSkill.SkillName;
+            existing.SeniorityName = session.SelectedSkill.Seniority;
+            existing.SkillComplexity = session.SelectedSkill.SkillComplexity;
+
             existing.KnowledgeScore = score.Knowledge;
             existing.ExperienceScore = score.Experience;
             existing.Depth = score.Depth;
-            existing.CredibilityScore = score.Credibility;
+
+            // Word faylındakı CS formuluna uyğun saxlanır:
+            // CS = KnowledgeScore * 0.45 + ExperienceScore * 0.55
+            existing.CredibilityScore = Math.Clamp(
+                (existing.KnowledgeScore * 0.45d) + (existing.ExperienceScore * 0.55d),
+                0,
+                100);
+
             existing.DepthScore = score.DepthScore;
             existing.TaskComplexity = score.TaskComplexity;
             existing.OwnershipLevel = score.OwnershipLevel;
             existing.DepthTier = score.DepthTier;
+
+            existing.ContextScore = score.ContextScore;
+            existing.ComplexityScore = score.ComplexityScore;
+            existing.OwnershipScore = score.OwnershipScore;
+            existing.ResultScore = score.ResultScore;
+
+            existing.Status = "verified";
+            existing.IsVerified = true;
         }
+
+        _userSession.CurrentUser = currentUser;
     }
 
     private static SkillDepthScoreResult CalculateScore(SkillQuestionnaireSessionItem session)
@@ -273,9 +296,7 @@ public partial class VerifySkillsViewModel : ObservableObject
         var depthRatio = Math.Clamp(rawDepth / (double)maxDepth, 0, 1);
 
         var depthScore = (int)Math.Round(
-            ((complexityRatio * 0.35) +
-             (ownershipRatio * 0.30) +
-             (depthRatio * 0.35)) * 100);
+            ((complexityRatio * 0.35) + (ownershipRatio * 0.30) + (depthRatio * 0.35)) * 100);
 
         depthScore = Math.Clamp(depthScore, 0, 100);
 
@@ -285,28 +306,18 @@ public partial class VerifySkillsViewModel : ObservableObject
 
         return new SkillDepthScoreResult
         {
+            // MVP-də questionnaire həm knowledge, həm experience üçün proxy kimi saxlanır.
             Knowledge = depthScore,
             Experience = complexityPercent,
             Depth = depthPercent,
-            Credibility = ownershipPercent,
             DepthScore = depthScore,
-            TaskComplexity = complexityRatio < 0.40
-                ? "routine"
-                : complexityRatio < 0.75
-                    ? "complex"
-                    : "strategic",
-            OwnershipLevel = ownershipRatio < 0.40
-                ? "contributor"
-                : ownershipRatio < 0.75
-                    ? "owner"
-                    : "leader",
-            DepthTier = depthScore < 35
-                ? "basic"
-                : depthScore < 65
-                    ? "proficient"
-                    : depthScore < 85
-                        ? "advanced"
-                        : "expert"
+            ContextScore = depthScore,
+            ComplexityScore = complexityPercent,
+            OwnershipScore = ownershipPercent,
+            ResultScore = depthPercent,
+            TaskComplexity = complexityRatio < 0.40 ? "routine" : complexityRatio < 0.75 ? "complex" : "strategic",
+            OwnershipLevel = ownershipRatio < 0.40 ? "contributor" : ownershipRatio < 0.75 ? "owner" : "leader",
+            DepthTier = depthScore < 35 ? "basic" : depthScore < 65 ? "proficient" : depthScore < 85 ? "advanced" : "expert"
         };
     }
 
@@ -333,29 +344,18 @@ public partial class SkillQuestionnaireSessionItem : ObservableObject
     }
 
     public SelectedSkillForVerification SelectedSkill { get; }
-
     public string SkillName => SelectedSkill.SkillName;
-
     public ObservableCollection<QuestionnaireQuestionItem> Questions { get; } = new();
-
     public ObservableCollection<QuestionnaireQuestionItem> VisibleQuestions { get; } = new();
-
     public QuestionnaireScoringDto Scoring { get; private set; } = new();
 
-    [ObservableProperty]
-    private bool isLoading;
-
-    [ObservableProperty]
-    private string? errorMessage;
+    [ObservableProperty] private bool isLoading;
+    [ObservableProperty] private string? errorMessage;
 
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
-
     public int AnsweredCount => VisibleQuestions.Count(q => q.IsAnswered);
-
     public int TotalVisibleQuestions => VisibleQuestions.Count;
-
     public bool IsCompleted => TotalVisibleQuestions > 0 && VisibleQuestions.All(q => q.IsAnswered);
-
     public string ProgressText => $"{AnsweredCount}/{TotalVisibleQuestions} answered";
 
     public void SetQuestionnaire(SkillQuestionnaireResponse questionnaire)
@@ -404,25 +404,15 @@ public partial class QuestionnaireQuestionItem : ObservableObject
     }
 
     public SkillQuestionnaireSessionItem Session { get; }
-
     public string Id { get; }
-
     public int Order { get; }
-
     public string Dimension { get; }
-
     public string DimensionCaption => Dimension.ToUpperInvariant();
-
     public bool HiddenByDefault { get; }
-
     public string Text { get; }
-
     public string Type { get; }
-
     public List<QuestionnaireBranchingRuleDto> Branching { get; }
-
     public ObservableCollection<QuestionnaireOptionItem> Options { get; } = new();
-
     public bool IsAnswered => Options.Any(o => o.IsSelected);
 
     public void RefreshState()
@@ -444,32 +434,24 @@ public partial class QuestionnaireOptionItem : ObservableObject
     }
 
     public QuestionnaireQuestionItem Question { get; }
-
     public string Id { get; }
-
     public string Label { get; }
-
     public QuestionnaireOptionWeightsDto Weights { get; }
 
-    [ObservableProperty]
-    private bool isSelected;
+    [ObservableProperty] private bool isSelected;
 }
 
 public class SkillDepthScoreResult
 {
     public int Knowledge { get; set; }
-
     public int Experience { get; set; }
-
     public int Depth { get; set; }
-
-    public int Credibility { get; set; }
-
     public int DepthScore { get; set; }
-
+    public int ContextScore { get; set; }
+    public int ComplexityScore { get; set; }
+    public int OwnershipScore { get; set; }
+    public int ResultScore { get; set; }
     public string TaskComplexity { get; set; } = string.Empty;
-
     public string OwnershipLevel { get; set; } = string.Empty;
-
     public string DepthTier { get; set; } = string.Empty;
 }

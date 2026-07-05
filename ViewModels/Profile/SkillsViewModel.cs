@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.GetDataFromServer;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View.SignUp;
 
@@ -14,6 +15,7 @@ public partial class SkillsViewModel : BaseViewModel
     private readonly ISkillAndJobApiService _skillAndJobApiService;
     private readonly SkillVerificationState? _skillVerificationState;
     private readonly IUserSession _userSession;
+    private readonly UserProfileDataApiService? _profileDataApiService;
     private bool _isLoaded;
 
     public SkillsViewModel(
@@ -21,15 +23,17 @@ public partial class SkillsViewModel : BaseViewModel
         ISkillAndJobApiService skillAndJobApiService,
         IUserSession userSession,
         UserInfo userInfo,
-        SkillVerificationState? skillVerificationState = null)
-        : base(menuState)
+        SkillVerificationState? skillVerificationState = null,
+        HttpClient? httpClient = null) : base(menuState)
     {
         _skillAndJobApiService = skillAndJobApiService;
         _skillVerificationState = skillVerificationState;
         _userSession = userSession;
-        UserInfo = userInfo;
+        _profileDataApiService = httpClient is null ? null : new UserProfileDataApiService(httpClient);
 
+        UserInfo = userInfo;
         _userSession.CurrentUser ??= UserInfo;
+
         MenuState.Select(BottomTab.Profile);
 
         CompanyOptions.Add(new CompanyChip("Azercell Telecom", true));
@@ -37,51 +41,25 @@ public partial class SkillsViewModel : BaseViewModel
     }
 
     public ObservableCollection<AvailableSkillItem> AvailableSkills { get; } = new();
-
     public ObservableCollection<CompanyChip> CompanyOptions { get; } = new();
-
     public ObservableCollection<ProfileSkillItem> AddedSkills { get; } = new();
-
     public ObservableCollection<ProfileExperienceItem> AddedExperiences { get; } = new();
 
-    [ObservableProperty]
-    private UserInfo userInfo;
-
-    [ObservableProperty]
-    private AvailableSkillItem? selectedAvailableSkill;
-
-    [ObservableProperty]
-    private bool isAddSkillVisible;
-
-    [ObservableProperty]
-    private bool isAddExperienceVisible;
-
-    [ObservableProperty]
-    private string experienceCompanyName = string.Empty;
-
-    [ObservableProperty]
-    private string experiencePositionName = string.Empty;
-
-    [ObservableProperty]
-    private string experienceStartYear = string.Empty;
-
-    [ObservableProperty]
-    private string experienceEndYear = "Present";
-
-    [ObservableProperty]
-    private bool isBusy;
-
-    [ObservableProperty]
-    private string? errorMessage;
+    [ObservableProperty] private UserInfo userInfo;
+    [ObservableProperty] private AvailableSkillItem? selectedAvailableSkill;
+    [ObservableProperty] private bool isAddSkillVisible;
+    [ObservableProperty] private bool isAddExperienceVisible;
+    [ObservableProperty] private string experienceCompanyName = string.Empty;
+    [ObservableProperty] private string experiencePositionName = string.Empty;
+    [ObservableProperty] private string experienceStartYear = string.Empty;
+    [ObservableProperty] private string experienceEndYear = "Present";
+    [ObservableProperty] private bool isBusy;
+    [ObservableProperty] private string? errorMessage;
 
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
-
     public bool HasAddedSkills => AddedSkills.Count > 0;
-
     public bool HasNoSkills => AddedSkills.Count == 0;
-
     public bool HasAddedExperiences => AddedExperiences.Count > 0;
-
     public bool HasNoExperiences => AddedExperiences.Count == 0;
 
     [RelayCommand]
@@ -94,6 +72,12 @@ public partial class SkillsViewModel : BaseViewModel
         {
             IsBusy = true;
             ErrorMessage = null;
+
+            var currentUser = GetCurrentUser();
+
+            // App yenidən açılıb sign in olunubsa, SQL-də saxlanmış skills/experience-ləri çəkirik.
+            if (_profileDataApiService is not null && currentUser.Id > 0)
+                await _profileDataApiService.LoadIntoUserAsync(currentUser);
 
             LoadAvailableSkillsFromSelectedJob();
             LoadSkillsSelectedDuringSignup();
@@ -174,6 +158,7 @@ public partial class SkillsViewModel : BaseViewModel
         {
             SkillId = SelectedAvailableSkill.SkillId,
             SkillName = SelectedAvailableSkill.SkillName,
+            PositionId = SelectedAvailableSkill.PositionId,
             PositionName = SelectedAvailableSkill.PositionName,
             SeniorityName = SelectedAvailableSkill.SeniorityName,
             JobFamilyName = SelectedAvailableSkill.JobFamilyName,
@@ -183,10 +168,10 @@ public partial class SkillsViewModel : BaseViewModel
 
         AddedSkills.Add(profileSkill);
         SaveSkillToSession(profileSkill);
+        await SaveProfileDataQuietlyAsync();
 
         IsAddSkillVisible = false;
         SelectedAvailableSkill = null;
-
         RefreshSkillState();
     }
 
@@ -198,6 +183,7 @@ public partial class SkillsViewModel : BaseViewModel
 
         AddedSkills.Remove(item);
         RemoveSkillFromSession(item);
+        _ = SaveProfileDataQuietlyAsync();
         RefreshSkillState();
     }
 
@@ -213,7 +199,7 @@ public partial class SkillsViewModel : BaseViewModel
             {
                 Id = item.SkillId,
                 SkillName = item.SkillName,
-                PositionId = 0,
+                PositionId = item.PositionId,
                 SkillComplexity = item.SkillComplexity
             };
 
@@ -289,6 +275,7 @@ public partial class SkillsViewModel : BaseViewModel
         AddedExperiences.Add(item);
         SaveExperienceToSession(item);
         AddCompanyOptionIfMissing(company);
+        await SaveProfileDataQuietlyAsync();
 
         IsAddExperienceVisible = false;
         ClearExperienceForm();
@@ -303,6 +290,7 @@ public partial class SkillsViewModel : BaseViewModel
 
         AddedExperiences.Remove(item);
         RemoveExperienceFromSession(item);
+        _ = SaveProfileDataQuietlyAsync();
         RefreshExperienceState();
     }
 
@@ -323,11 +311,7 @@ public partial class SkillsViewModel : BaseViewModel
             return;
 
         var allSkills = selectedJob.Seniorities
-            .SelectMany(seniority => seniority.Positions.Select(position => new
-            {
-                seniority,
-                position
-            }))
+            .SelectMany(seniority => seniority.Positions.Select(position => new { seniority, position }))
             .SelectMany(x => x.position.Skills.Select(skill => new AvailableSkillItem
             {
                 SkillId = skill.Id,
@@ -358,13 +342,17 @@ public partial class SkillsViewModel : BaseViewModel
 
         foreach (var selectedSkill in currentUser.SelectedSkills)
         {
-            if (AddedSkills.Any(x => x.SkillId == selectedSkill.SkillId))
+            if (AddedSkills.Any(x => x.SkillId == selectedSkill.SkillId && x.SkillId > 0))
+                continue;
+
+            if (AddedSkills.Any(x => x.SkillName.Equals(selectedSkill.SkillName, StringComparison.OrdinalIgnoreCase)))
                 continue;
 
             AddedSkills.Add(new ProfileSkillItem
             {
                 SkillId = selectedSkill.SkillId,
                 SkillName = selectedSkill.SkillName,
+                PositionId = selectedSkill.PositionId,
                 PositionName = selectedSkill.PositionName,
                 SeniorityName = selectedSkill.SeniorityName,
                 JobFamilyName = selectedSkill.JobFamilyName,
@@ -406,26 +394,29 @@ public partial class SkillsViewModel : BaseViewModel
     {
         var currentUser = GetCurrentUser();
 
-        var exists = currentUser.SelectedSkills.Any(x =>
-            x.SkillId == item.SkillId ||
+        var existing = currentUser.SelectedSkills.FirstOrDefault(x =>
+            (x.SkillId > 0 && x.SkillId == item.SkillId) ||
             x.SkillName.Equals(item.SkillName, StringComparison.OrdinalIgnoreCase));
 
-        if (exists)
-            return;
-
-        currentUser.SelectedSkills.Add(new UserSkillInfo
+        if (existing is null)
         {
-            SkillId = item.SkillId,
-            SkillName = item.SkillName,
-            PositionName = item.PositionName,
-            SeniorityName = item.SeniorityName,
-            JobFamilyName = item.JobFamilyName,
-            SkillComplexity = item.SkillComplexity,
-            Knowledge = item.Knowledge,
-            Experience = item.Experience,
-            Depth = item.Depth,
-            Credibility = item.Credibility
-        });
+            currentUser.SelectedSkills.Add(new UserSkillInfo
+            {
+                SkillId = item.SkillId,
+                SkillName = item.SkillName,
+                PositionId = item.PositionId,
+                PositionName = item.PositionName,
+                SeniorityName = item.SeniorityName,
+                JobFamilyName = item.JobFamilyName,
+                SkillComplexity = item.SkillComplexity,
+                Knowledge = item.Knowledge,
+                Experience = item.Experience,
+                Depth = item.Depth,
+                Credibility = item.Credibility,
+                Status = item.Credibility > 0 ? "verified" : "self_declared",
+                IsVerified = item.Credibility > 0
+            });
+        }
 
         _userSession.CurrentUser = currentUser;
     }
@@ -435,7 +426,7 @@ public partial class SkillsViewModel : BaseViewModel
         var currentUser = GetCurrentUser();
 
         var saved = currentUser.SelectedSkills.FirstOrDefault(x =>
-            x.SkillId == item.SkillId ||
+            (x.SkillId > 0 && x.SkillId == item.SkillId) ||
             x.SkillName.Equals(item.SkillName, StringComparison.OrdinalIgnoreCase));
 
         if (saved is not null)
@@ -494,14 +485,23 @@ public partial class SkillsViewModel : BaseViewModel
         return UserInfo;
     }
 
+    private async Task SaveProfileDataQuietlyAsync()
+    {
+        var user = _userSession.CurrentUser;
+        if (_profileDataApiService is null || user is null || user.Id <= 0)
+            return;
+
+        var result = await _profileDataApiService.SaveAsync(user);
+        if (!result.Success)
+            ErrorMessage = result.Message;
+    }
+
     private void AddCompanyOptionIfMissing(string companyName)
     {
         if (string.IsNullOrWhiteSpace(companyName))
             return;
 
-        var exists = CompanyOptions.Any(x =>
-            x.Name.Equals(companyName.Trim(), StringComparison.OrdinalIgnoreCase));
-
+        var exists = CompanyOptions.Any(x => x.Name.Equals(companyName.Trim(), StringComparison.OrdinalIgnoreCase));
         if (!exists)
             CompanyOptions.Add(new CompanyChip(companyName.Trim(), false));
     }
@@ -552,79 +552,48 @@ public partial class CompanyChip : ObservableObject
 
     public string Name { get; }
 
-    [ObservableProperty]
-    private bool isSelected;
+    [ObservableProperty] private bool isSelected;
 }
 
 public class AvailableSkillItem
 {
     public int SkillId { get; set; }
-
     public string SkillName { get; set; } = string.Empty;
-
     public int PositionId { get; set; }
-
     public string PositionName { get; set; } = string.Empty;
-
     public string SeniorityName { get; set; } = string.Empty;
-
     public string JobFamilyName { get; set; } = string.Empty;
-
     public string SkillComplexity { get; set; } = "medium";
-
-    public string DisplayName => string.IsNullOrWhiteSpace(PositionName)
-        ? SkillName
-        : $"{SkillName} · {PositionName}";
+    public string DisplayName => string.IsNullOrWhiteSpace(PositionName) ? SkillName : $"{SkillName} · {PositionName}";
 }
 
 public class ProfileSkillItem
 {
     public int SkillId { get; set; }
-
     public string SkillName { get; set; } = string.Empty;
-
+    public int PositionId { get; set; }
     public string PositionName { get; set; } = string.Empty;
-
     public string SeniorityName { get; set; } = string.Empty;
-
     public string JobFamilyName { get; set; } = string.Empty;
-
     public string SkillComplexity { get; set; } = "medium";
-
     public List<string> UsedIn { get; set; } = new();
-
-    public string UsedInText => UsedIn.Count == 0
-        ? "Not linked to experience"
-        : $"Used in: {string.Join(", ", UsedIn)}";
-
+    public string UsedInText => UsedIn.Count == 0 ? "Not linked to experience" : $"Used in: {string.Join(", ", UsedIn)}";
     public double Knowledge { get; set; }
-
     public double Experience { get; set; }
-
     public double Depth { get; set; }
-
     public double Credibility { get; set; }
-
     public double KnowledgeRatio => Knowledge / 100d;
-
     public double ExperienceRatio => Experience / 100d;
-
     public double DepthRatio => Depth / 100d;
 }
 
 public class ProfileExperienceItem
 {
     public string CompanyName { get; set; } = string.Empty;
-
     public string PositionName { get; set; } = string.Empty;
-
     public string StartYear { get; set; } = string.Empty;
-
     public string EndYear { get; set; } = "Present";
-
-    public string PeriodText => string.IsNullOrWhiteSpace(EndYear)
-        ? StartYear
-        : $"{StartYear} – {EndYear}";
+    public string PeriodText => string.IsNullOrWhiteSpace(EndYear) ? StartYear : $"{StartYear} – {EndYear}";
 
     public string DurationText
     {
@@ -634,16 +603,13 @@ public class ProfileExperienceItem
                 return string.Empty;
 
             var normalizedEnd = EndYear?.Trim();
-
-            var end = string.IsNullOrWhiteSpace(normalizedEnd) ||
-                      normalizedEnd.Equals("Present", StringComparison.OrdinalIgnoreCase)
+            var end = string.IsNullOrWhiteSpace(normalizedEnd) || normalizedEnd.Equals("Present", StringComparison.OrdinalIgnoreCase)
                 ? DateTime.UtcNow.Year
                 : int.TryParse(normalizedEnd, out var parsedEnd)
                     ? parsedEnd
                     : start;
 
             var years = Math.Max(end - start, 0);
-
             return years == 1 ? "1 year" : $"{years} years";
         }
     }

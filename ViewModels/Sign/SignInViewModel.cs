@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.GetDataFromServer;
 using MetanetA_MobileApp.View;
 using MetanetA_MobileApp.View.SignUp;
 
@@ -19,17 +20,16 @@ public partial class SignInViewModel : ObservableObject
 
     private readonly IUserSession _userSession;
     private readonly HttpClient _httpClient;
+    private readonly UserProfileDataApiService _profileDataApiService;
 
     [ObservableProperty] private string login = string.Empty;
     [ObservableProperty] private string email = string.Empty;
     [ObservableProperty] private string phoneNumber = string.Empty;
     [ObservableProperty] private string password = string.Empty;
-
     [ObservableProperty] private bool fillTheArea;
     [ObservableProperty] private bool invalidCredentials;
     [ObservableProperty] private bool isBusy;
     [ObservableProperty] private string errorMessage = string.Empty;
-
     [ObservableProperty] private bool isPasswordHidden = true;
     [ObservableProperty] private bool isConfirmPasswordHidden = true;
 
@@ -37,6 +37,7 @@ public partial class SignInViewModel : ObservableObject
     {
         _userSession = userSession;
         _httpClient = httpClient;
+        _profileDataApiService = new UserProfileDataApiService(httpClient);
     }
 
     [RelayCommand]
@@ -77,7 +78,18 @@ public partial class SignInViewModel : ObservableObject
                 return;
             }
 
-            SaveLoggedInUser(result.User, loginValue.Trim());
+            var currentUser = SaveLoggedInUser(result.User, loginValue.Trim());
+
+            // Login uğurlu olandan sonra SQL-də saxlanmış skill və experience-ləri geri yükləyirik.
+            var profileLoad = await _profileDataApiService.LoadIntoUserAsync(currentUser);
+            if (!profileLoad.Success)
+            {
+                // Login-i bloklamırıq, sadəcə istifadəçiyə yumşaq xəbərdarlıq göstəririk.
+                ErrorMessage = profileLoad.Message;
+            }
+
+            _userSession.CurrentUser = currentUser;
+
             await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
         }
         catch (Exception ex)
@@ -126,7 +138,7 @@ public partial class SignInViewModel : ObservableObject
         }
     }
 
-    private void SaveLoggedInUser(AuthUserDto? user, string fallbackLogin)
+    private UserInfo SaveLoggedInUser(AuthUserDto? user, string fallbackLogin)
     {
         var currentUser = _userSession.CurrentUser ?? new UserInfo();
 
@@ -147,6 +159,7 @@ public partial class SignInViewModel : ObservableObject
         }
 
         _userSession.CurrentUser = currentUser;
+        return currentUser;
     }
 
     private static string FirstNonEmpty(params string?[] values)

@@ -1,15 +1,21 @@
-﻿using MetanetA_MobileApp.ViewModels;
-using Microsoft.VisualBasic;
+using MetanetA_MobileApp.ViewModels;
 
-namespace MetanetA_MobileApp.View
+namespace MetanetA_MobileApp.View;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private readonly MainViewModel _viewModel;
+
+    public MainPage(MainViewModel vm)
     {
-        public MainPage(MainViewModel vm)
-        {
-            InitializeComponent();
-            BindingContext = vm;
-        }
+        InitializeComponent();
+        _viewModel = vm;
+        BindingContext = vm;
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _viewModel.RefreshScore();
+    }
 }
