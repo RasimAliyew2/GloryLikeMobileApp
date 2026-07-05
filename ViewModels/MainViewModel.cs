@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.Cart;
 using MetanetA_MobileApp.Services.Sales;

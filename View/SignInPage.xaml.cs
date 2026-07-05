@@ -1,13 +1,16 @@
 using MetanetA_MobileApp.ViewModel;
-using MetanetA_MobileApp.ViewModels;
+using MetanetA_MobileApp.View.SignUp;
 
 namespace MetanetA_MobileApp.View;
 
 public partial class SignInPage : ContentPage
 {
+    private readonly SignInViewModel _viewModel;
+
     public SignInPage(SignInViewModel vm)
     {
         InitializeComponent();
+        _viewModel = vm;
         BindingContext = vm;
     }
 
@@ -31,16 +34,16 @@ public partial class SignInPage : ContentPage
         await DisplayAlert("Apple", "Apple sign-in hələ qoşulmayıb.", "OK");
     }
 
+    // Keçmiş XAML event-ləri saxlanılıb, amma artıq olmayan RegistrationPanel/SignInPanel adlarına toxunmur.
+    // Bunun məqsədi əvvəlki gözəl SignInPage.xaml dizaynını pozmadan build xətasını aradan qaldırmaqdır.
     private void ShowSignIn_Tapped(object sender, TappedEventArgs e)
     {
-        RegistrationPanel.IsVisible = false;
-        SignInPanel.IsVisible = true;
+        // No-op. Əgər XAML-də bu event qalıbsa, compile xətası verməsin.
     }
 
-    private void ShowRegistration_Tapped(object sender, TappedEventArgs e)
+    private async void ShowRegistration_Tapped(object sender, TappedEventArgs e)
     {
-        SignInPanel.IsVisible = false;
-        RegistrationPanel.IsVisible = true;
+        await Shell.Current.GoToAsync($"//{nameof(SignUpPage)}");
     }
 
     private async void ForgotPassword_Tapped(object sender, TappedEventArgs e)
@@ -50,15 +53,42 @@ public partial class SignInPage : ContentPage
 
     private async void SignIn_Tapped(object sender, TappedEventArgs e)
     {
-        var email = EmailEntry.Text?.Trim();
-        var password = PasswordEntry.Text;
+        CopyEntryValuesIntoViewModelIfNeeded();
+        await _viewModel.SignIn();
+    }
 
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+    private void CopyEntryValuesIntoViewModelIfNeeded()
+    {
+        // Köhnə dizaynda Entry-lər Binding ilə işləyirsə, bu metod heç nəyi pozmur.
+        // Binding yoxdursa, mümkün Entry adlarından dəyəri götürür.
+        var login = GetEntryText("LoginEntry")
+                    ?? GetEntryText("EmailEntry")
+                    ?? GetEntryText("PhoneEntry")
+                    ?? GetEntryText("PhoneNumberEntry")
+                    ?? GetEntryText("UsernameEntry");
+
+        var password = GetEntryText("PasswordEntry");
+
+        if (!string.IsNullOrWhiteSpace(login))
         {
-            await DisplayAlert("Sign in", "Email və password daxil et.", "OK");
-            return;
+            _viewModel.Login = login.Trim();
+            _viewModel.PhoneNumber = login.Trim();
+            _viewModel.Email = login.Trim();
         }
 
-        await DisplayAlert("Sign in", "Sign-in API hələ qoşulmayıb.", "OK");
+        if (!string.IsNullOrWhiteSpace(password))
+            _viewModel.Password = password;
+    }
+
+    private string? GetEntryText(string name)
+    {
+        try
+        {
+            return this.FindByName<Entry>(name)?.Text;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

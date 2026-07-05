@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View.SignUp;
@@ -298,10 +299,10 @@ public partial class SkillsSelectionViewModel : ObservableObject
                     SeniorityName = NormalizeSeniority(SelectedSeniority?.Name),
                     JobFamilyName = SelectedJobFamily?.JobName ?? UserInfo.Job?.JobName ?? string.Empty,
                     SkillComplexity = NormalizeComplexity(skill.SkillComplexity),
-                    Knowledge = 0,
-                    Experience = 0,
+                    KnowledgeScore = 0,
+                    ExperienceScore = 0,
                     Depth = 0,
-                    Credibility = 0,
+                    CredibilityScore = 0,
                     DepthScore = 0
                 });
             }

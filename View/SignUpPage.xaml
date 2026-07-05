@@ -3,160 +3,83 @@
     x:Class="MetanetA_MobileApp.View.SignUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Shell.NavBarIsVisible="False"
-    BackgroundColor="#050816">
+    BackgroundColor="#070A13">
 
-    <ContentPage.Resources>
-        <Style x:Key="FieldLabelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextColor" Value="#374151" />
-            <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-
-        <Style x:Key="FieldBorderStyle" TargetType="Border">
-            <Setter Property="Stroke" Value="#E5E7EB" />
-            <Setter Property="StrokeThickness" Value="1" />
-            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
-            <Setter Property="BackgroundColor" Value="#F9FAFB" />
-            <Setter Property="Padding" Value="14,8" />
-        </Style>
-    </ContentPage.Resources>
-
-    <Grid Padding="22">
+    <Grid>
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#050816" Offset="0.00" />
-                <GradientStop Color="#0B1024" Offset="0.50" />
-                <GradientStop Color="#111827" Offset="1.00" />
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#050714" Offset="0" />
+                <GradientStop Color="#101226" Offset="0.55" />
+                <GradientStop Color="#070A13" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
 
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <VerticalStackLayout Spacing="22" Padding="0,14,0,28">
-                <Label
-                    Text="‹ Back"
-                    FontSize="14"
-                    TextColor="#D1D5DB">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Back_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+        <ScrollView>
+            <VerticalStackLayout Padding="22,38,22,30" Spacing="18">
 
-                <VerticalStackLayout Spacing="14" HorizontalOptions="Center">
-                    <Border
-                        WidthRequest="64"
-                        HeightRequest="64"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 20"
-                        BackgroundColor="#FFFFFF">
-                        <Label
-                            Text="S"
-                            FontSize="30"
-                            FontAttributes="Bold"
-                            TextColor="#111827"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center" />
-                    </Border>
+                <HorizontalStackLayout Spacing="8">
+                    <Label Text="‹" FontSize="28" TextColor="White" />
+                    <Label Text="Sign in" TextColor="#AAB2C5" FontSize="14" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToSignInCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
 
-                    <Label
-                        Text="Create your SkillMatch profile"
-                        FontSize="30"
-                        FontAttributes="Bold"
-                        TextColor="#FFFFFF"
-                        HorizontalTextAlignment="Center"
-                        LineBreakMode="WordWrap" />
-
-                    <Label
-                        Text="Start with your basic details. You will verify identity, experience, and skills in the next steps."
-                        FontSize="15"
-                        TextColor="#CBD5E1"
-                        HorizontalTextAlignment="Center"
-                        MaximumWidthRequest="390"
-                        LineBreakMode="WordWrap" />
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Create your account" FontSize="28" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Your profile and verification scores will be saved to your account." FontSize="15" TextColor="#AAB2C5" />
                 </VerticalStackLayout>
 
-                <Border
-                    BackgroundColor="#FFFFFF"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 30"
-                    Padding="20"
-                    MaximumWidthRequest="440">
-                    <Border.Shadow>
-                        <Shadow Brush="#000000" Opacity="0.22" Radius="24" Offset="0,12" />
-                    </Border.Shadow>
+                <Border BackgroundColor="White" StrokeThickness="0" StrokeShape="RoundRectangle 30" Padding="20">
+                    <VerticalStackLayout Spacing="12">
 
-                    <VerticalStackLayout Spacing="16">
-                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
-                            <VerticalStackLayout Spacing="7">
-                                <Label Text="First name" Style="{StaticResource FieldLabelStyle}" />
-                                <Border Style="{StaticResource FieldBorderStyle}">
-                                    <Entry x:Name="FirstNameEntry" Placeholder="Your name" Text="{Binding UserInfo.Name}" BackgroundColor="Transparent" />
-                                </Border>
-                            </VerticalStackLayout>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                                <Entry Placeholder="Name" Text="{Binding Name}" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                            </Border>
 
-                            <VerticalStackLayout Grid.Column="1" Spacing="7">
-                                <Label Text="Last name" Style="{StaticResource FieldLabelStyle}" />
-                                <Border Style="{StaticResource FieldBorderStyle}">
-                                    <Entry x:Name="LastNameEntry" Placeholder="Surname"  Text="{Binding UserInfo.Surname}" BackgroundColor="Transparent" />
-                                </Border>
-                            </VerticalStackLayout>
+                            <Border Grid.Column="1" BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                                <Entry Placeholder="Surname" Text="{Binding Surname}" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                            </Border>
                         </Grid>
 
-                        <VerticalStackLayout Spacing="7">
-                            <Label Text="Email" Style="{StaticResource FieldLabelStyle}" />
-                            <Border Style="{StaticResource FieldBorderStyle}">
-                                <Entry x:Name="EmailEntry" Placeholder="you@example.com" Keyboard="Email" BackgroundColor="Transparent" />
-                            </Border>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout Spacing="7">
-                            <Label Text="Phone number" Style="{StaticResource FieldLabelStyle}" />
-                            <Border Style="{StaticResource FieldBorderStyle}">
-                                <Entry x:Name="PhoneEntry" Placeholder="+994 XX XXX XX XX"  Text="{Binding UserInfo.PhoneNumber}" Keyboard="Telephone" BackgroundColor="Transparent" />
-                            </Border>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout Spacing="7">
-                            <Label Text="Password" Style="{StaticResource FieldLabelStyle}" />
-                            <Border Style="{StaticResource FieldBorderStyle}">
-                                <Entry x:Name="PasswordEntry" Placeholder="Create password"  Text="{Binding UserInfo.Password}" IsPassword="True" BackgroundColor="Transparent" />
-                            </Border>
-                        </VerticalStackLayout>
-
-                        <Border
-                            x:Name="ValidationPanel"
-                            IsVisible="False"
-                            BackgroundColor="#FEF2F2"
-                            Stroke="#FCA5A5"
-                            StrokeThickness="1"
-                            StrokeShape="RoundRectangle 16"
-                            Padding="12">
-                            <Label
-                                x:Name="ValidationLabel"
-                                Text="Please fill required fields."
-                                TextColor="#B91C1C"
-                                FontSize="13" />
+                        <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                            <Entry Placeholder="Username" Text="{Binding UserName}" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
                         </Border>
 
-                        <Button
-                            Text="Continue"
-                            HeightRequest="56"
-                            CornerRadius="18"
-                            BackgroundColor="#111827"
-                            TextColor="#FFFFFF"
-                            FontSize="16"
-                            FontAttributes="Bold"
-                            Command="{Binding ContinueCommand}"/>
+                        <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                            <Entry Placeholder="Phone number" Text="{Binding PhoneNumber}" Keyboard="Telephone" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                        </Border>
 
-                        <Label
-                            Text="Already have an account? Sign in"
-                            FontSize="13"
-                            TextColor="#6B7280"
-                            HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Back_Tapped" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                            <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                        </Border>
+
+                        <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                            <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                        </Border>
+
+                        <Border BackgroundColor="#F3F5FA" Stroke="#E1E6F0" StrokeThickness="1" StrokeShape="RoundRectangle 17" Padding="14,0">
+                            <Entry Placeholder="Confirm password" Text="{Binding ConfirmPassword}" IsPassword="True" FontSize="15" TextColor="#111827" PlaceholderColor="#8B95AA" BackgroundColor="Transparent" HeightRequest="50" />
+                        </Border>
+
+                        <Label Text="{Binding ErrorMessage}" IsVisible="{Binding HasError}" TextColor="#D92D20" FontSize="13" />
+
+                        <Border HeightRequest="52" StrokeThickness="0" StrokeShape="RoundRectangle 18" Margin="0,4,0,0">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#3545D4" Offset="0" />
+                                    <GradientStop Color="#985CF2" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                            </Border.GestureRecognizers>
+                            <Label Text="Create account" TextColor="White" FontAttributes="Bold" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        </Border>
+
+                        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#3545D4" />
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>

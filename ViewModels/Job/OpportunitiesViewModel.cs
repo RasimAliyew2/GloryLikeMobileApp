@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 
@@ -217,8 +218,8 @@ public partial class OpportunitiesViewModel : BaseViewModel
         if (skill.DepthScore > 0)
             return Math.Clamp(skill.DepthScore, 0, 100);
 
-        if (skill.Knowledge > 0)
-            return Math.Clamp(skill.Knowledge, 0, 100);
+        if (skill.KnowledgeScore > 0)
+            return Math.Clamp(skill.KnowledgeScore, 0, 100);
 
         if (skill.Depth > 0)
             return Math.Clamp(skill.Depth, 0, 100);

@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Model.Questionnaires;
+using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View.SignUp;
@@ -235,16 +236,16 @@ public partial class VerifySkillsViewModel : ObservableObject
                     SkillId = session.SelectedSkill.SkillId,
                     SkillName = session.SelectedSkill.SkillName,
                     SeniorityName = session.SelectedSkill.Seniority,
-                    SkillComplexity = session.SelectedSkill.SkillComplexity
+                    CredibilityScore = 0
                 };
 
                 currentUser.SelectedSkills.Add(existing);
             }
 
-            existing.Knowledge = score.Knowledge;
-            existing.Experience = score.Experience;
+            existing.KnowledgeScore = score.Knowledge;
+            existing.ExperienceScore = score.Experience;
             existing.Depth = score.Depth;
-            existing.Credibility = score.Credibility;
+            existing.CredibilityScore = score.Credibility;
             existing.DepthScore = score.DepthScore;
             existing.TaskComplexity = score.TaskComplexity;
             existing.OwnershipLevel = score.OwnershipLevel;

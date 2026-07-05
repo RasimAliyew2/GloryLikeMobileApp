@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MetanetA_MobileApp.Model;
+using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
 using MetanetA_MobileApp.Services.UIState;
 using MetanetA_MobileApp.View.SignUp;
@@ -368,8 +369,8 @@ public partial class SkillsViewModel : BaseViewModel
                 SeniorityName = selectedSkill.SeniorityName,
                 JobFamilyName = selectedSkill.JobFamilyName,
                 SkillComplexity = selectedSkill.SkillComplexity,
-                Knowledge = selectedSkill.Knowledge,
-                Experience = selectedSkill.Experience,
+                Knowledge = selectedSkill.KnowledgeScore,
+                Experience = selectedSkill.ExperienceScore,
                 Depth = selectedSkill.Depth,
                 Credibility = selectedSkill.Credibility,
                 UsedIn = new List<string> { "Selected during sign up" }
@@ -596,13 +597,13 @@ public class ProfileSkillItem
         ? "Not linked to experience"
         : $"Used in: {string.Join(", ", UsedIn)}";
 
-    public int Knowledge { get; set; }
+    public double Knowledge { get; set; }
 
-    public int Experience { get; set; }
+    public double Experience { get; set; }
 
-    public int Depth { get; set; }
+    public double Depth { get; set; }
 
-    public int Credibility { get; set; }
+    public double Credibility { get; set; }
 
     public double KnowledgeRatio => Knowledge / 100d;
 

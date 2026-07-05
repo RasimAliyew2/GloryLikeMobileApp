@@ -35,15 +35,15 @@ namespace MetanetA_MobileApp.ViewModels
         [RelayCommand]
         private async Task CompletedEditing(string? textFromEntry)
         {
-            userSession.OtpCode = userSession.OtpCode?.Replace("code:", "");
-            if (userSession.OtpCode == textFromEntry)
-                await Shell.Current.GoToAsync($"//{nameof(SetPasswordPage)}", new Dictionary<string, object>
-                {
-                    ["OperationType"] = OperationType
-                });
-
-            else
-                IsVisibleErrorLabel = true;
+         // userSession.OtpCode = userSession.OtpCode?.Replace("code:", "");
+         // if (userSession.OtpCode == textFromEntry)
+         //     await Shell.Current.GoToAsync($"//{nameof(SetPasswordPage)}", new Dictionary<string, object>
+         //     {
+         //         ["OperationType"] = OperationType
+         //     });
+         //                               
+         // else
+         //     IsVisibleErrorLabel = true;
         }
 
         [RelayCommand]
@@ -78,14 +78,14 @@ namespace MetanetA_MobileApp.ViewModels
         [RelayCommand]
         private async Task AprroveTheSMS()
         {
-            userSession.OtpCode = userSession.OtpCode?.Replace("code:", "");
-            if (userSession.OtpCode == Code)
-                await Shell.Current.GoToAsync($"//{nameof(SetPasswordPage)}", new Dictionary<string, object>
-              {
-                    ["OperationType"] = OperationType
-                });
-            else
-                IsVisibleErrorLabel = true;
+          // userSession.OtpCode = userSession.OtpCode?.Replace("code:", "");
+          // if (userSession.OtpCode == Code)
+          //     await Shell.Current.GoToAsync($"//{nameof(SetPasswordPage)}", new Dictionary<string, object>
+          //   {
+          //         ["OperationType"] = OperationType
+          //     });
+          // else
+          //     IsVisibleErrorLabel = true;
         }
 
         private static string Format(int totalSeconds)

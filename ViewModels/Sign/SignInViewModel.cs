@@ -1,93 +1,179 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net.Http.Json;
 using System.Text.Json;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
 using MetanetA_MobileApp.Model;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
-using MetanetA_MobileApp.Services.GetDataFromServer;
 using MetanetA_MobileApp.View;
 using MetanetA_MobileApp.View.SignUp;
 
-namespace MetanetA_MobileApp.ViewModel
+namespace MetanetA_MobileApp.ViewModel;
+
+public partial class SignInViewModel : ObservableObject
 {
-    public partial class SignInViewModel : ObservableObject
+    private static readonly JsonSerializerOptions JsonOptions = new()
     {
+        PropertyNameCaseInsensitive = true
+    };
 
-        public Bonus UserBonus;
+    private readonly IUserSession _userSession;
+    private readonly HttpClient _httpClient;
 
-        [ObservableProperty]
-        string phoneNumber;
+    [ObservableProperty] private string login = string.Empty;
+    [ObservableProperty] private string email = string.Empty;
+    [ObservableProperty] private string phoneNumber = string.Empty;
+    [ObservableProperty] private string password = string.Empty;
 
+    [ObservableProperty] private bool fillTheArea;
+    [ObservableProperty] private bool invalidCredentials;
+    [ObservableProperty] private bool isBusy;
+    [ObservableProperty] private string errorMessage = string.Empty;
 
-        [ObservableProperty]
-        string password;
+    [ObservableProperty] private bool isPasswordHidden = true;
+    [ObservableProperty] private bool isConfirmPasswordHidden = true;
 
-        [ObservableProperty]
-        bool fillTheArea = false;
+    public SignInViewModel(IUserSession userSession, HttpClient httpClient)
+    {
+        _userSession = userSession;
+        _httpClient = httpClient;
+    }
 
-        [ObservableProperty]
-        bool invalidCredentials = false;
+    [RelayCommand]
+    public async Task SignIn()
+    {
+        if (IsBusy)
+            return;
 
-        // Eye toggle state-lər
-        [ObservableProperty]
-        private bool isPasswordHidden = true;
+        var loginValue = FirstNonEmpty(Login, Email, PhoneNumber);
 
-        [ObservableProperty]
-        private bool isConfirmPasswordHidden = true;
-        IUserSession userSession;
+        FillTheArea = false;
+        InvalidCredentials = false;
+        ErrorMessage = string.Empty;
 
-        public SignInViewModel(IUserSession userSession)
+        if (string.IsNullOrWhiteSpace(loginValue) || string.IsNullOrWhiteSpace(Password))
         {
-            this.userSession = userSession;
-            // username = "test";
+            FillTheArea = true;
+            ErrorMessage = "Email, username və ya telefon + password daxil et.";
+            return;
         }
 
-        [RelayCommand] 
-        public async Task SignIn()
+        try
         {
-            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-            if (string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Password))
-                return;
-            
-            
-            PhoneNumber = AdjustUserInfo.AdjustPhoneNumber(PhoneNumber);
-            string text = "";
-           // string text = await GetAndPostAllDataForUser.GetAsyncUserInfo(new UserInfo() { Password = password, PhoneNumber = phoneNumber });
-            if (string.IsNullOrEmpty(text))
+            IsBusy = true;
+
+            var response = await _httpClient.PostAsJsonAsync("api/Auth/login", new
             {
-                FillTheArea = true;
-                InvalidCredentials = false;
-            }
-            else if (text == "Invalid credentials")
+                Login = loginValue.Trim(),
+                Password
+            });
+
+            var result = await ReadAuthResponse(response);
+
+            if (!response.IsSuccessStatusCode || result is null || !result.Success)
             {
                 InvalidCredentials = true;
-                FillTheArea = false;
+                ErrorMessage = result?.Message ?? "Email/username/telefon və ya password yanlışdır.";
+                return;
             }
-            else
+
+            SaveLoggedInUser(result.User, loginValue.Trim());
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        }
+        catch (Exception ex)
+        {
+            InvalidCredentials = true;
+            ErrorMessage = "Backend-ə qoşulmaq olmadı: " + ex.Message;
+        }
+        finally
+        {
+            IsBusy = false;
+        }
+    }
+
+    [RelayCommand]
+    private void TogglePasswordVisibility()
+    {
+        IsPasswordHidden = !IsPasswordHidden;
+    }
+
+    [RelayCommand]
+    private void ToggleConfirmPasswordVisibility()
+    {
+        IsConfirmPasswordHidden = !IsConfirmPasswordHidden;
+    }
+
+    [RelayCommand]
+    public async Task SignUp()
+    {
+        await Shell.Current.GoToAsync($"//{nameof(SignUpPage)}");
+    }
+
+    private async Task<AuthResponse?> ReadAuthResponse(HttpResponseMessage response)
+    {
+        try
+        {
+            return await response.Content.ReadFromJsonAsync<AuthResponse>(JsonOptions);
+        }
+        catch
+        {
+            var text = await response.Content.ReadAsStringAsync();
+            return new AuthResponse
             {
-                userSession.CurrentUser = JsonSerializer.Deserialize<UserInfo[]>(text)[0];
-              await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-            }
-
+                Success = false,
+                Message = string.IsNullOrWhiteSpace(text) ? "Login cavabı oxunmadı." : text
+            };
         }
+    }
 
-        [RelayCommand]
-        private void TogglePasswordVisibility()
+    private void SaveLoggedInUser(AuthUserDto? user, string fallbackLogin)
+    {
+        var currentUser = _userSession.CurrentUser ?? new UserInfo();
+
+        if (user is not null)
         {
-            IsPasswordHidden = !IsPasswordHidden;
+            currentUser.Id = user.Id;
+            currentUser.UserName = user.UserName ?? string.Empty;
+            currentUser.Name = user.Name ?? string.Empty;
+            currentUser.Surname = user.Surname ?? string.Empty;
+            currentUser.PhoneNumber = user.PhoneNumber ?? string.Empty;
+            currentUser.Email = user.Email ?? string.Empty;
         }
-        [RelayCommand]
-        public async Task SignUp()
+        else
         {
-            //await Shell.Current.GoToAsync(nameof(SignUpPage));
-
-            await Shell.Current.GoToAsync($"//{nameof(VerifyIdentityPage)}");
+            currentUser.UserName = fallbackLogin;
+            currentUser.Email = fallbackLogin;
+            currentUser.PhoneNumber = fallbackLogin;
         }
+
+        _userSession.CurrentUser = currentUser;
+    }
+
+    private static string FirstNonEmpty(params string?[] values)
+    {
+        foreach (var value in values)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                return value.Trim();
+        }
+
+        return string.Empty;
+    }
+
+    private sealed class AuthResponse
+    {
+        public bool Success { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public AuthUserDto? User { get; set; }
+    }
+
+    private sealed class AuthUserDto
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Surname { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
     }
 }
