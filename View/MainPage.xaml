@@ -311,15 +311,15 @@
                 <VerticalStackLayout Spacing="12">
                     <Border BackgroundColor="#101026" Stroke="#24243D" StrokeThickness="1" StrokeShape="RoundRectangle 22" Padding="16">
                         <Grid ColumnDefinitions="44,*" ColumnSpacing="12">
-                            <Border WidthRequest="40" HeightRequest="40" BackgroundColor="#EEF2FF" StrokeThickness="0" StrokeShape="RoundRectangle 20">
+                            <!--<Border WidthRequest="40" HeightRequest="40" BackgroundColor="#EEF2FF" StrokeThickness="0" StrokeShape="RoundRectangle 20">
                                 <Label Text="✦" FontSize="18" TextColor="#3342BA" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                            </Border>
-                            <VerticalStackLayout Spacing="2">
+                            </Border>-->
+                            <!--<VerticalStackLayout Spacing="2">
                                 <Label Text="Score" FontSize="12" TextColor="#6B7280" />
                                 <Label Text="{Binding OverallScoreText}" FontSize="28" FontAttributes="Bold" TextColor="#111827" />
                                 <Label Text="{Binding StrongestRoleName}" FontSize="13" TextColor="#6B7280" IsVisible="{Binding HasOverallScore}" />
                                 <Label Text="{Binding ImprovementHintText}" FontSize="12" TextColor="#16A34A" LineBreakMode="WordWrap" />
-                            </VerticalStackLayout>
+                            </VerticalStackLayout>-->
 
                         </Grid>
                     </Border>

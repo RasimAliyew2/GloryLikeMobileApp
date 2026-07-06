@@ -4,10 +4,11 @@ using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MetanetA_MobileApp.Services;
 using MetanetA_MobileApp.Services.Abstractions;
+using MetanetA_MobileApp.Services.UIState;
 
 namespace MetanetA_MobileApp.ViewModels.Profile;
 
-public partial class ProfileViewModel : ObservableObject
+public partial class ProfileViewModel : BaseViewModel
 {
     private readonly IUserSession _userSession;
 
@@ -27,7 +28,7 @@ public partial class ProfileViewModel : ObservableObject
     [ObservableProperty] private bool hasNoSkills = true;
     [ObservableProperty] private bool hasNoExperiences = true;
 
-    public ProfileViewModel(IUserSession userSession)
+    public ProfileViewModel(IUserSession userSession,BottomMenuState bottomMenuState) : base(bottomMenuState)
     {
         _userSession = userSession;
         Refresh();
